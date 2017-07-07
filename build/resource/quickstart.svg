@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>quickstart</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="quickstart" fill-rule="nonzero" fill="#000000">
+            <g id="入门" transform="translate(64.000000, 128.000000)">
+                <path d="M0.12496482,221.379652 L448,0.215979514 L895.875035,221.379652 L448,449.048138 L0.12496482,221.379652 L0.12496482,221.379652 Z M134.487475,221.379652 L448,377.495186 L761.512525,221.379652 L448,65.2641188 L134.487475,221.379652 L134.487475,221.379652 Z" id="Shape"></path>
+                <polygon id="Shape" points="0.12496482 384 0.12496482 318.951861 448 540.115533 895.875035 318.951861 895.875035 384 448 605.163673"></polygon>
+                <polygon id="Shape" points="0.12496482 546.620348 0.12496482 481.572208 448 702.735881 895.875035 481.572208 895.875035 553.125161 448 767.78402"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
