@@ -1,0 +1,248 @@
+@charset "utf-8";
+
+#main-body > * > .content {
+	width: 1200px;
+	height: 100%;
+	margin: 0px auto;
+}
+
+#main-body > header {
+	height: 400px;
+    background-color: #01060A;
+    background-image: url(/image/main_bg.jpg);
+    background-size: 1200px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#main-body > header > .content > .menus {
+	position: absolute;
+    left: 15px;
+    bottom: 23px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+#main-body > header > .content > .menus > .menu {
+	color: #fff;
+    padding-left: 28px;
+    margin-right: 35px;
+}
+
+#main-body > header > .content > .menus > .menu:before {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 0px;
+	top: 4px;
+	background-image: url(/image/menus.png);
+	background-size: 20px;
+}
+
+#main-body > header > .content > .menus > .menu.quickstart:before {
+	background-position: 0px -60px;
+}
+
+#main-body > header > .content > .menus > .menu.documents:before {
+	background-position: 0px -40px;
+}
+
+#main-body > header > .content > .menus > .menu.components:before {
+	background-position: 0px -20px;
+}
+
+#main-body > header > .content > .menus > .menu.styles:before {
+	background-position: 0px -80px;
+}
+
+#main-body > header > .content > .menus > .menu.apis:before {
+	background-position: 0px 0px;
+}
+
+#main-body > section.bg {
+	background-color: #F9F9F9;
+}
+
+#main-body > .features > .content {
+	padding: 70px 0px 80px;
+}
+
+#main-body > .features > .content > .items {
+	margin-left: -15px;
+	margin-bottom: -50px;
+}
+
+#main-body > .features > .content > .items > .item {
+	display: inline-block;
+	width: 33.333333%;
+	padding: 0px 0px 50px 15px;
+	vertical-align: top;
+}
+
+#main-body > .features > .content > .items > .item > .box {
+	height: 150px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #000;
+    padding: 20px 10px 10px 120px;
+    transition: transform .8s;
+	-webkit-transition: -webkit-transform .8s;
+}
+
+#main-body > .features > .content > .items > .item > .box:hover {
+	transform: scale(1.06);
+	-webkit-transform: scale(1.06);
+}
+
+#main-body > .features > .content > .items > .item > .box:before {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 26px;
+	width: 100px;
+	height: 100px;
+	background-image: url(/image/features.png);
+	background-size: 100px;
+}
+
+#main-body > .features > .content > .items > .item > .box > .title {
+	font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+#main-body > .features > .content > .items > .item.server > .box {
+	background-color: #00C1DE;
+	box-shadow: 0px 3px 20px rgba(0, 193, 222, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.server > .box:before {
+	background-position: 0px 0px;
+}
+
+#main-body > .features > .content > .items > .item.component > .box {
+	background-color: #8B572A;
+	box-shadow: 0px 3px 20px rgba(139, 87, 42, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.component > .box:before {
+	background-position: 0px -100px;
+}
+
+#main-body > .features > .content > .items > .item.build > .box {
+	background-color: #0F85F4;
+	box-shadow: 0px 3px 20px rgba(15, 133, 244, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.build > .box:before {
+	background-position: 0px -400px;
+}
+
+#main-body > .features > .content > .items > .item.merge > .box {
+	background-color: #149F41;
+	box-shadow: 0px 3px 20px rgba(20, 159, 65, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.merge > .box:before {
+	background-position: 0px -300px;
+}
+
+#main-body > .features > .content > .items > .item.depend > .box {
+	background-color: #EC6E3B;
+	box-shadow: 0px 3px 20px rgba(236, 110, 59, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.depend > .box:before {
+	background-position: 0px -500px;
+}
+
+#main-body > .features > .content > .items > .item.datasource > .box {
+	background-color: #56CEFE;
+	box-shadow: 0px 3px 20px rgba(86, 206, 254, 0.5);
+}
+
+#main-body > .features > .content > .items > .item.datasource > .box:before {
+	background-position: 0px -200px;
+}
+
+#main-body > .introduce > .content {
+	padding: 30px 15px 135px;
+}
+
+#main-body > .introduce > .content .git {
+	color: #787878;
+}
+
+#main-body > .introduce > .content .git:before {
+	content: "";
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    background-image: url(/image/icons/github.png);
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+#main-body > .introduce > .content .version {
+	display: inline-block;
+    color: #fff;
+    font-size: 12px;
+    line-height: 28px;
+    background-color: #333444;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    padding: 0px 0px 0px 10px;
+    margin-top: 10px;
+}
+
+#main-body > .introduce > .content .version .val {
+	display: inline-block;
+    color: #333444;
+    background-color: #fff;
+    padding: 0px 13px;
+    margin-left: 10px;
+}
+
+#main-body > .introduce > .content > h3 {
+	color: #814D21;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 28px;
+	margin: 50px 0px 20px;
+}
+
+#main-body > .introduce > .content > h3:first-child {
+	margin-top: 0px;
+}
+
+#main-body > .introduce > .content > p {
+	color: #787878;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 8px;
+}
+
+#main-body > footer {
+	height: 54px;
+    background-color: #333444;
+}
+
+#main-body > footer > .content {
+	display: table;
+    color: #ccc;
+    font-size: 16px;
+    text-align: center;
+}
+
+#main-body > footer > .content a {
+	color: #ccc;
+}
+
+#main-body > footer > .content > .box {
+	display: table-cell;
+	vertical-align: middle;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NodeJS组件式WEB开发框架-VRender</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+	<div id="main-body">
+		<header>
+			<div class="content">
+				<nav class="menus">
+					<a class="menu quickstart" href="/docs/quickstart">快速入门</a>
+					<a class="menu documents" href="/docs/documents">说明文档</a>
+					<a class="menu components" href="/docs/components">组件</a>
+					<a class="menu styles" href="/docs/styles">全局样式</a>
+					<a class="menu apis" href="/docs/apis">API</a>
+				</nav>
+			</div>
+		</header>
+		<section class="features">
+			<div class="content">
+				<ul class="items">
+					<li class="item server">
+						<div class="box">
+							<div class="title">WEB服务器</div>
+							<div class="desc">这是一个WEB服务器，纯JS开发，在Node.js中运行，支持动态路由、用户状态SESSION管理。</div>
+						</div>
+					</li><li class="item component">
+						<div class="box">
+							<div class="title">组件式开发</div>
+							<div class="desc">视图组件化设计思想，一切皆为组件，可嵌套、可继承，功能与样式分离，内置常用组件若干。</div>
+						</div>
+					</li><li class="item build">
+						<div class="box">
+							<div class="title">服务端构建</div>
+							<div class="desc">由服务端(Node)构建并生成网页，避免前端大量动节点操作，并且保持前后端组件的一致性。</div>
+						</div>
+					</li><li class="item merge">
+						<div class="box">
+							<div class="title">合并压缩</div>
+							<div class="desc">自动合并、压缩样式和脚本文件，一次请求将多个组件的样式和脚本合并、压缩后返回。</div>
+						</div>
+					</li><li class="item depend">
+						<div class="box">
+							<div class="title">依赖加载</div>
+							<div class="desc">按需获取视图相应的样式和脚本文件，使用组件的同时自动加载该组件的样式和脚本。</div>
+						</div>
+					</li><li class="item datasource">
+						<div class="box">
+							<div class="title">链接服务</div>
+							<div class="desc">可以连接多个第三方服务，支持按域名或者请求路径转发到不同服务器。</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="introduce bg">
+			<div class="content">
+				<h3>一个Web开发框架，组件式开发，服务端渲染</h3>
+				<p>VRender 是一个 Web 开发框架，基于 Node.js 运行环境，纯天然的 JAVASCRIPT 语言，非常适合前端同学开发。</p>
+				<p>本框架采用组件化的设计思想，页面中的每一个区块都可以抽象成组件，组件可以被重复利用、嵌套并且继承。组件也可以称为视图，在这里其实是一个概念。页面的生成由框架在服务端动态构建，自动加载依赖的组件并渲染，被依赖组件的样式和脚本，自动压缩且合并成单个相应的资源文件。压缩、合并过程完全自动化，无需人工干预，不需要配置文件。</p>
+				<p>让前端开发变得更简单，想要了解更多，请移步至<a href="/quickstart">快速入门</a>。</p>
+
+				<h3>VRender源码下载</h3>
+				<p><a class="git" href="https://github.com/shicy/v-render" target="_blank">https://github.com/shicy/v-render</a></p>
+				<p><span class="version">最新版本<span class="val">v1.1.0</span></span></p>
+
+				<h3>VRender安装</h3>
+				<p>npm install v-render --save</p>
+			</div>
+		</section>
+		<footer>
+			<div class="content">
+				<div class="box">
+					<span>阳光</span>
+					<span><a href="mailto:shicy85@163.com">shicy85@163.com</a></span>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
