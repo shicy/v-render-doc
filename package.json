@@ -2,10 +2,18 @@
   "name": "v-render-doc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node-dev main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shicy/v-render-doc.git"
   },
   "author": "shicy",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "v-render": "^1.1.0"
+  }
 }
