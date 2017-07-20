@@ -14,6 +14,7 @@
   "author": "shicy",
   "license": "ISC",
   "dependencies": {
+    "prismjs": "^1.6.0",
     "v-render": "^1.1.0"
   }
 }
