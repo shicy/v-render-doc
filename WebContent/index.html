@@ -3,20 +3,29 @@
 <head>
 	<meta charset="utf-8">
 	<title>NodeJS组件式WEB开发框架-VRender</title>
+	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
 	<div id="main-body">
-		<header>
+		<header id="main-header">
 			<div class="content">
-				<nav class="menus">
-					<a class="menu quickstart" href="/quickstart">快速入门</a>
-					<a class="menu documents" href="/documents">说明文档</a>
-					<a class="menu components" href="/components">组件</a>
-					<a class="menu styles" href="/styles">全局样式</a>
-					<a class="menu apis" href="/apis">API</a>
-				</nav>
+				<img class="bgimg" src="/image/main_bg.jpg"/>
+				<div id="main-header-topbar" class="topbar" style="display: none;">
+					<div class="content">
+						<a class="logo" href="/">&nbsp;</a>
+						<nav class="menus" tabindex="-1">
+							<ul>
+								<li class="quickstart"><a href="/quickstart">快速入门</a></li>
+								<li class="documents"><a href="/documents">说明文档</a></li>
+								<li class="components"><a href="/components">组件</a></li>
+								<li class="styles"><a href="/styles">全局样式</a></li>
+								<li class="apis"><a href="/apis">API</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</header>
 		<section class="features">
@@ -74,11 +83,85 @@
 		<footer>
 			<div class="content">
 				<div class="box">
-					<span>阳光</span>
+					<span>阳光夜雨梦</span>
 					<span><a href="mailto:shicy85@163.com">shicy85@163.com</a></span>
 				</div>
 			</div>
 		</footer>
 	</div>
+	<script type="text/javascript">
+		var isMobile = /mobile/i.test(navigator.userAgent);
+
+		var mainHead = document.getElementById("main-header");
+		var topbar = document.getElementById("main-header-topbar");
+
+		var mainWidth = mainHead.offsetWidth;
+		var mainHeight = mainHead.offsetHeight;
+
+		var onScrollHandler = function () {
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			if (isMobile || mainWidth <= 900 || (mainHeight - scrollTop < 60)) {
+				topbar.setAttribute("data-fix", "1");
+			}
+			else {
+				topbar.removeAttribute("data-fix");
+			}
+
+			if (mainHeight - scrollTop < 60) {
+				topbar.setAttribute("data-fixed", "1");
+				topbar.style.backgroundColor = "rgba(51,52,68,0.95)";
+			}
+			else {
+				topbar.removeAttribute("data-fixed");
+				if (mainWidth <= 900 && scrollTop) {
+					var opacity = scrollTop / (mainHeight - 60);
+					topbar.style.backgroundColor = "rgba(51,52,68," + opacity + ")";
+				}
+				else {
+					topbar.style.backgroundColor = "";
+				}
+			}
+		};
+
+		var onResizeHandler = function () {
+			mainWidth = mainHead.offsetWidth;
+			mainHeight = mainHead.offsetHeight;
+
+			onScrollHandler();
+
+			if (isMobile || mainWidth <= 700) {
+				topbar.setAttribute("data-minify", "1");
+			}
+			else {
+				topbar.removeAttribute("data-minify");
+			}
+		};
+
+		window.onload = function () {
+			if (isMobile) {
+				var dpr = parseInt(window.devicePixelRatio) || 1;
+				dpr = Math.min(dpr, 2);
+				var scale = 1 / dpr;
+
+				var deviceWidth = document.documentElement.clientWidth * dpr;
+
+				var meta = document.querySelector("meta[name='viewport']");
+				meta.setAttribute("content", "width=" + deviceWidth + ",initial-scale=" + scale + ",minimum-scale=" + scale + 
+					",maximum-scale=" + scale + ",user-scalable=0");
+
+				document.documentElement.style.fontSize = (document.documentElement.clientWidth * dpr / 7.5) + "px";
+
+				document.body.style.minWidth = 0;
+				document.body.className = "device-app";
+			}
+
+			window.addEventListener("scroll", onScrollHandler);
+			window.addEventListener("resize", onResizeHandler);
+
+			onResizeHandler();
+			topbar.style.display = ""; // 防止闪烁，一开始隐藏
+		};
+	</script>
 </body>
 </html>

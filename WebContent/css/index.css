@@ -1,36 +1,72 @@
 @charset "utf-8";
 
 #main-body > * > .content {
-	width: 1200px;
-	height: 100%;
+	max-width: 1200px;
 	margin: 0px auto;
 }
 
 #main-body > header {
-	height: 400px;
     background-color: #01060A;
-    background-image: url(/image/main_bg.jpg);
-    background-size: 1200px;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
-#main-body > header > .content > .menus {
+#main-body > header .bgimg {
+	display: block;
+}
+
+#main-body > header .topbar {
 	position: absolute;
     left: 15px;
     bottom: 23px;
+}
+
+#main-body > header .logo {
+	display: none;
+	position: absolute;
+	left: 0px;
+    top: 0px;
+    width: 120px;
+    height: 100%;
+    text-decoration: none;
+    background-image: url(/image/logo2.png);
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: 6px center;
+}
+
+#main-body > header .logo:hover {
+	background-color: #404154;
+}
+
+#main-body > header .menus {
+	display: inline-block;
+}
+
+#main-body > header .menus ul {
     color: #fff;
-    font-size: 20px;
+    font-size: 16px;
+    opacity: 0.75;
+}
+
+#main-body > header .menus li {
+	display: inline-block;
+	vertical-align: top;
     line-height: 28px;
+	margin-left: 35px;
 }
 
-#main-body > header > .content > .menus > .menu {
-	color: #fff;
+#main-body > header .menus li:first-child {
+	margin-left: 0px;
+}
+
+#main-body > header .menus a {
     padding-left: 28px;
-    margin-right: 35px;
 }
 
-#main-body > header > .content > .menus > .menu:before {
+#main-body > header .menus a:hover {
+	text-decoration: underline;
+}
+
+#main-body > header .menus a:before {
 	content: "";
 	position: absolute;
 	width: 20px;
@@ -41,47 +77,134 @@
 	background-size: 20px;
 }
 
-#main-body > header > .content > .menus > .menu.quickstart:before {
+#main-body > header .menus .quickstart a:before {
 	background-position: 0px -60px;
 }
 
-#main-body > header > .content > .menus > .menu.documents:before {
+#main-body > header .menus .documents a:before {
 	background-position: 0px -40px;
 }
 
-#main-body > header > .content > .menus > .menu.components:before {
+#main-body > header .menus .components a:before {
 	background-position: 0px -20px;
 }
 
-#main-body > header > .content > .menus > .menu.styles:before {
+#main-body > header .menus .styles a:before {
 	background-position: 0px -80px;
 }
 
-#main-body > header > .content > .menus > .menu.apis:before {
+#main-body > header .menus .apis a:before {
 	background-position: 0px 0px;
+}
+
+#main-body > header .topbar[data-fix] {
+	position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: auto;
+    z-index: 100;
+}
+
+#main-body > header .topbar[data-fix] > .content {
+	max-width: 1200px;
+	text-align: right;
+	padding: 16px 30px;
+    margin: 0px auto;
+}
+
+#main-body > header .topbar[data-fixed] .logo {
+	display: inline-block;
+}
+
+#main-body > header .topbar[data-minify] > .content {
+	padding: 5px 10px;
+}
+
+#main-body > header .topbar[data-minify] .menus {
+	width: 40px;
+	height: 40px;
+	background-image: url(/image/icons/a01_1.png);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+}
+
+#main-body > header .topbar[data-minify] .menus:before {
+	content: ".";
+	visibility: hidden;
+}
+
+#main-body > header .topbar[data-minify] .menus:hover {
+	border: 1px solid #ddd;
+}
+
+#main-body > header .topbar[data-minify] .menus ul {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 1;
+}
+
+#main-body > header .topbar[data-minify] .menus li {
+	display: block;
+	line-height: 40px;
+	margin-left: 0px;
+}
+
+#main-body > header .topbar[data-minify] .menus a {
+	display: block;
+	text-decoration: none !important;
+	padding: 0px 20px;
+}
+
+#main-body > header .topbar[data-minify] .menus a:before {
+	display: none;
+}
+
+#main-body > header .topbar[data-minify] .menus a:hover {
+	background-color: #333;
+}
+
+#main-body > header .topbar[data-minify] .menus a:active {
+    color: #000;
+	background-color: #60e1ff;
+}
+
+#main-body > header .topbar[data-minify] .menus ul:hover {
+	display: block;
+}
+
+#main-body > header .topbar[data-minify] .menus:focus ul {
+	display: block;
 }
 
 #main-body > section.bg {
 	background-color: #F9F9F9;
 }
 
-#main-body > .features > .content {
-	padding: 70px 0px 80px;
+#main-body > .features .content {
+	padding: 70px 15px 80px;
 }
 
-#main-body > .features > .content > .items {
+#main-body > .features .items {
 	margin-left: -15px;
 	margin-bottom: -50px;
 }
 
-#main-body > .features > .content > .items > .item {
+#main-body > .features .item {
 	display: inline-block;
 	width: 33.333333%;
 	padding: 0px 0px 50px 15px;
 	vertical-align: top;
 }
 
-#main-body > .features > .content > .items > .item > .box {
+#main-body > .features .box {
 	height: 150px;
     color: #fff;
     font-size: 14px;
@@ -91,12 +214,12 @@
 	-webkit-transition: -webkit-transform .8s;
 }
 
-#main-body > .features > .content > .items > .item > .box:hover {
+#main-body > .features .box:hover {
 	transform: scale(1.06);
 	-webkit-transform: scale(1.06);
 }
 
-#main-body > .features > .content > .items > .item > .box:before {
+#main-body > .features .box:before {
 	content: "";
 	position: absolute;
 	left: 5px;
@@ -107,75 +230,75 @@
 	background-size: 100px;
 }
 
-#main-body > .features > .content > .items > .item > .box > .title {
+#main-body > .features .title {
 	font-size: 20px;
     line-height: 28px;
     margin-bottom: 12px;
 }
 
-#main-body > .features > .content > .items > .item.server > .box {
+#main-body > .features .item.server .box {
 	background-color: #00C1DE;
 	box-shadow: 0px 3px 20px rgba(0, 193, 222, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.server > .box:before {
+#main-body > .features .item.server .box:before {
 	background-position: 0px 0px;
 }
 
-#main-body > .features > .content > .items > .item.component > .box {
+#main-body > .features .item.component .box {
 	background-color: #8B572A;
 	box-shadow: 0px 3px 20px rgba(139, 87, 42, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.component > .box:before {
+#main-body > .features .item.component .box:before {
 	background-position: 0px -100px;
 }
 
-#main-body > .features > .content > .items > .item.build > .box {
+#main-body > .features .item.build .box {
 	background-color: #0F85F4;
 	box-shadow: 0px 3px 20px rgba(15, 133, 244, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.build > .box:before {
+#main-body > .features .item.build .box:before {
 	background-position: 0px -400px;
 }
 
-#main-body > .features > .content > .items > .item.merge > .box {
+#main-body > .features .item.merge .box {
 	background-color: #149F41;
 	box-shadow: 0px 3px 20px rgba(20, 159, 65, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.merge > .box:before {
+#main-body > .features .item.merge .box:before {
 	background-position: 0px -300px;
 }
 
-#main-body > .features > .content > .items > .item.depend > .box {
+#main-body > .features .item.depend .box {
 	background-color: #EC6E3B;
 	box-shadow: 0px 3px 20px rgba(236, 110, 59, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.depend > .box:before {
+#main-body > .features .item.depend .box:before {
 	background-position: 0px -500px;
 }
 
-#main-body > .features > .content > .items > .item.datasource > .box {
+#main-body > .features .item.datasource .box {
 	background-color: #56CEFE;
 	box-shadow: 0px 3px 20px rgba(86, 206, 254, 0.5);
 }
 
-#main-body > .features > .content > .items > .item.datasource > .box:before {
+#main-body > .features .item.datasource .box:before {
 	background-position: 0px -200px;
 }
 
-#main-body > .introduce > .content {
+#main-body > .introduce .content {
 	padding: 30px 15px 135px;
 }
 
-#main-body > .introduce > .content .git {
+#main-body > .introduce .git {
 	color: #787878;
 }
 
-#main-body > .introduce > .content .git:before {
+#main-body > .introduce .git:before {
 	content: "";
 	display: inline-block;
     width: 16px;
@@ -188,7 +311,7 @@
     margin-right: 5px;
 }
 
-#main-body > .introduce > .content .version {
+#main-body > .introduce .version {
 	display: inline-block;
     color: #fff;
     font-size: 12px;
@@ -199,7 +322,7 @@
     margin-top: 10px;
 }
 
-#main-body > .introduce > .content .version .val {
+#main-body > .introduce .version .val {
 	display: inline-block;
     color: #333444;
     background-color: #fff;
@@ -207,7 +330,7 @@
     margin-left: 10px;
 }
 
-#main-body > .introduce > .content > h3 {
+#main-body > .introduce h3 {
 	color: #814D21;
 	font-size: 20px;
 	font-weight: normal;
@@ -215,15 +338,17 @@
 	margin: 50px 0px 20px;
 }
 
-#main-body > .introduce > .content > h3:first-child {
+#main-body > .introduce h3:first-child {
 	margin-top: 0px;
 }
 
-#main-body > .introduce > .content > p {
+#main-body > .introduce p {
 	color: #787878;
-    font-size: 16px;
-    line-height: 22px;
     margin-top: 8px;
+}
+
+#main-body > .introduce a {
+	display: inline;
 }
 
 #main-body > footer {
@@ -231,18 +356,188 @@
     background-color: #333444;
 }
 
-#main-body > footer > .content {
+#main-body > footer .content {
 	display: table;
+	height: 100%;
     color: #ccc;
     font-size: 16px;
     text-align: center;
 }
 
-#main-body > footer > .content a {
+#main-body > footer a {
 	color: #ccc;
 }
 
-#main-body > footer > .content > .box {
+#main-body > footer .box {
 	display: table-cell;
 	vertical-align: middle;
 }
+
+
+/***********************************************/
+@media screen and (max-width: 1000px) {
+	#main-body > header .topbar {
+		bottom: 10px;
+	}
+
+	#main-body > .features .item {
+		width: 50%;
+		padding-bottom: 30px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+}
+
+@media screen and (max-width: 700px) {
+	#main-body > .features .content {
+		padding: 40px 30px 60px;
+	}
+
+	#main-body > .features .item {
+		width: 100%;
+		padding-bottom: 20px;
+	}
+
+	#main-body > .features .box {
+		height: auto;
+		min-height: 120px;
+		padding-left: 100px;
+	}
+
+	#main-body > .features .box:before {
+		top: 15px;
+		width: 80px;
+		height: 80px;
+		background-size: 80px;
+	}
+
+	#main-body > .features .item.component .box:before {
+		background-position: 0px -80px;
+	}
+
+	#main-body > .features .item.build .box:before {
+		background-position: 0px -320px;
+	}
+
+	#main-body > .features .item.merge .box:before {
+		background-position: 0px -240px;
+	}
+
+	#main-body > .features .item.depend .box:before {
+		background-position: 0px -400px;
+	}
+
+	#main-body > .features .item.datasource .box:before {
+		background-position: 0px -160px;
+	}
+
+	#main-body > .features .title {
+		margin-bottom: 0px;
+	}
+}
+
+
+/***********************************************/
+body.device-app {
+	font-size: 0.16rem;
+	line-height: 0.22rem;
+	/*background-color: red;*/
+}
+
+body.device-app #main-body > header .logo {
+	width: 0.8rem;
+	background-size: 0.5rem;
+	background-position: 0.1rem center;
+}
+
+body.device-app #main-body > header .topbar > .content {
+	padding: 0px;
+}
+
+body.device-app #main-body > header .topbar .menus {
+	width: 0.4rem;
+	height: 0.4rem;
+	background-size: 0.15rem;
+}
+
+body.device-app #main-body > header .topbar .menus:hover {
+	border-width: 0.01rem;
+}
+
+body.device-app #main-body > header .topbar .menus ul {
+	top: 0.395rem;
+	font-size: 0.16rem;
+}
+
+body.device-app #main-body > header .topbar .menus li {
+	line-height: 0.4rem;
+}
+
+body.device-app #main-body > .features .content {
+	padding: 0.3rem 0.2rem 0.6rem;
+}
+
+body.device-app #main-body > .features .item {
+	width: 100%;
+	padding-bottom: 0.1rem;
+}
+
+body.device-app #main-body > .features .box {
+	min-height: 1.2rem;
+	font-size: 0.14rem;
+}
+
+body.device-app #main-body > .features .title {
+	font-size: 0.2rem;
+	line-height: 0.28rem;
+}
+
+body.device-app #main-body > .introduce .content {
+	padding: 0.3rem 0.15rem 1rem;
+}
+
+body.device-app #main-body > .introduce h3 {
+	font-size: 0.2rem;
+	line-height: 0.28rem;
+	margin: 0.5rem 0 0.2rem;
+}
+
+body.device-app #main-body > .introduce h3:first-child {
+	margin-top: 0px;
+}
+
+body.device-app #main-body > .introduce p {
+	margin-top: 0.08rem;
+}
+
+body.device-app #main-body > .introduce .git:before {
+    width: 0.16rem;
+    height: 0.16rem;
+    vertical-align: -0.03rem;
+    background-size: 0.16rem;
+    margin-right: 0.05rem;
+}
+
+body.device-app #main-body > .introduce .version {
+	font-size: 0.12rem;
+	line-height: 0.28rem;
+	box-shadow: 0px 0.02rem 0.04rem 0px rgba(0, 0, 0, 0.5);
+	padding-left: 0.1rem;
+	margin-top: 0.1rem;
+}
+
+body.device-app #main-body > .introduce .version .val {
+	padding-left: 0.13rem;
+	margin-left: 0.1rem;
+}
+
+body.device-app #main-body > footer {
+	height: 0.54rem;
+}
+
+body.device-app #main-body > footer .content {
+	font-size: 0.16rem;
+}
+
+
