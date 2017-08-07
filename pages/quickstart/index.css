@@ -1,20 +1,13 @@
 @charset "utf-8";
 
 
-#main-header {
-	position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 10;
-}
-
 #main-body {
-	padding: 95px 0px 100px;
+	padding: 30px 0px 100px;
 }
 
 #main-container {
-	max-width: 1200px;
-    padding-left: 260px;
+	max-width: 1000px;
+    padding: 0px 10px 0px 210px;
     margin: 0px auto;
 }
 
@@ -23,22 +16,22 @@
     top: 100px;
     color: #999;
     font-size: 16px;
-    margin-left: -260px;
+    margin-left: -200px;
 }
 
-#main-container > aside > ul > li {
+#main-container > aside li {
 	margin-top: 22px;
 }
 
-#main-container > aside > ul > li:first-child {
+#main-container > aside li:first-child {
 	margin-top: 0px;
 }
 
-#main-container > aside > ul > li:hover {
+#main-container > aside li:hover {
 	color: #333444;
 }
 
-#main-container > aside > ul > li.active {
+#main-container > aside li.active {
 	color: #333444;
 }
 
@@ -46,8 +39,6 @@
 	color: #814D21;
     font-size: 22px;
     line-height: 30px;
-    /*border-bottom: 1px solid #ddd;*/
-    /*padding: 0px 0px 15px;*/
     margin: 60px 0px 30px;
 }
 
@@ -75,6 +66,7 @@
 }
 
 #main-container > article section {
+    line-height: 1.8;
 	margin-top: 30px;
 }
 
@@ -152,6 +144,7 @@
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
     margin-top: 5px;
+    overflow: auto;
 }
 
 #main-container > article .code-command .comment {
@@ -168,4 +161,92 @@
     margin: 5px 0px 0px;
 }
 
+
+/***********************************************/
+@media screen and (max-width: 830px) {
+    #main-container {
+        padding-left: 10px;
+    }
+
+    #main-container > aside {
+        display: none;
+    }
+}
+
+
+/***********************************************/
+body[device='app'] #main-body {
+    padding: 0.3rem 0px 1rem;
+}
+
+body[device='app'] #main-container {
+    padding: 0px 0.1rem;
+}
+
+body[device='app'] #main-container > article h1 {
+    font-size: 0.22rem;
+    line-height: 0.3rem;
+    margin: 0.3rem 0px 0.1rem;
+}
+
+body[device='app'] #main-container > article h1:first-child {
+    margin-top: 0px;
+}
+
+body[device='app'] #main-container > article h4 {
+    font-size: 0.16rem;
+    margin: 0.2rem 0px 0.1rem;
+}
+
+body[device='app'] #main-container > article h5 {
+    font-size: 0.15rem;
+}
+
+body[device='app'] #main-container > article section {
+    margin-top: 0.15rem;
+}
+
+body[device='app'] #main-container > article div {
+    margin-top: 0.1rem;
+}
+
+body[device='app'] #main-container > article p {
+    font-size: 0.16rem;
+}
+
+body[device='app'] #main-container > article .image {
+    padding: 0px !important;
+    text-align: center;
+}
+
+body[device='app'] #main-container > article .image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100%;
+}
+
+body[device='app'] #main-container > article .msgbox {
+    font-size: 0.14rem;
+    border-left-width: 0.05rem;
+    padding: 0.15rem;
+    margin: 0.1rem 0px;
+}
+
+body[device='app'] #main-container > article .code-command {
+    font-size: 0.14rem;
+    border-radius: 0.03rem;
+    padding: 0.05rem 0.1rem;
+    margin-top: 0.05rem;
+}
+
+body[device='app'] #main-container > article .code-command .comment {
+    font-size: 0.12rem;
+}
+
+body[device='app'] #main-container > article .code-html,
+body[device='app'] #main-container > article .code-js {
+    font-size: 0.14rem;
+    padding: 0.05rem 0.1rem;
+    margin-top: 0.05rem;
+}
 
