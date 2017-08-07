@@ -439,79 +439,82 @@
 
 
 /***********************************************/
-body.device-app {
+body[device='app'] {
 	font-size: 0.16rem;
 	line-height: 0.22rem;
-	/*background-color: red;*/
 }
 
-body.device-app #main-body > header .logo {
+body[device='app'] #main-body > header .logo {
 	width: 0.8rem;
 	background-size: 0.5rem;
 	background-position: 0.1rem center;
 }
 
-body.device-app #main-body > header .topbar > .content {
+body[device='app'] #main-body > header .topbar > .content {
 	padding: 0px;
 }
 
-body.device-app #main-body > header .topbar .menus {
+body[device='app'] #main-body > header .topbar .menus {
 	width: 0.4rem;
 	height: 0.4rem;
 	background-size: 0.15rem;
 }
 
-body.device-app #main-body > header .topbar .menus:hover {
+body[device='app'] #main-body > header .topbar .menus:hover {
 	border-width: 0.01rem;
 }
 
-body.device-app #main-body > header .topbar .menus ul {
-	top: 0.395rem;
+body[device='app'] #main-body > header .topbar .menus ul {
+	top: 0.4rem;
 	font-size: 0.16rem;
 }
 
-body.device-app #main-body > header .topbar .menus li {
+body[device='app'] #main-body > header .topbar .menus li {
 	line-height: 0.4rem;
 }
 
-body.device-app #main-body > .features .content {
+body[device='app'] #main-body > header .topbar .menus a {
+	padding: 0px 0.2rem;
+}
+
+body[device='app'] #main-body > .features .content {
 	padding: 0.3rem 0.2rem 0.6rem;
 }
 
-body.device-app #main-body > .features .item {
+body[device='app'] #main-body > .features .item {
 	width: 100%;
 	padding-bottom: 0.1rem;
 }
 
-body.device-app #main-body > .features .box {
+body[device='app'] #main-body > .features .box {
 	min-height: 1.2rem;
 	font-size: 0.14rem;
 }
 
-body.device-app #main-body > .features .title {
+body[device='app'] #main-body > .features .title {
 	font-size: 0.2rem;
 	line-height: 0.28rem;
 }
 
-body.device-app #main-body > .introduce .content {
+body[device='app'] #main-body > .introduce .content {
 	padding: 0.3rem 0.15rem 1rem;
-}
+}ß
 
-body.device-app #main-body > .introduce h3 {
+body[device='app'] #main-body > .introduce h3 {
 	font-size: 0.2rem;
 	line-height: 0.28rem;
 	margin: 0.5rem 0 0.2rem;
 }
 
-body.device-app #main-body > .introduce h3:first-child {
+body[device='app'] #main-body > .introduce h3:first-child {
 	margin-top: 0px;
 }
 
-body.device-app #main-body > .introduce p {
+body[device='app'] #main-body > .introduce p {
 	margin-top: 0.08rem;
 }
 
-body.device-app #main-body > .introduce .git:before {
+body[device='app'] #main-body > .introduce .git:before {
     width: 0.16rem;
     height: 0.16rem;
     vertical-align: -0.03rem;
@@ -519,7 +522,7 @@ body.device-app #main-body > .introduce .git:before {
     margin-right: 0.05rem;
 }
 
-body.device-app #main-body > .introduce .version {
+body[device='app'] #main-body > .introduce .version {
 	font-size: 0.12rem;
 	line-height: 0.28rem;
 	box-shadow: 0px 0.02rem 0.04rem 0px rgba(0, 0, 0, 0.5);
@@ -527,16 +530,16 @@ body.device-app #main-body > .introduce .version {
 	margin-top: 0.1rem;
 }
 
-body.device-app #main-body > .introduce .version .val {
+body[device='app'] #main-body > .introduce .version .val {
 	padding-left: 0.13rem;
 	margin-left: 0.1rem;
 }
 
-body.device-app #main-body > footer {
+body[device='app'] #main-body > footer {
 	height: 0.54rem;
 }
 
-body.device-app #main-body > footer .content {
+body[device='app'] #main-body > footer .content {
 	font-size: 0.16rem;
 }
 

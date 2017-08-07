@@ -142,8 +142,8 @@
 			if (isMobile) {
 				var dpr = parseInt(window.devicePixelRatio) || 1;
 				dpr = Math.min(dpr, 2);
-				var scale = 1 / dpr;
 
+				var scale = 1 / dpr;
 				var deviceWidth = document.documentElement.clientWidth * dpr;
 
 				var meta = document.querySelector("meta[name='viewport']");
@@ -153,7 +153,7 @@
 				document.documentElement.style.fontSize = (document.documentElement.clientWidth * dpr / 7.5) + "px";
 
 				document.body.style.minWidth = 0;
-				document.body.className = "device-app";
+				document.body.setAttribute("device", "app");
 			}
 
 			window.addEventListener("scroll", onScrollHandler);
