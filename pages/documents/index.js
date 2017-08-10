@@ -17,7 +17,13 @@ var DocumentsView = VRender.PageView.extend(module, {
 		DocumentsView.__super__.renderBody.call(this, body);
 
 		new HeaderView(this, {active: "documents"}).render(body);
+
+		var mainBody = VRender.$("<div id='main-body'></div>").appendTo(body);
+
+		var mainContainer = VRender.$("<div id='main-container'></div>").appendTo(mainBody);
+		mainContainer.write("<div>抱歉，请等待...</div>");
+		mainContainer.write("<div>I'm sorry, please wait...</div>");
 	}
 });
 
-DocumentsView.import(["/css/style.css"]);
+DocumentsView.import("/css/style.css");
