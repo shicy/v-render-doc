@@ -193,6 +193,7 @@ body[device='app'] #main-header .menus {
 	background-color: rgba(0, 0, 0, 0.85);
 }
 
+body[device='app'] #main-header .menus:hover,
 body[device='app'] #main-header .topmenu:focus .menus {
 	display: block;
 }
