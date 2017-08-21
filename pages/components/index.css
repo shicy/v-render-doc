@@ -1,6 +1,249 @@
 @charset "utf-8";
 
 
+#main-body {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	max-width: 1200px;
+	padding: 30px 0px 50px;
+	margin: 0px auto;
+}
+
+#main-body > .sidebox {
+	display: table-cell;
+	width: 200px;
+}
+
+#main-body > .main-container {
+	display: table-cell;
+	vertical-align: top;
+	font-size: 16px;
+	padding: 0px 20px 50px 30px;
+}
+
+/*********************************************************/
+.sidemenu {
+	color: #787878;
+    font-size: 14px;
+    border-right: 1px solid #ddd;
+    background-color: #f4f5f9;
+}
+
+.sidemenu .grp {
+	margin-top: 15px;
+}
+
+.sidemenu .grp:first-child {
+	margin-top: 0px;
+}
+
+.sidemenu .title {
+	color: #a8a8a8;
+    font-size: 13px;
+    line-height: 30px;
+    padding-left: 12px;
+}
+
+.sidemenu li {
+	line-height: 28px;
+    padding: 0px 12px;
+    cursor: pointer;
+}
+
+.sidemenu li:hover {
+	color: #000;
+}
+
+.sidemenu li.active {
+	color: #000;
+}
+
+.sidemenu li.active:after {
+	content: "";
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: -1px;
+	border-right: 1px solid #333444;
+}
+
+/*********************************************************/
+.comp-base code {
+	display: inline-block;
+    color: #EE5F03;
+    font-size: 14px;
+    line-height: 22px;
+    border-radius: 3px;
+    background-color: #FFF7F7;
+    padding: 0 3px;
+    margin: 0 2px;
+}
+
+.comp-base > .compinfos .title {
+	margin-bottom: 10px;
+}
+
+.comp-base > .compinfos .desc {
+	color: #787878;
+	margin-top: 10px;
+}
+
+.comp-base > .compinfos .name {
+	color: #8a572f;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.comp-base > .compinfos .subname {
+	color: #8a572f;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.comp-base > .compinfos .subname:before {
+	content: "";
+	position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #8a572f;
+    left: 7px;
+    top: 8px;
+}
+
+.comp-base > .example {
+	margin-top: 40px;
+}
+
+.comp-base > .example > .title {
+	font-size: 18px;
+    line-height: 18px;
+    border-left: 5px solid #333444;
+    padding-left: 5px;
+}
+
+.comp-base > .example > .desc {
+	color: #383838;
+    font-size: 14px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.comp-base > .example > .demo {
+	border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px 0px #eee;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.comp-base > .example > .demo:hover {
+	box-shadow: 0px 1px 5px 2px #ddd;
+}
+
+.comp-base > .example > .demo > .preview {
+	padding: 20px;
+}
+
+.comp-base > .example > .demo > .source {
+	font-size: 14px;
+    border-top: 1px solid #ddd;
+    background-color: #fcfcfc;
+    padding: 10px 20px;
+    max-height: 65px;
+    overflow: hidden;
+}
+
+.comp-base > .example > .demo > .source.open {
+    max-height: none;
+    padding-bottom: 20px;
+    overflow-x: auto;
+}
+
+.comp-base > .example > .demo > .source > .morebtn {
+	position: absolute;
+    width: 100%;
+    height: 20px;
+    left: 0px;
+    bottom: 0px;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0.25);
+    background-image: url(/image/icons/a03.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8px;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+}
+
+.comp-base > .example > .demo > .source.open > .morebtn {
+	background-image: url(/image/icons/a04.png);
+}
+
+.comp-base > .example > .demo > .source > .morebtn:hover {
+	background-size: 10px;
+}
+
+.comp-base > .tableview {
+    background-color: #f6f6f6;
+    padding: 3px;
+    margin-top: 40px;
+}
+
+.comp-base > .tableview > .title {
+    display: none;
+}
+
+.comp-base > .tableview > table {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.comp-base > .tableview > table thead {
+    border-bottom: 1px solid #ddd;
+    background-color: #f6f6f6;
+}
+
+.comp-base > .tableview > table th {
+    min-width: 80px;
+    height: 36px;
+    color: #6b6d80;
+    font-weight: 600;
+    text-align: left;
+    border-left: 1px solid #ddd;
+    padding: 0px 15px;
+}
+
+.comp-base > .tableview > table th:first-child {
+    border-left: 0px;
+}
+
+.comp-base > .tableview > table td {
+    color: #66687b;
+    border: 1px solid #ddd;
+    border-width: 0px 0px 1px 1px;
+    padding: 10px 15px;
+}
+
+.comp-base > .tableview > table td:first-child {
+    border-left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

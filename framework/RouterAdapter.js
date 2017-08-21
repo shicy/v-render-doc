@@ -13,24 +13,29 @@ var RouterAdapter = module.exports = function (context) {
 
 RouterAdapter.prototype.router = function (name, params, path, callback) {
 	var names = name.substr(1).split("/");
+	var viewpath = null;
+
 	if (names[0] === "quickstart") {
-		callback(VRender.RouterStatus.OK, "./pages/quickstart");
-		return true;
+		viewpath = "./pages/quickstart";
 	}
 	else if (names[0] === "documents") {
-		callback(VRender.RouterStatus.OK, "./pages/documents");
-		return true;
+		viewpath = "./pages/documents";
 	}
 	else if (names[0] === "components") {
-		callback(VRender.RouterStatus.OK, "./pages/components");
-		return true;
+		if (names[1] === "module")
+			viewpath = "./pages/components/ModuleView";
+		else
+			viewpath = "./pages/components";
 	}
 	else if (names[0] === "styles") {
-		callback(VRender.RouterStatus.OK, "./pages/styles");
-		return true;
+		viewpath = "./pages/styles";
 	}
 	else if (names[0] === "apis") {
-		callback(VRender.RouterStatus.OK, "./pages/apis");
+		viewpath = "./pages/apis";
+	}
+
+	if (viewpath) {
+		callback(VRender.RouterStatus.OK, viewpath);
 		return true;
 	}
 	return false;
