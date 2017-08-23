@@ -55,8 +55,7 @@ var ButtonModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var description = "基本用法：组件名称为<code>UIButton</code>（前端对象<code>V_Button</code>）。";
-		var example = this.addExample("组件实例", description);
+		var example = this.addExample("基本用法");
 
 		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UIButton(this, {label: "按钮"}));
@@ -65,7 +64,7 @@ var ButtonModule = BaseModule.extend(module, {
 		source.push("// 服务端创建");
 		source.push("new UIButton(context, {label: '按钮'}).render(target);");
 		source.push("// 浏览器端创建");
-		source.push("V_Button.create({target: [elem], label: '按钮'});");
+		source.push("UIButton.create({target: [elem], label: '按钮'});");
 
 		this.showDemo(example, demo, source);
 	},

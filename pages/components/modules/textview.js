@@ -34,8 +34,7 @@ var TextViewModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var description = "基本用法：组件名称为<code>UITextView</code>（前端对象<code>V_TextView</code>）。";
-		var example = this.addExample("组件实例", description);
+		var example = this.addExample("基本用法");
 
 		var demo = new UIVGroup(this, {gap: 10});
 		demo.append(new UITextView(this, {prompt: "请输入"}));
@@ -46,8 +45,8 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("new UITextView(context, {prompt: '请输入'}).render(target);");
 		source.push("new UITextView(context, {prompt: '多行文本输入框', multi: true}).render(target);");
 		source.push("// 浏览器端创建");
-		source.push("V_TextView.create({target: [elem], prompt: '请输入'});");
-		source.push("V_TextView.create({target: [elem], prompt: '多行文本输入框', multi: true});");
+		source.push("UITextView.create({target: [elem], prompt: '请输入'});");
+		source.push("UITextView.create({target: [elem], prompt: '多行文本输入框', multi: true});");
 
 		this.showDemo(example, demo, source);
 	},
