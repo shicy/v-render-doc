@@ -49,7 +49,7 @@ var ModuleView = VRender.Fragment.extend(module, {
 					return new ViewClass(this);
 			}
 			catch (e) {
-				// 忽略无效的组件
+				console.log(e);
 			}
 		}
 	}

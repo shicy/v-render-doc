@@ -11,8 +11,6 @@ var BaseModule = require("./base");
 var UIGroup = VRender.UIGroup;
 var UICombobox = VRender.UICombobox;
 
-var demoData1 = ["选项1", "选项2", "选项3", "选项4", "选项5"];
-
 var ComboboxModule = BaseModule.extend(module, {
 	className: "comp-combobox",
 
@@ -36,7 +34,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UICombobox(this, {data: demoData1, prompt: "请选择.."}));
+		demo.append(new UICombobox(this, {data: exampleData, prompt: "请选择.."}));
 
 		var source = [];
 		source.push("// 下拉选项数据集");
@@ -49,3 +47,5 @@ var ComboboxModule = BaseModule.extend(module, {
 		this.showDemo(example, demo, source);
 	}
 });
+
+var exampleData = ["选项1", "选项2", "选项3", "选项4", "选项5"];
