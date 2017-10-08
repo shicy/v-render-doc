@@ -17,6 +17,12 @@ var ApisView = VRender.PageView.extend(module, {
 		ApisView.__super__.renderBody.call(this, body);
 
 		new HeaderView(this, {active: "apis"}).render(body);
+
+		var mainBody = VRender.$("<div id='main-body'></div>").appendTo(body);
+
+		var mainContainer = VRender.$("<div id='main-container'></div>").appendTo(mainBody);
+		mainContainer.write("<div>抱歉，请等待...</div>");
+		mainContainer.write("<div>I'm sorry, please wait...</div>");
 	}
 });
 

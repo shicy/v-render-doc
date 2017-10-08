@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+
+#main-body {
+	padding: 30px 0px 100px;
+}
+
+#main-container {
+	max-width: 1200px;
+	margin: 0px auto;
+}
