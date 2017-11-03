@@ -40,8 +40,10 @@ var ComonentsView = VRender.PageView.extend(module, {
 
 		// 模块视图
 		var container = VRender.$("<div class='main-container'></div>").appendTo(mainBody);
-		container = VRender.$("<div id='singlepage-container'></div>").appendTo(container);
-		this.moduleView.render(container);
+		var pageContainer = VRender.$("<div id='singlepage-container'></div>").appendTo(container);
+		this.moduleView.render(pageContainer);
+
+		container.append("<div class='foot-guide'><a class='prev'></a><a class='next'></a></div>");
 	}
 });
 

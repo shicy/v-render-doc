@@ -22,6 +22,13 @@
 	padding: 0px 20px 50px 30px;
 }
 
+#main-body > .main-container > .foot-guide {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 35px;
+}
+
 /*********************************************************/
 .sidemenu {
 	color: #787878;
@@ -138,6 +145,7 @@
     background-color: #fff;
     box-shadow: 0px 1px 5px 0px #eee;
     margin-top: 15px;
+    overflow: hidden;
 }
 
 .comp-base > .example > .demo:hover {
@@ -235,23 +243,11 @@
     border-left: 0px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*********************************************************/
+@media screen and (max-width: 1000px) {
+    #main-body > .sidebox {
+        display: none;
+    }
+}
 
 

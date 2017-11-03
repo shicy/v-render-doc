@@ -13,6 +13,7 @@ VRender.on(VRender.event_routerchange, function (e, state) {
 	menus.find(".active").removeClass("active");
 	if (state && state.name) {
 		menus.find("[name='" + state.name + "']").addClass("active");
+		updateFootGuide();
 	}
 });
 
@@ -23,10 +24,34 @@ menus.tap("li", function (e) {
 	VRender.navigate("/components/" + data.name, data);
 });
 
+// 页面导航
+container.tap(".foot-guide a", function (e) {
+	var data = {name: $(e.currentTarget).attr("menu")};
+	VRender.navigate("/components/" + data.name, data);
+});
+
 container.tap(".source > .morebtn", function (e) {
 	var target = $(e.currentTarget).parent();
 	target.toggleClass("open");
 });
+
+var updateFootGuide = function () {
+	var sidemenus = menus.find("li");
+	var prevGuide = container.find(".foot-guide .prev").text("").removeAttr("menu");
+	var nextGuide = container.find(".foot-guide .next").text("").removeAttr("menu");
+	for (var i = 0, l = sidemenus.length; i < l; i++) {
+		if (sidemenus.eq(i).is(".active")) {
+			if (i > 0) {
+				var prev = sidemenus.eq(i - 1);
+				prevGuide.text("前一篇：" + prev.text()).attr("menu", prev.attr("name"));
+			}
+			if (i < l - 1) {
+				var next = sidemenus.eq(i + 1);
+				nextGuide.text("后一篇：" + next.text()).attr("menu", next.attr("name"));
+			}
+		}
+	}
+};
 
 
 (function () {
@@ -50,6 +75,9 @@ container.tap(".source > .morebtn", function (e) {
 	 		SinglePage.ready(function () {
 	 			menus.find("li:eq(0)").tap();
 	 		});
+	 	}
+	 	else {
+	 		updateFootGuide();
 	 	}
 	}
 })();

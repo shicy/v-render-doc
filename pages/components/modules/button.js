@@ -166,97 +166,18 @@ var ButtonModule = BaseModule.extend(module, {
 		var example = this.addExample("按钮尺寸", description);
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.addChild(new UIHGroup(this, {gap: 10}))
-			.append(new UIButton(this, {label: "Default", size: "tiny"}))
-			.append(new UIButton(this, {label: "Primary", type: "primary", size: "tiny"}))
-			.append(new UIButton(this, {label: "Success", type: "success", size: "tiny"}))
-			.append(new UIButton(this, {label: "Warn", type: "warn", size: "tiny"}))
-			.append(new UIButton(this, {label: "Danger", type: "danger", size: "tiny"}))
-			.append(new UIButton(this, {label: "Info", type: "info", size: "tiny"}))
-			.append(new UIButton(this, {label: "Text", type: "text", size: "tiny"}))
-			.append(new UIButton(this, {label: "Link", type: "link", size: "tiny"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
-			.append(new UIButton(this, {label: "Default", size: "small"}))
-			.append(new UIButton(this, {label: "Primary", type: "primary", size: "small"}))
-			.append(new UIButton(this, {label: "Success", type: "success", size: "small"}))
-			.append(new UIButton(this, {label: "Warn", type: "warn", size: "small"}))
-			.append(new UIButton(this, {label: "Danger", type: "danger", size: "small"}))
-			.append(new UIButton(this, {label: "Info", type: "info", size: "small"}))
-			.append(new UIButton(this, {label: "Text", type: "text", size: "small"}))
-			.append(new UIButton(this, {label: "Link", type: "link", size: "small"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
-			.append(new UIButton(this, {label: "Default"}))
-			.append(new UIButton(this, {label: "Primary", type: "primary"}))
-			.append(new UIButton(this, {label: "Success", type: "success"}))
-			.append(new UIButton(this, {label: "Warn", type: "warn"}))
-			.append(new UIButton(this, {label: "Danger", type: "danger"}))
-			.append(new UIButton(this, {label: "Info", type: "info"}))
-			.append(new UIButton(this, {label: "Text", type: "text"}))
-			.append(new UIButton(this, {label: "Link", type: "link"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
-			.append(new UIButton(this, {label: "Default", size: "big"}))
-			.append(new UIButton(this, {label: "Primary", type: "primary", size: "big"}))
-			.append(new UIButton(this, {label: "Success", type: "success", size: "big"}))
-			.append(new UIButton(this, {label: "Warn", type: "warn", size: "big"}))
-			.append(new UIButton(this, {label: "Danger", type: "danger", size: "big"}))
-			.append(new UIButton(this, {label: "Info", type: "info", size: "big"}))
-			.append(new UIButton(this, {label: "Text", type: "text", size: "big"}))
-			.append(new UIButton(this, {label: "Link", type: "link", size: "big"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
-			.append(new UIButton(this, {label: "Default", size: "bigger"}))
-			.append(new UIButton(this, {label: "Primary", type: "primary", size: "bigger"}))
-			.append(new UIButton(this, {label: "Success", type: "success", size: "bigger"}))
-			.append(new UIButton(this, {label: "Warn", type: "warn", size: "bigger"}))
-			.append(new UIButton(this, {label: "Danger", type: "danger", size: "bigger"}))
-			.append(new UIButton(this, {label: "Info", type: "info", size: "bigger"}))
-			.append(new UIButton(this, {label: "Text", type: "text", size: "bigger"}))
-			.append(new UIButton(this, {label: "Link", type: "link", size: "bigger"}));
+		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "tiny button", type: "primary", size: "tiny"}));
+		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "small button", type: "primary", size: "small"}));
+		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "nomarl button", type: "primary"}));
+		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "big button", type: "primary", size: "big"}));
+		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "bigger button", type: "primary", size: "bigger"}));
 
 		var source = [];
-		source.push("new UIButton(context, {label: 'Default', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Primary', type: 'primary', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Success', type: 'success', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Warn', type: 'warn', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Danger', type: 'danger', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Info', type: 'info', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Text', type: 'text', size: 'tiny'});");
-		source.push("new UIButton(context, {label: 'Link', type: 'link', size: 'tiny'});");
-		source.push("// -----------------------------------------------------");
-		source.push("new UIButton(context, {label: 'Default', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Primary', type: 'primary', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Success', type: 'success', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Warn', type: 'warn', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Danger', type: 'danger', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Info', type: 'info', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Text', type: 'text', size: 'small'});");
-		source.push("new UIButton(context, {label: 'Link', type: 'link', size: 'small'});");
-		source.push("// -----------------------------------------------------");
-		source.push("new UIButton(context, {label: 'Default'});");
-		source.push("new UIButton(context, {label: 'Primary', type: 'primary'});");
-		source.push("new UIButton(context, {label: 'Success', type: 'success'});");
-		source.push("new UIButton(context, {label: 'Warn', type: 'warn'});");
-		source.push("new UIButton(context, {label: 'Danger', type: 'danger'});");
-		source.push("new UIButton(context, {label: 'Info', type: 'info'});");
-		source.push("new UIButton(context, {label: 'Text', type: 'text'});");
-		source.push("new UIButton(context, {label: 'Link', type: 'link'});");
-		source.push("// -----------------------------------------------------");
-		source.push("new UIButton(context, {label: 'Default', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Primary', type: 'primary', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Success', type: 'success', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Warn', type: 'warn', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Danger', type: 'danger', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Info', type: 'info', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Text', type: 'text', size: 'big'});");
-		source.push("new UIButton(context, {label: 'Link', type: 'link', size: 'big'});");
-		source.push("// -----------------------------------------------------");
-		source.push("new UIButton(context, {label: 'Default', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Primary', type: 'primary', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Success', type: 'success', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Warn', type: 'warn', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Danger', type: 'danger', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Info', type: 'info', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Text', type: 'text', size: 'bigger'});");
-		source.push("new UIButton(context, {label: 'Link', type: 'link', size: 'bigger'});");
+		source.push("new UIButton(context, {label: 'tiny button', type: 'primary', size: 'tiny'});");
+		source.push("new UIButton(context, {label: 'tiny button', type: 'primary', size: 'small'});");
+		source.push("new UIButton(context, {label: 'tiny button', type: 'primary'});");
+		source.push("new UIButton(context, {label: 'tiny button', type: 'primary', size: 'big'});");
+		source.push("new UIButton(context, {label: 'tiny button', type: 'primary', size: 'bigger'});");
 
 		this.showDemo(example, demo, source);
 	},
