@@ -21,7 +21,7 @@ if (body.attr("device") == "pc") {
 
 		$(window).on("scroll", function (e) {
 			menus.removeClass("active");
-			var scrollTop = body.scrollTop() + 6;
+			var scrollTop = $(window).scrollTop() + 6;
 			for (var i = positions.length - 1; i >= 0; i--) {
 				if (scrollTop > positions[i]) {
 					menus.eq(i).addClass("active");
