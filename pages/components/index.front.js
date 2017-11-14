@@ -30,7 +30,7 @@ container.on("tap", ".foot-guide a", function (e) {
 	VRender.navigate("/components/" + data.name, data);
 });
 
-container.on("tap", ".source > .morebtn", function (e) { console.log(e);
+container.on("tap", ".source > .morebtn", function (e) {
 	var target = $(e.currentTarget).parent();
 	target.toggleClass("open");
 });
