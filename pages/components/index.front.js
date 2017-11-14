@@ -17,20 +17,20 @@ VRender.on(VRender.event_routerchange, function (e, state) {
 	}
 });
 
-// 点击菜单
-menus.tap("li", function (e) {
+// // 点击菜单
+menus.on("tap", "li", function (e) {
 	var menu = $(e.currentTarget);
 	var data = {name: menu.attr("name")};
 	VRender.navigate("/components/" + data.name, data);
 });
 
 // 页面导航
-container.tap(".foot-guide a", function (e) {
+container.on("tap", ".foot-guide a", function (e) {
 	var data = {name: $(e.currentTarget).attr("menu")};
 	VRender.navigate("/components/" + data.name, data);
 });
 
-container.tap(".source > .morebtn", function (e) {
+container.on("tap", ".source > .morebtn", function (e) { console.log(e);
 	var target = $(e.currentTarget).parent();
 	target.toggleClass("open");
 });
