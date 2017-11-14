@@ -1,17 +1,17 @@
 
-body[device='app'] #main-body {
+#main-body {
     padding: 0.3rem 0px 0.5rem;
 }
 
-body[device='app'] #main-body > .sidebox {
+#main-body > .sidebox {
     display: none;
 }
 
-body[device='app'] #main-body > .main-container {
+#main-body > .main-container {
     font-size: .16rem;
 }
 
-body[device='app'] .comp-base code {
+.comp-base code {
     font-size: 0.14rem;
     line-height: 0.22rem;
     border-radius: 0.03rem;
@@ -19,83 +19,84 @@ body[device='app'] .comp-base code {
     margin: 0px 0.02rem;
 }
 
-body[device='app'] .comp-base > .compinfos .name {
+.comp-base > .compinfos .name {
     font-size: 0.2rem;
 }
 
-body[device='app'] .comp-base > .compinfos .subname {
+.comp-base > .compinfos .subname {
     font-size: 0.16rem;
     padding-left: 0.2rem;
 }
 
-body[device='app'] .comp-base > .compinfos .subname:before {
+.comp-base > .compinfos .subname:before {
     width: 0.04rem;
     height: 0.04rem;
     left: 0.07rem;
     top: 0.08rem;
 }
 
-body[device='app'] .comp-base > .compinfos .title {
+.comp-base > .compinfos .title {
     margin-bottom: 0.1rem;
 }
 
-body[device='app'] .comp-base > .compinfos .desc {
+.comp-base > .compinfos .desc {
     margin-top: 0.1rem;
 }
 
-body[device='app'] .comp-base > .example {
+.comp-base > .example {
     margin-top: 0.4rem;
 }
 
-body[device='app'] .comp-base > .example > .title {
+.comp-base > .example > .title {
     font-size: 0.18rem;
     line-height: 0.18rem;
     border-left-width: 0.05rem;
     padding-left: 0.05rem;
 }
 
-body[device='app'] .comp-base > .example > .demo {
+.comp-base > .example > .demo {
     border-width: 0.01rem;
     border-radius: 0.05rem;
     box-shadow: 0px 0.01rem 0.05rem 0px #eee;
     margin-top: 0.15rem;
 }
 
-body[device='app'] .comp-base > .example > .desc {
+.comp-base > .example > .desc {
     font-size: 0.14rem;
     padding-left: 0.1rem;
     margin-top: 0.1rem;
 }
 
-body[device='app'] .comp-base > .example > .demo > .source {
+.comp-base > .example > .demo > .source {
     font-size: 0.13rem;
+    padding-bottom: 0.22rem;
 }
 
-body[device='app'] .comp-base > .example > .demo > .source.open {
-    padding-bottom: 0.2rem;
+.comp-base > .example > .demo > .source > pre {
+    padding: 0.1rem 0.15rem 0px;
 }
 
-body[device='app'] .comp-base > .example > .demo > .source > .morebtn {
+.comp-base > .example > .demo > .source > .morebtn {
     height: 0.2rem;
     background-size: 0.08rem;
 }
 
-body[device='app'] .comp-base > .tableview {
+.comp-base > .tableview {
     margin-top: 0.4rem;
 }
 
-body[device='app'] .comp-base > .tableview > table {
+.comp-base > .tableview > table {
     font-size: 0.13rem;
 }
 
-body[device='app'] #main-body > .main-container > .foot-guide {
+#main-body > .main-container > .foot-guide {
     display: block;
     font-size: 0.14rem;
     text-align: center;
     margin-top: 0.35rem;
 }
 
-body[device='app'] #main-body > .main-container > .foot-guide a {
+#main-body > .main-container > .foot-guide a {
     display: block;
     line-height: 0.5rem;
 }

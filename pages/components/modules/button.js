@@ -77,7 +77,7 @@ var ButtonModule = BaseModule.extend(module, {
 		description += "不设置（或为其他值）则使用默认样式。";
 		var example = this.addExample("按钮样式", description);
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var demo = new UIGroup(this, {gap: 10, orientation: (this.isApp ? null : UIGroup.HORIZONTIAL)});
 		demo.append(new UIButton(this, {label: "Default"}));
 		demo.append(new UIButton(this, {label: "Primary", style: "ui-btn-primary"}));
 		demo.append(new UIButton(this, {label: "Success", style: "ui-btn-success"}));
@@ -108,29 +108,31 @@ var ButtonModule = BaseModule.extend(module, {
 		description += "创建相应样式的按钮。";
 		var example = this.addExample("根据类型创建按钮样式", description);
 
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
 		var demo = new UIGroup(this, {gap: 10});
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Ok", type: "ok"}))
 			.append(new UIButton(this, {label: "Save", type: "save"}))
 			.append(new UIButton(this, {label: "Submit", type: "submit"}))
 			.append(new UIButton(this, {label: "Major", type: "major"}))
 			.append(new UIButton(this, {label: "Primary", type: "primary"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Success", type: "success"}))
 			.append(new UIButton(this, {label: "Complete", type: "complete"}))
 			.append(new UIButton(this, {label: "Finish", type: "finish"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Warn", type: "warn"}))
 			.append(new UIButton(this, {label: "Warning", type: "warning"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Danger", type: "danger"}))
 			.append(new UIButton(this, {label: "Error", type: "error"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Info", type: "info"}))
 			.append(new UIButton(this, {label: "Highlight", type: "highlight"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Text", type: "text"}));
-		demo.addChild(new UIHGroup(this, {gap: 10}))
+		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Link", type: "link"}));
 
 		var source = [];
@@ -186,7 +188,7 @@ var ButtonModule = BaseModule.extend(module, {
 		var description = "通过设置属性<code>{disabled: true}</code>将按钮设置为不可用状态。";
 		var example = this.addExample("被禁用的按钮", description);
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var demo = new UIGroup(this, {gap: 10, orientation: (this.isApp ? null : UIGroup.HORIZONTIAL)});
 		demo.append(new UIButton(this, {label: "Default", disabled: true}));
 		demo.append(new UIButton(this, {label: "Primary", type: "primary", disabled: true}));
 		demo.append(new UIButton(this, {label: "Success", type: "success", disabled: true}));

@@ -13,6 +13,11 @@ var UIGroup = VRender.UIGroup;
 var UIText = VRender.UIText;
 
 var BaseModule = VRender.UIView.extend(module, {
+	doInit: function () {
+		BaseModule.__super__.doInit.call(this);
+		this.isApp = this.isRenderAsApp();
+	},
+
 	// 获取组件名称
 	getCompName: function () {
 		// 子类继承

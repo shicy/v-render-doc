@@ -160,14 +160,17 @@
 	font-size: 14px;
     border-top: 1px solid #ddd;
     background-color: #fcfcfc;
-    padding: 10px 20px;
+    padding-bottom: 22px;
+}
+
+.comp-base > .example > .demo > .source > pre {
+    padding: 10px 15px 0px;
     max-height: 100px;
     overflow: hidden;
 }
 
-.comp-base > .example > .demo > .source.open {
+.comp-base > .example > .demo > .source.open > pre {
     max-height: none;
-    padding-bottom: 20px;
     overflow-x: auto;
 }
 
