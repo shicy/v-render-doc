@@ -32,15 +32,15 @@ var ComonentsView = VRender.PageView.extend(module, {
 
 		new HeaderView(this, {active: "components"}).render(body);
 
-		var mainBody = VRender.$("<div id='main-body'></div>").appendTo(body);
+		var mainBody = VRender.$("#main-body").appendTo(body);
 
 		// 菜单
-		var sidebox = VRender.$("<div class='sidebox'></div>").appendTo(mainBody);
+		var sidebox = VRender.$(".sidebox").appendTo(mainBody);
 		new SideMenu(this, {pathname: this.options.pathname}).render(sidebox);
 
 		// 模块视图
-		var container = VRender.$("<div class='main-container'></div>").appendTo(mainBody);
-		var pageContainer = VRender.$("<div id='singlepage-container'></div>").appendTo(container);
+		var container = VRender.$(".main-container").appendTo(mainBody);
+		var pageContainer = VRender.$("#singlepage-container").appendTo(container);
 		this.moduleView.render(pageContainer);
 
 		container.append("<div class='foot-guide'><a class='prev'></a><a class='next'></a></div>");
