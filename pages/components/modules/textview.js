@@ -57,19 +57,19 @@ var TextViewModule = BaseModule.extend(module, {
 		var example = this.addExample("文本框类型", description);
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.addChild(new UIGroup(this))
+		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "number", min: 1, max: 100, prompt: "请输入1-100之间的数字",
 				desc: "数字类型输入框，只能输入数字，默认保留2位小数"}));
-		demo.addChild(new UIGroup(this))
+		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "email", prompt: "请输入电子邮箱",
 				desc: "电子邮箱类型输入框，验证输入框内容为电子邮箱格式"}));
-		demo.addChild(new UIGroup(this))
+		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "password", prompt: "请输入密码", 
 				desc: "密码输入框，内容不可见"}));
-		demo.addChild(new UIGroup(this))
+		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "tel", prompt: "请输入电话号码或手机号", 
 				desc: "电话号码输入框，验证输入框内容为电话号码或手机号"}));
-		demo.addChild(new UIGroup(this))
+		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "url", prompt: "请输入网址", value: "http://", 
 				desc: "网址输入框，验证输入框内容为输入框，如：http://www.xxx.com/a/b"}));
 

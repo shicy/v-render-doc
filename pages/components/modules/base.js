@@ -47,13 +47,13 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderCompInfos: function (target) {
 		var infos = new UIGroup(this, {cls: "compinfos"});
 
-		var title = infos.addChild(new UIGroup(this, {cls: "title"}));
+		var title = infos.add(new UIGroup(this, {cls: "title"}));
 		title.append(new UIText(this, {cls: "name", text: this.getCompName()}));
 		title.append(new UIText(this, {cls: "subname", text: this.getSubName()}));
 
 		var description = this.getDescription();
 		if (Utils.isNotBlank(description))
-			infos.append("<div class='desc'>" + description + "</div>");
+			infos.append(VRender.$({cls: "desc", html: description}));
 
 		infos.render(target);
 	},
@@ -66,17 +66,16 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderProperties: function () {
 		var properties = Utils.toArray(this.getProperties());
 		if (properties && properties.length > 0) {
-			var target = VRender.$("<div class='tableview properties'></div>").appendTo(this.$el);
+			var target = VRender.$(".tableview.properties").appendTo(this.$el);
 			// target.append("<div class='title'>属性</div>");
-
-			var tableview = VRender.$("<table></table>").appendTo(target);
-			tableview.append("<thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>");
+			var tableview = VRender.$("table").appendTo(target);
+			tableview.write("<thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>");
 			Utils.each(properties, function (data) {
-				var item = VRender.$("<tr></tr>").appendTo(tableview);
-				item.append("<td>" + data.name + "</td>");
-				item.append("<td>" + (data.desc || "&nbsp;") + "</td>");
-				item.append("<td>" + (data.datatype || "-") + "</td>");
-				item.append("<td>" + (data.value || "-") + "</td>");
+				var item = VRender.$("tr").appendTo(tableview);
+				item.write("<td>" + data.name + "</td>");
+				item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
+				item.write("<td>" + (data.datatype || "-") + "</td>");
+				item.write("<td>" + (data.value || "-") + "</td>");
 			});
 		}
 	},
@@ -85,17 +84,16 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderMethods: function (methods) {
 		var methods = Utils.toArray(this.getMethods());
 		if (methods && methods.length > 0) {
-			var target = VRender.$("<div class='tableview methods'></div>").appendTo(this.$el);
+			var target = VRender.$(".tableview.methods").appendTo(this.$el);
 			// target.append("<div class='title'>方法</div>");
-
-			var tableview = VRender.$("<table></table>").appendTo(target);
-			tableview.append("<thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>适用</th></tr></thead>");
+			var tableview = VRender.$("table").appendTo(target);
+			tableview.write("<thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>适用</th></tr></thead>");
 			Utils.each(methods, function (data) {
-				var item = VRender.$("<tr></tr>").appendTo(tableview);
-				item.append("<td>" + data.name + "</td>");
-				item.append("<td>" + (data.desc || "&nbsp;") + "</td>");
-				item.append("<td>" + (data.params || "无") + "</td>");
-				item.append("<td>" + (data.scope == 1 ? "仅后端" : (data.scope == 2 ? "仅前端" : "前端和后端")) + "</td>");
+				var item = VRender.$("tr").appendTo(tableview);
+				item.write("<td>" + data.name + "</td>");
+				item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
+				item.write("<td>" + (data.params || "无") + "</td>");
+				item.write("<td>" + (data.scope == 1 ? "仅后端" : (data.scope == 2 ? "仅前端" : "前端和后端")) + "</td>");
 			});
 		}
 	},
@@ -104,16 +102,15 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderEvents: function (events) {
 		var events = Utils.toArray(this.getEvents());
 		if (events && events.length > 0) {
-			var target = VRender.$("<div class='tableview events'></div>").appendTo(this.$el);
+			var target = VRender.$(".tableview.events").appendTo(this.$el);
 			// target.append("<div class='title'>事件</div>");
-
-			var tableview = VRender.$("<table></table>").appendTo(target);
-			tableview.append("<thead><tr><th>事件</th><th>说明</th><th>返回值</th></tr></thead>");
+			var tableview = VRender.$("table").appendTo(target);
+			tableview.write("<thead><tr><th>事件</th><th>说明</th><th>返回值</th></tr></thead>");
 			Utils.each(events, function (data) {
-				var item = VRender.$("<tr></tr>").appendTo(tableview);
-				item.append("<td>" + data.name + "</td>");
-				item.append("<td>" + (data.desc || "&nbsp;") + "</td>");
-				item.append("<td>" + (data.result || "无") + "</td>");
+				var item = VRender.$("tr").appendTo(tableview);
+				item.write("<td>" + data.name + "</td>");
+				item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
+				item.write("<td>" + (data.result || "无") + "</td>");
 			});
 		}
 	},
@@ -139,9 +136,9 @@ var BaseModule = VRender.UIView.extend(module, {
 	addExample: function (title, description) {
 		var example = VRender.$("<div class='example'></div>").appendTo(this.$el);
 		if (Utils.isNotBlank(title))
-			example.append("<div class='title'>" + title + "</div>");
+			example.write("<div class='title'>" + title + "</div>");
 		if (Utils.isNotBlank(description))
-			example.append("<div class='desc'>" + description + "</div>");
+			example.write("<div class='desc'>" + description + "</div>");
 		return example;
 	},
 

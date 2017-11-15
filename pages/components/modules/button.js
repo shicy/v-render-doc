@@ -111,28 +111,28 @@ var ButtonModule = BaseModule.extend(module, {
 		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Ok", type: "ok"}))
 			.append(new UIButton(this, {label: "Save", type: "save"}))
 			.append(new UIButton(this, {label: "Submit", type: "submit"}))
 			.append(new UIButton(this, {label: "Major", type: "major"}))
 			.append(new UIButton(this, {label: "Primary", type: "primary"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Success", type: "success"}))
 			.append(new UIButton(this, {label: "Complete", type: "complete"}))
 			.append(new UIButton(this, {label: "Finish", type: "finish"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Warn", type: "warn"}))
 			.append(new UIButton(this, {label: "Warning", type: "warning"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Danger", type: "danger"}))
 			.append(new UIButton(this, {label: "Error", type: "error"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Info", type: "info"}))
 			.append(new UIButton(this, {label: "Highlight", type: "highlight"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Text", type: "text"}));
-		demo.addChild(new UIGroup(this, {gap: 10, orientation: orientation}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Link", type: "link"}));
 
 		var source = [];
@@ -168,11 +168,11 @@ var ButtonModule = BaseModule.extend(module, {
 		var example = this.addExample("按钮尺寸", description);
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "tiny button", type: "primary", size: "tiny"}));
-		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "small button", type: "primary", size: "small"}));
-		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "nomarl button", type: "primary"}));
-		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "big button", type: "primary", size: "big"}));
-		demo.addChild(new UIGroup(this)).append(new UIButton(this, {label: "bigger button", type: "primary", size: "bigger"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {label: "tiny button", type: "primary", size: "tiny"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {label: "small button", type: "primary", size: "small"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {label: "nomarl button", type: "primary"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {label: "big button", type: "primary", size: "big"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {label: "bigger button", type: "primary", size: "bigger"}));
 
 		var source = [];
 		source.push("new UIButton(context, {label: 'tiny button', type: 'primary', size: 'tiny'});");
