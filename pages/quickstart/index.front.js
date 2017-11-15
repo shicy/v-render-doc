@@ -13,7 +13,7 @@ var menus = body.find("aside li");
 var sections = body.find("article h1 a");
 
 
-if (body.attr("device") == "pc") {
+if (!VRender.ENV.isApp) {
 	setTimeout(function () {
 		var positions = Utils.map(body.find("article h1 a"), function (item) {
 			return item.offset().top;
