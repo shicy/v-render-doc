@@ -31,6 +31,7 @@ var TextViewModule = BaseModule.extend(module, {
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
+		this.showExample3();
 	},
 
 	showExample1: function () {
@@ -84,6 +85,18 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("new UITextView(context, {type: 'tel', prompt: '请输入电话号码或手机号'});");
 		source.push("// 网址输入框");
 		source.push("new UITextView(context, {type: 'url', prompt: '请输入网址'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample3: function () {
+		var example = this.addExample("只读文本框");
+
+		var demo = new UIGroup(this);
+		demo.append(new UITextView(this, {value: "该文本框只读，不能输入", readonly: true}));
+
+		var source = [];
+		source.push("new UITextView(context, {value: '该文本框只读，不能输入', readonly: true});");
 
 		this.showDemo(example, demo, source);
 	}
