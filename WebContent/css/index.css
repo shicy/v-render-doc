@@ -39,6 +39,7 @@
 
 #main-body > header .menus {
 	display: inline-block;
+	outline: none;
 }
 
 #main-body > header .menus ul {
