@@ -28,6 +28,7 @@ var ComboboxModule = BaseModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
 	},
 
 	showExample1: function () {
@@ -45,7 +46,20 @@ var ComboboxModule = BaseModule.extend(module, {
 		source.push("UICombobox.create({target: [elem], data: items, prompt: '请选择..'});");
 
 		this.showDemo(example, demo, source);
+	},
+
+	showExample2: function () {
+		var example = this.addExample("可输入下拉选择");
+
+		var demo = new UIGroup(this);
+		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true}));
+
+		var source = [];
+		source.push("var items = ['选项1', '选项2', '选项3', '选项4', '选项5'];");
+		source.push("new UICombobox(context, {data: items, prompt: '请输入选择..', editable: true}).render(target);");
+
+		this.showDemo(example, demo, source);
 	}
 });
 
-var exampleData = ["选项1", "选项2", "选项3", "选项4", "选项5"];
+var exampleData = [["选项1", "选项2"], ["选项3"], ["选项4", "选项5"], "选项6", "选项7"];

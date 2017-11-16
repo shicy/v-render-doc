@@ -81,6 +81,10 @@
     background-size: 0.08rem;
 }
 
+.comp-base > .example > .demo > .source > .morebtn:hover {
+    background-size: 0.1rem;
+}
+
 .comp-base > .tableview {
     margin-top: 0.4rem;
 }
