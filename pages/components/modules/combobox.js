@@ -29,6 +29,7 @@ var ComboboxModule = BaseModule.extend(module, {
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
+		this.showExample3();
 	},
 
 	showExample1: function () {
@@ -59,7 +60,20 @@ var ComboboxModule = BaseModule.extend(module, {
 		source.push("new UICombobox(context, {data: items, prompt: '请输入选择..', editable: true}).render(target);");
 
 		this.showDemo(example, demo, source);
+	},
+
+	showExample3: function () {
+		var example = this.addExample("设置默认选择项");
+
+		var demo = new UIGroup(this);
+		demo.append(new UICombobox(this, {data: exampleData, selectedIndex: 12}));
+
+		var source = [];
+		source.push("var items = ['选项1', '选项2', '选项3', '选项4', '选项5'];");
+		source.push("new UICombobox(context, {data: items, selectedIndex: 2}).render(target);");
+
+		this.showDemo(example, demo, source);
 	}
 });
 
-var exampleData = [["选项1", "选项2"], ["选项3"], ["选项4", "选项5"], "选项6", "选项7"];
+var exampleData = [["选项1", "选项2"], ["选项3"], ["选项4", "选项5"], "选项6", "选项7", "选项8", "选项9", "选项10", "选项11", "选项12", "选项13"];
