@@ -28,19 +28,32 @@ var DateinputModule = BaseModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
 	},
 
 	showExample1: function () {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UIDateInput(this));
+		demo.append(new UIDateInput(this, {prompt: "请选择日期"}));
 
 		var source = [];
 		source.push("// 服务端创建");
-		source.push("new UIDateInput(context).render(target)");
+		source.push("new UIDateInput(context, {prompt: '请选择日期'}).render(target)");
 		source.push("// 浏览器端创建");
-		source.push("UIDateInput.create({target: [elem]});");
+		source.push("UIDateInput.create({target: [elem], {prompt: '请选择日期'}});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample2: function () {
+		var example = this.addExample("禁用组件");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDateInput(this, {disabled: true}));
+
+		var source = [];
+		source.push("new UIDateInput(context, {disabled: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}

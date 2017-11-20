@@ -30,6 +30,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		this.showExample1();
 		this.showExample2();
 		this.showExample3();
+		this.showExample4();
 	},
 
 	showExample1: function () {
@@ -40,7 +41,7 @@ var ComboboxModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("// 下拉选项数据集");
-		source.push("var items = ['选项1', '选项2', '选项3', '选项4', '选项5'];");
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
 		source.push("// 服务端创建");
 		source.push("new UICombobox(context, {data: items, prompt: '请选择..'}).render(target);");
 		source.push("// 浏览器端创建");
@@ -56,7 +57,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true}));
 
 		var source = [];
-		source.push("var items = ['选项1', '选项2', '选项3', '选项4', '选项5'];");
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
 		source.push("new UICombobox(context, {data: items, prompt: '请输入选择..', editable: true}).render(target);");
 
 		this.showDemo(example, demo, source);
@@ -66,14 +67,27 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("设置默认选择项");
 
 		var demo = new UIGroup(this);
-		demo.append(new UICombobox(this, {data: exampleData, selectedIndex: 12}));
+		demo.append(new UICombobox(this, {data: exampleData, selectedIndex: 5}));
 
 		var source = [];
-		source.push("var items = ['选项1', '选项2', '选项3', '选项4', '选项5'];");
-		source.push("new UICombobox(context, {data: items, selectedIndex: 2}).render(target);");
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
+		source.push("new UICombobox(context, {data: items, selectedIndex: 5}).render(target);");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("禁用的下拉选择框");
+
+		var demo = new UIGroup(this);
+		demo.append(new UICombobox(this, {data: exampleData, selectedIndex: 3, disabled: true}));
+
+		var source = [];
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
+		source.push("new UICombobox(context, {data: items, selectedIndex: 3, disabled: true});");
 
 		this.showDemo(example, demo, source);
 	}
 });
 
-var exampleData = [["选项1", "选项2"], ["选项3"], ["选项4", "选项5"], "选项6", "选项7", "选项8", "选项9", "选项10", "选项11", "选项12", "选项13"];
+var exampleData = [["选项1", "选项2"], "选项3", ["选项4", "选项5"], "选项6", "选项7"];
