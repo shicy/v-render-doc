@@ -30,6 +30,7 @@ var DateinputModule = BaseModule.extend(module, {
 		this.showExample1();
 		this.showExample2();
 		this.showExample3();
+		this.showExample4();
 	},
 
 	showExample1: function () {
@@ -37,8 +38,6 @@ var DateinputModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDateInput(this, {prompt: "请选择日期"}));
-
-		demo.append(new UIGroup(this)).append("<input type='date'/>");
 
 		var source = [];
 		source.push("// 服务端创建");
@@ -78,6 +77,18 @@ var DateinputModule = BaseModule.extend(module, {
 		source.push("minDate.setDate(minDate.getDate() - 10);");
 		source.push("maxDate.setDate(maxDate.getDate() + 10);");
 		source.push("new UIDateInput(context, {min: minDate, max: maxDate}).render(target);");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("使用原生日期组件");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDateInput(this, {native: true}));
+
+		var source = [];
+		source.push("new UIDateInput(context, {native: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}
