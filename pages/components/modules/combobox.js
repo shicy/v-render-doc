@@ -31,6 +31,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		this.showExample2();
 		this.showExample3();
 		this.showExample4();
+		this.showExample5();
 	},
 
 	showExample1: function () {
@@ -54,7 +55,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("可输入下拉选择");
 
 		var demo = new UIGroup(this);
-		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true}));
+		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true, native: true}));
 
 		var source = [];
 		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
@@ -85,6 +86,19 @@ var ComboboxModule = BaseModule.extend(module, {
 		var source = [];
 		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
 		source.push("new UICombobox(context, {data: items, selectedIndex: 3, disabled: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5: function () {
+		var example = this.addExample("原生选择组件");
+
+		var demo = new UIGroup(this);
+		demo.append(new UICombobox(this, {data: exampleData, selectedIndex: 2, native: true}));
+
+		var source = [];
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
+		source.push("new UICombobox(context, {data: items, selectedIndex: 2, native: true});");
 
 		this.showDemo(example, demo, source);
 	}
