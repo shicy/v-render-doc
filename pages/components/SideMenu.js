@@ -28,6 +28,7 @@ var menus = [{
 }, {
 	group: "数据集",
 	children: [
+		{name: "dropdownlist", label: "DropdownList 下拉列表"},
 		{name: "datagrid", label: "Datagrid 数据网格"}
 	]
 }, {
