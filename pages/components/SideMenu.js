@@ -34,7 +34,9 @@ var menus = [{
 }, {
 	group: "容器",
 	children: [
-		{name: "panel", label: "Panel 面板"}
+		{name: "group", label: "Group 组视图"},
+		{name: "panel", label: "Panel 面板"},
+		{name: "radgrp", label: "RadioGroup 单选框组"}
 	]
 }, {
 	group: "导航",
@@ -45,9 +47,8 @@ var menus = [{
 }, {
 	group: "其他",
 	children: [
-		{name: "dialog", label: "Dialog 对话框"},
+		{name: "dialog", label: "Dialog 对话框"}
 		// {name: "btnbar", label: "ButtonGroup 按钮组"},
-		{name: "radgrp", label: "RadioGroup 单选框组"}
 	]
 }];
 
