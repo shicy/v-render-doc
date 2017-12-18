@@ -143,7 +143,7 @@ var BaseModule = VRender.UIView.extend(module, {
 	},
 
 	// 展示组件事例
-	showDemo: function (target, demoView, source) {
+	showDemo: function (target, demoView, source, open) {
 		var demo = VRender.$("<div class='demo'></div>").appendTo(target || this.$el);
 		if (Utils.isNotBlank(demoView)) {
 			new UIGroup(this, {cls: "preview"}).append(demoView).render(demo);
@@ -151,8 +151,11 @@ var BaseModule = VRender.UIView.extend(module, {
 		if (Utils.isNotBlank(source)) {
 			if (Utils.isArray(source))
 				source = source.join("\n");
-			source = Prism.highlight(source, Prism.languages.javascript)
-			demo.write("<div class='source'><pre>" + source + "</pre><button class='morebtn'></button></div>");
+			source = Prism.highlight(source, Prism.languages.javascript);
+			var sourceTarget = VRender.$("<div class='source'></div>").appendTo(demo);
+			sourceTarget.write("<pre>" + source + "</pre><button class='morebtn'></button>");
+			if (open)
+				sourceTarget.addClass("open");
 		}
 	},
 

@@ -74,7 +74,7 @@ var GroupModule = BaseModule.extend(module, {
 		source.push("// 竖直方向布局（仅服务端）");
 		source.push("new UIVGroup(context).render(target);");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
 	}
 
 });
