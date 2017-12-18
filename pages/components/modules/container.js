@@ -65,6 +65,8 @@ var ContainerModule = BaseModule.extend(module, {
 		properties.push({name: "backgroundRepeat", desc: "同 css 之 <code>background-repeat</code>样式"});
 		properties.push({name: "overflow", desc: "同 css 之 <code>overflow</code>样式"});
 		properties.push({name: "shadow", desc: "同 css 之 <code>box-shadow</code>样式"});
+		properties.push({name: "content", desc: "子组件或视图"});
+		properties.push({name: "view", desc: "同<code>content</code>属性，优先级低于content"});
 		return properties;
 	},
 
@@ -120,9 +122,37 @@ var ContainerModule = BaseModule.extend(module, {
 		methods.push({name: "setBorder", desc: "设置<code>border</code>样式", params: "value: String", scope: 1});
 		methods.push({name: "getBorderRadius", desc: "获取<code>border-radius</code>样式", scope: 1});
 		methods.push({name: "setBorderRadius", desc: "设置<code>border-radius</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderColor", desc: "获取<code>border-color</code>样式", scope: 1});
+		methods.push({name: "setBorderColor", desc: "设置<code>border-color</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderWidth", desc: "获取<code>border-width</code>样式", scope: 1});
+		methods.push({name: "setBorderWidth", desc: "设置<code>border-width</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderLeft", desc: "获取<code>border-left</code>样式", scope: 1});
+		methods.push({name: "setBorderLeft", desc: "设置<code>border-left</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderRight", desc: "获取<code>border-right</code>样式", scope: 1});
+		methods.push({name: "setBorderRight", desc: "设置<code>border-right</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderTop", desc: "获取<code>border-top</code>样式", scope: 1});
+		methods.push({name: "setBorderTop", desc: "设置<code>border-top</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBorderBottom", desc: "获取<code>border-bottom</code>样式", scope: 1});
+		methods.push({name: "setBorderBottom", desc: "设置<code>border-bottom</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackground", desc: "获取<code>background</code>样式", scope: 1});
+		methods.push({name: "setBackground", desc: "设置<code>background</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackgroundColor", desc: "获取<code>background-color</code>样式", scope: 1});
+		methods.push({name: "setBackgroundColor", desc: "设置<code>background-color</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackgroundImage", desc: "获取<code>background-image</code>样式", scope: 1});
+		methods.push({name: "setBackgroundImage", desc: "设置<code>background-image</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackgroundSize", desc: "获取<code>background-size</code>样式", scope: 1});
+		methods.push({name: "setBackgroundSize", desc: "设置<code>background-size</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackgroundPosition", desc: "获取<code>background-position</code>样式", scope: 1});
+		methods.push({name: "setBackgroundPosition", desc: "设置<code>background-position</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getBackgroundRepeat", desc: "获取<code>background-repeat</code>样式", scope: 1});
+		methods.push({name: "setBackgroundRepeat", desc: "设置<code>background-repeat</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getOverflow", desc: "获取<code>overflow</code>样式", scope: 1});
+		methods.push({name: "setOverflow", desc: "设置<code>overflow</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getShadow", desc: "获取<code>box-shadow</code>样式", scope: 1});
+		methods.push({name: "setShadow", desc: "设置<code>box-shadow</code>样式", params: "value: String", scope: 1});
+		methods.push({name: "getContent", desc: "获取子组件或视图", scope: 1});
+		methods.push({name: "setContent", desc: "设置子组件或视图", params: "value: *", scope: 1});
 		return methods;
-		// http://hzcs.qsng.cn/hz-bsp/hz/apply-front!list.action
-		// http://www.qsnbm.com/qsng-bsp/gs/apply-front.action
 	},
 
 	renderExamples: function () {
