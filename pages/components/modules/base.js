@@ -69,14 +69,26 @@ var BaseModule = VRender.UIView.extend(module, {
 			var target = VRender.$(".tableview.properties").appendTo(this.$el);
 			// target.append("<div class='title'>属性</div>");
 			var tableview = VRender.$("table").appendTo(target);
-			tableview.write("<thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>");
-			Utils.each(properties, function (data) {
-				var item = VRender.$("tr").appendTo(tableview);
-				item.write("<td>" + data.name + "</td>");
-				item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
-				item.write("<td>" + (data.datatype || "-") + "</td>");
-				item.write("<td>" + (data.value || "-") + "</td>");
-			});
+			if (this.isApp) {
+				tableview.write("<thead><tr><th>属性</th></tr></thead>");
+				Utils.each(properties, function (data) {
+					var item = VRender.$("tr").appendTo(tableview);
+					var content = VRender.$("td").appendTo(item);
+					content.write("<div class='name'>" + data.name + (data.datatype ? (": " + data.datatype) : "") + "</div>");
+					content.write("<div class='status'>默认值：" + (data.value || "无") + "</div>");
+					content.write("<div class='desc'>" + (data.desc || "无") + "</div>");
+				});
+			}
+			else {
+				tableview.write("<thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>");
+				Utils.each(properties, function (data) {
+					var item = VRender.$("tr").appendTo(tableview);
+					item.write("<td>" + data.name + "</td>");
+					item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
+					item.write("<td>" + (data.datatype || "-") + "</td>");
+					item.write("<td>" + (data.value || "-") + "</td>");
+				});
+			}
 		}
 	},
 
@@ -87,14 +99,27 @@ var BaseModule = VRender.UIView.extend(module, {
 			var target = VRender.$(".tableview.methods").appendTo(this.$el);
 			// target.append("<div class='title'>方法</div>");
 			var tableview = VRender.$("table").appendTo(target);
-			tableview.write("<thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>适用</th></tr></thead>");
-			Utils.each(methods, function (data) {
-				var item = VRender.$("tr").appendTo(tableview);
-				item.write("<td>" + data.name + "</td>");
-				item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
-				item.write("<td>" + (data.params || "无") + "</td>");
-				item.write("<td>" + (data.scope == 1 ? "仅后端" : (data.scope == 2 ? "仅前端" : "前端和后端")) + "</td>");
-			});
+			if (this.isApp) {
+				tableview.write("<thead><tr><th>方法</th></tr></thead>");
+				Utils.each(methods, function (data) {
+					var item = VRender.$("tr").appendTo(tableview);
+					var content = VRender.$("td").appendTo(item);
+					content.write("<div class='name'>" + data.name + "(" + (data.params || "") + ")</div>");
+					var scope = data.scope == 1 ? "仅后端" : (data.scope == 2 ? "仅前端" : "前端和后端");
+					content.write("<div class='status'>适用：" + scope + "</div>");
+					content.write("<div class='desc'>" + (data.desc || "无") + "</div>");
+				});
+			}
+			else {
+				tableview.write("<thead><tr><th>方法名</th><th>说明</th><th>参数</th><th>适用</th></tr></thead>");
+				Utils.each(methods, function (data) {
+					var item = VRender.$("tr").appendTo(tableview);
+					item.write("<td>" + data.name + "</td>");
+					item.write("<td>" + (data.desc || "&nbsp;") + "</td>");
+					item.write("<td>" + (data.params || "无") + "</td>");
+					item.write("<td>" + (data.scope == 1 ? "仅后端" : (data.scope == 2 ? "仅前端" : "前端和后端")) + "</td>");
+				});
+			}
 		}
 	},
 

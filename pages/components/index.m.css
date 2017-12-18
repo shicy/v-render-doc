@@ -87,10 +87,33 @@
 
 .comp-base > .tableview {
     margin-top: 0.4rem;
+    padding: 0.03rem;
 }
 
 .comp-base > .tableview > table {
     font-size: 0.13rem;
+}
+
+.comp-base > .tableview > table th {
+    height: 0.36rem;
+    padding: 0px 0.15rem;
+}
+
+.comp-base > .tableview > table td {
+    padding: 0.05rem 0.15rem;
+}
+
+.comp-base > .tableview > table .name {
+    font-size: 0.15rem;
+}
+
+.comp-base > .tableview > table .status {
+    color: #f56969;
+    font-size: 0.11rem;
+}
+
+.comp-base > .tableview > table .desc {
+    margin-top: 0.05rem;
 }
 
 #main-body > .main-container > .foot-guide {
