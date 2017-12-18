@@ -30,18 +30,28 @@ var GroupModule = BaseModule.extend(module, {
 		properties.push({name: "align", datatype: "enum", 
 			desc: "子组件对齐方式，可选值：<code>left</code>（左对齐），<code>center</code>（水平居中），<code>right</code>（右对齐）" +
 				"，<code>top</code>（上对齐），<code>middle</code>（竖直居中），<code>bottom</code>（下对齐）。"});
+		properties.push({name: "children", datatype: "array", desc: "子组件（集）"});
 		properties.push({name: "gap", datatype: "number", desc: "子组件间隔，默认“px”，REM配置为true时默认为“rem”。"});
 		properties.push({name: "orientation", datatype: "enum", 
 			desc: "子组件布局方向，可选值：<code>vertical</code>（竖直方向），<code>horizontial</code>（水平方向）。"});
+		properties.push({name: "subViews", datatype: "array", desc: "同<code>children</code>属性，优先级低于<code>children</code>。"});
+		properties.push({name: "views", datatype: "array", desc: "同<code>subViews</code>属性，优先级低于<code>subViews</code>。"});
 		return properties;
 	},
 
 	getMethods: function () {
 		var methods = [];
+		methods.push({name: "add", desc: "添加一个子组件，并返回该子组件。", params: "child: *, options: Object"});
+		methods.push({name: "append", desc: "添加一个或多个子组件，支持链式调用。", params: "args: *|Array"});
+		methods.push({name: "getAlign", desc: "获取子组件对齐方式", scope: 1});
 		methods.push({name: "getGap", desc: "获取子组件间隔", scope: 1});
-		methods.push({name: "setGap", desc: "设置子组件间隔", params: "value: Number|String"});
 		methods.push({name: "getOrientation", desc: "获取子组件布局方向", scope: 1});
-		methods.push({name: "setOrientation", desc: "设置子组件布局方向", params: "value: String(vertical|horizontial)"});
+		methods.push({name: "setAlign", desc: "设置子组件对齐方式，参见属性：<code>align</code>", params: "value: String"});
+		methods.push({name: "setGap", desc: "设置子组件间隔", params: "value: Number|String"});
+		methods.push({name: "setOrientation", desc: "设置子组件布局方向，参见属性：<code>orientation</code>", 
+			params: "value: String"});
+		methods.push({name: "remove", desc: "移除子组件", params: "child: *", scope: 1});
+		methods.push({name: "removeAt", desc: "移除第N个子组件", params: "index: Number"});
 		return methods;
 	},
 
