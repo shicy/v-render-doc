@@ -35,14 +35,16 @@ var TabbarModule = BaseModule.extend(module, {
 	showExample1: function () {
 		var example = this.addExample("基本用法");
 
-		var tabs = [{label: "标签1", name: "tab1"}, {label: "标签2", name: "tab2"}, {label: "标签3", name: "tab3"}];
+		var tabs = [{label: "标签1", name: "tab1"}, {label: "标签2", name: "tab2"}, 
+			{label: "标签3", name: "tab3", disabled: true}, {label: "标签4", name: "tab4"}];
 		var demo = new UITabbar(this, {data: tabs, selectedIndex: 0});
 
 		var source = [];
 		source.push("var tabs = [];");
 		source.push("tabs.push({label: '标签1', name: 'tab1'});");
 		source.push("tabs.push({label: '标签2', name: 'tab2'});");
-		source.push("tabs.push({label: '标签3', name: 'tab3'});");
+		source.push("tabs.push({label: '标签3', name: 'tab3', disabled: true});");
+		source.push("tabs.push({label: '标签4', name: 'tab4'});");
 		source.push("// 服务端创建");
 		source.push("new UITabbar(context, {data: tabs, selectedIndex: 0}).render(target)");
 		source.push("// 浏览器端创建");
