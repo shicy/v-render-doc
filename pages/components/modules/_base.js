@@ -97,6 +97,7 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderMethods: function (methods) {
 		var methods = Utils.toArray(this.getMethods());
 		if (methods && methods.length > 0) {
+			methods.sort(function (a, b) { return a.name > b.name ? 1 : -1; });
 			var target = VRender.$(".tableview.methods").appendTo(this.$el);
 			// target.append("<div class='title'>方法</div>");
 			var tableview = VRender.$("table").appendTo(target);
@@ -185,8 +186,8 @@ var BaseModule = VRender.UIView.extend(module, {
 		}
 	},
 
+	// 获取组件相关的属性列表
 	getProperties: function () {
-		// 获取组件相关的属性列表
 		var props = [];
 		var description;
 
@@ -218,11 +219,23 @@ var BaseModule = VRender.UIView.extend(module, {
 		description = "前端是否自动加载异步数据，否则可以手动调用组件的<code>load()</code>方法加载数据。";
 		props.push({name: "autload", datatype: "boolean", desc: description, value: "true"});
 
+		if (this.canDisabled()) {
+			description = "是否禁用组件，被禁用的组件默认添加样式<code>disabled</code>和属性<code>disabled</code>。<br>" +
+				"如：<code>&lt;div class='disabled' disabled='disabled'&gt;&lt;/div&gt;</code>";
+			props.push({name: "disabled", datatype: "boolean", desc: description, value: "false"});
+		}
+
 		return props;
 	},
 
+	// 获取组件相关的方法列表
 	getMethods: function () {
-		// 获取组件相关的方法列表
+		var methods = [];
+		var description;
+
+		methods.push({name: "getViewId"});
+
+		return methods;
 	},
 
 	getEvents: function () {
@@ -231,6 +244,10 @@ var BaseModule = VRender.UIView.extend(module, {
 
 	getMapData: function () {
 		// 禁止默认viewData绑定
+	},
+
+	canDisabled: function () {
+		return true;
 	}
 	
 });

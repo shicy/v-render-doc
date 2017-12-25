@@ -40,7 +40,7 @@ var GroupModule = BaseModule.extend(module, {
 	},
 
 	getMethods: function () {
-		var methods = [];
+		var methods = GroupModule.__super__.getMethods.call(this) || [];
 		methods.push({name: "add", desc: "添加一个子组件，并返回该子组件。", params: "child: *, options: Object"});
 		methods.push({name: "append", desc: "添加一个或多个子组件，支持链式调用。", params: "args: *|Array"});
 		methods.push({name: "getAlign", desc: "获取子组件对齐方式", scope: 1});
