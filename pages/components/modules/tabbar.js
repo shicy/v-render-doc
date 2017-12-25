@@ -5,13 +5,14 @@
  */
 
 var VRender = require(__vrender);
-var BaseModule = require("./base");
+var ListModule = require("./_list");
 
 
+var Utils = VRender.Utils;
 var UIGroup = VRender.UIGroup;
 var UITabbar = VRender.UITabbar;
 
-var TabbarModule = BaseModule.extend(module, {
+var TabbarModule = ListModule.extend(module, {
 	className: "comp-tabbar",
 
 	getCompName: function () {
@@ -25,6 +26,25 @@ var TabbarModule = BaseModule.extend(module, {
 	getDescription: function () {
 		return "可以在多个标签选项卡之间切换，通常用于显示或隐藏多个平级的视图。";
 	},
+
+	getDataItems: function () {
+		var items = [];
+		items.push({name: "name", datatype: "String", value: "无",
+			desc: "标签选项卡名称，一般上通过名称操作选项卡"});
+		items.push({name: "label", datatype: "String", value: "无",
+			desc: "默认标签显示文本，可以通过<code>labelField</code>和<code>labelFunction</code>自定义显示文本"});
+		items.push({name: "closable", datatype: "Boolean", value: "false",
+			desc: "设置标签选项卡是否可关闭（即移除选项卡）"});
+		return items;
+	},
+
+	// getMethods: function () {
+
+	// },
+
+	// getEvents: function () {
+
+	// },
 
 	renderExamples: function () {
 		this.showExample1();
