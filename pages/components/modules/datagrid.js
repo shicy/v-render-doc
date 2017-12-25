@@ -5,7 +5,7 @@
  */
 
 var VRender = require(__vrender);
-var BaseModule = require("./base");
+var BaseModule = require("./_base");
 
 
 var Utils = VRender.Utils;

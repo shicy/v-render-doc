@@ -5,7 +5,7 @@
  */
 
 var VRender = require(__vrender);
-var BaseModule = require("./base");
+var BaseModule = require("./_base");
 
 
 var UIGroup = VRender.UIGroup;
@@ -26,7 +26,7 @@ var GroupModule = BaseModule.extend(module, {
 	},
 
 	getProperties: function () {
-		var properties = [];
+		var properties = GroupModule.__super__.getProperties.call(this) || [];
 		properties.push({name: "align", datatype: "enum", 
 			desc: "子组件对齐方式，可选值：<code>left</code>（左对齐），<code>center</code>（水平居中），<code>right</code>（右对齐）" +
 				"，<code>top</code>（上对齐），<code>middle</code>（竖直居中），<code>bottom</code>（下对齐）。"});

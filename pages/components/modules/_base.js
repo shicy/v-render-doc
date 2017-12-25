@@ -66,6 +66,7 @@ var BaseModule = VRender.UIView.extend(module, {
 	renderProperties: function () {
 		var properties = Utils.toArray(this.getProperties());
 		if (properties && properties.length > 0) {
+			properties.sort(function (a, b) { return a.name > b.name ? 1 : -1; });
 			var target = VRender.$(".tableview.properties").appendTo(this.$el);
 			// target.append("<div class='title'>属性</div>");
 			var tableview = VRender.$("table").appendTo(target);
@@ -186,6 +187,38 @@ var BaseModule = VRender.UIView.extend(module, {
 
 	getProperties: function () {
 		// 获取组件相关的属性列表
+		var props = [];
+		var description;
+
+		description = "组件对应的HTML标签id值，如：<code>&lt;div id='comp-id'&gt;&lt;/div&gt;</code>";
+		props.push({name: "id", datatype: "string", desc: description});
+
+		description = "组件对应的HTML标签class值，如：<code>&lt;div class='comp-cls'&gt;&lt;/div&gt;</code>";
+		props.push({name: "cls", datatype: "string", desc: description});
+
+		description = "同<code>cls</code>属性，优先级 className > clsName > cls。";
+		props.push({name: "clsName", datatype: "string", desc: description});
+		props.push({name: "className", datatype: "string", desc: description});
+
+		description = "组件对应的HTML标签name值，如：<code>&lt;div name='comp-name'&gt;&lt;/div&gt;</code>";
+		props.push({name: "name", datatype: "string", desc: description});
+
+		description = "组件对应的标签名称，如：设置<code>{tagName: 'p'}</code>，组件对应标签为<code>&lt;p&gt;&lt;/p&gt;</code>";
+		props.push({name: "tag", datatype: "string", desc: description, value: "div"});
+
+		description = "同<code>tag</code>属性，优先级 tagName > tag。";
+		props.push({name: "tagName", datatype: "string", desc: description});
+
+		description = "异步数据接口名称，前端组件渲染完成后，通过该接口加载数据。";
+		props.push({name: "apiName", datatype: "name", desc: description});
+
+		description = "异步数据接口参数";
+		props.push({name: "apiParams", datatype: "object", desc: description});
+
+		description = "前端是否自动加载异步数据，否则可以手动调用组件的<code>load()</code>方法加载数据。";
+		props.push({name: "autload", datatype: "boolean", desc: description, value: "true"});
+
+		return props;
 	},
 
 	getMethods: function () {
@@ -199,4 +232,5 @@ var BaseModule = VRender.UIView.extend(module, {
 	getMapData: function () {
 		// 禁止默认viewData绑定
 	}
+	
 });
