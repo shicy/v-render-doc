@@ -7,7 +7,7 @@
 var body = $("body");
 var menus = body.find(".sidemenu");
 var container = body.find(".main-container");
-
+var typeNames = {"properties": "属性", "methods": "方法", "events": "事件"};
 
 VRender.on(VRender.event_routerchange, function (e, state) {
 	menus.find(".active").removeClass("active");
@@ -33,6 +33,20 @@ container.on("tap", ".foot-guide a", function (e) {
 container.on("tap", ".source > .morebtn", function (e) {
 	var target = $(e.currentTarget).parent();
 	target.toggleClass("open");
+});
+
+container.on("tap", ".expandbtn", function (e) {
+	var btn = $(e.currentTarget);
+	var target = btn.parent();
+	var type = target.attr("name");
+	if (target.is(".expand")) {
+		target.removeClass("expand");
+		btn.text("显示所有（含继承" + typeNames[type] + "）");
+	}
+	else {
+		target.addClass("expand");
+		btn.text("隐藏继承" + typeNames[type]);
+	}
 });
 
 var updateFootGuide = function () {

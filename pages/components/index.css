@@ -220,6 +220,11 @@
     background-color: #f6f6f6;
 }
 
+.comp-base > .tableview > table tr.extend {
+    display: none;
+    background-color: #f9f9f9;
+}
+
 .comp-base > .tableview > table th {
     min-width: 80px;
     height: 36px;
@@ -235,6 +240,7 @@
 }
 
 .comp-base > .tableview > table td {
+    position: relative;
     color: #66687b;
     border: 1px solid #ddd;
     border-width: 0px 0px 1px 1px;
@@ -243,6 +249,35 @@
 
 .comp-base > .tableview > table td:first-child {
     border-left: 0px;
+}
+
+.comp-base > .tableview > table tr.extend td:first-child:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    border-left: 1px solid #039fd0;
+}
+
+.comp-base > .tableview > .expandbtn {
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.comp-base > .tableview > .expandbtn:hover {
+    color: #000;
+}
+
+.comp-base > .tableview.expand > table tr.extend {
+    display: table-row;
+}
+
+.comp-base > .tableview.expand > .expandbtn {
+    display: none;
 }
 
 /*********************************************************/

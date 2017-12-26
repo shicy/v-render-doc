@@ -116,6 +116,19 @@
     margin-top: 0.05rem;
 }
 
+.comp-base > .tableview > .expandbtn {
+    font-size: 0.12rem;
+    line-height: 0.32rem;
+}
+
+.comp-base > .tableview.expand > table tr.extend {
+    display: table-row;
+}
+
+.comp-base > .tableview.expand > .expandbtn {
+    display: none;
+}
+
 #main-body > .main-container > .foot-guide {
     display: block;
     font-size: 0.14rem;
