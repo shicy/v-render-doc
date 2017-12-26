@@ -254,7 +254,7 @@ var BaseModule = VRender.UIView.extend(module, {
 
 		if (this.isDataSupport()) {
 			description = this.getDataDescription() || "";
-			props.push({name: "data", datatype: "Array", desc: description || "组件绑定的数据或数据集", 
+			props.push({name: "data", datatype: "object", desc: description || "组件绑定的数据或数据集", 
 				extend: !description ? 1 : 0});
 
 			description = "数据转换器，将原始数据转换为组件标准数据，特别是异步加载的数据可以通过该方法转换后再显示。<br/>" +
@@ -299,31 +299,31 @@ var BaseModule = VRender.UIView.extend(module, {
 
 		description = "组件编号，参见属性<code>id</code>。";
 		methods.push({name: "getId", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setId", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setId", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件名称，参见属性<code>name</code>。";
 		methods.push({name: "getName", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setName", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setName", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件HTML标签，参见属性<code>tag</code>。";
 		methods.push({name: "getTagName", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setTagName", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setTagName", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件类名称，参见属性<code>cls</code>。";
 		methods.push({name: "getClassName", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setClassName", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setClassName", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件样式，参见属性<code>style</code>。";
 		methods.push({name: "getStyle", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setStyle", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setStyle", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件绑定名称，参见属性<code>ref</code>。";
 		methods.push({name: "getRefName", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setRefName", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+		methods.push({name: "setRefName", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 		description = "组件可见性定义，参见属性<code>visible</code>。";
 		methods.push({name: "getVisible", desc: "获取" + description, scope: 1, extend: 1});
-		methods.push({name: "setVisible", desc: "设置" + description, params: "value: *", scope: 1, extend: 1});
+		methods.push({name: "setVisible", desc: "设置" + description, params: "value:*", scope: 1, extend: 1});
 
 		methods.push({name: "isRenderAsApp", desc: "组件是否在应用模式下渲染（一般指移动端渲染）", extend: 1});
 		methods.push({name: "isRenderAsIphone", desc: "组件是否在 iPhone 手机渲染", extend: 1});
@@ -333,42 +333,42 @@ var BaseModule = VRender.UIView.extend(module, {
 			description = "获取组件数据或数据集，数据已经过<code>dataAdapter</code>转换。";
 			methods.push({name: "getViewData", desc: description, scope: 1, extend: 1});
 			methods.push({name: "getData", desc: description, scope: 2, extend: 1});
-			methods.push({name: "setViewData", desc: "设置组件数据或数据集", params: "data: *", scope: 1, extend: 1});
-			methods.push({name: "setData", desc: "设置组件数据或数据集", params: "data: *", scope: 2, extend: 1});
+			methods.push({name: "setViewData", desc: "设置组件数据或数据集", params: "data:*", scope: 1, extend: 1});
+			methods.push({name: "setData", desc: "设置组件数据或数据集", params: "data:*", scope: 2, extend: 1});
 			
 			description = "组件数据转换器，参见属性<code>dataAdapter</code>。";
 			methods.push({name: "getDataAdapter", desc: "获取" + description, extend: 1});
-			methods.push({name: "setDataAdapter", desc: "设置" + description, params: "value: function", extend: 1});
+			methods.push({name: "setDataAdapter", desc: "设置" + description, params: "value:Function", extend: 1});
 
 			description = "组件数据映射方法，参见属性<code>dataMapper</code>。";
 			methods.push({name: "getDataMapper", desc: "获取" + description, extend: 1});
-			methods.push({name: "setDataMapper", desc: "设置" + description, params: "value: function", extend: 1});
+			methods.push({name: "setDataMapper", desc: "设置" + description, params: "value:Function", extend: 1});
 		}
 
 		if (this.isApiSupport()) {
 			description = "组件异步数据接口名称，参见属性<code>apiName</code>。";
 			methods.push({name: "getApiName", desc: "获取" + description, scope: 1, extend: 1});
-			methods.push({name: "setApiName", desc: "设置" + description, params: "value: String", scope: 1, extend: 1});
+			methods.push({name: "setApiName", desc: "设置" + description, params: "value:String", scope: 1, extend: 1});
 
 			description = "组件异步数据接口参数，参见属性<code>apiParams</code>。";
 			methods.push({name: "getApiParams", desc: "获取" + description, scope: 1, extend: 1});
-			methods.push({name: "setApiParams", desc: "设置" + description, params: "value: Object", scope: 1, extend: 1});
+			methods.push({name: "setApiParams", desc: "设置" + description, params: "value:Object", scope: 1, extend: 1});
 
 			description = "组件是否自动加载异步数据，参见属性<code>autload</code>。";
 			methods.push({name: "isAutoLoad", desc: "获取" + description, scope: 1, extend: 1});
-			methods.push({name: "setAutoLoad", desc: "设置" + description, params: "value: Boolean", scope: 1, extend: 1});
+			methods.push({name: "setAutoLoad", desc: "设置" + description, params: "value:Boolean", scope: 1, extend: 1});
 
 			description = "异步数据加载方法，加载完成后台调用<code>setData()</code>方法，并触发<code>loaded</code>事件。";
 			params = "api: String, params: Object, callback: function";
 			methods.push({name: "load", desc: description, params: params, scope: 2, extend: 1});
 			description = "刷新，按上一次的请求重新请求一次，接口和参数一致。";
-			methods.push({name: "reload", desc: description, params: "callback: function", scope: 2, extend: 1});
+			methods.push({name: "reload", desc: description, params: "callback:Function", scope: 2, extend: 1});
 		}
 
 		if (this.isDisableSupport()) {
 			methods.push({name: "isEnabled", desc: "获取组件是否启用，参见属性<code>disabled</code>", extend: 1});
 			description = "设置组件是否启用，当值为：<code>false</code>，<code>0</code>，<code>''</code>，<code>no</code>时组件禁用，否则启用组件。";
-			methods.push({name: "setEnabled", desc: description, params: "value: *", extend: 1});
+			methods.push({name: "setEnabled", desc: description, params: "value:*", extend: 1});
 		}
 
 		return methods;

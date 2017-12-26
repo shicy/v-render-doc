@@ -27,7 +27,7 @@ var ContainerModule = BaseModule.extend(module, {
 	},
 
 	getProperties: function () {
-		var properties = [];
+		var properties = ContainerModule.__super__.getProperties.call(this) || [];
 		properties.push({name: "display", desc: "同 css 之 <code>display</code>样式"});
 		properties.push({name: "position", desc: "同 css 之 <code>position</code>样式"});
 		properties.push({name: "width", desc: "同 css 之 <code>width</code>样式"});
@@ -71,7 +71,7 @@ var ContainerModule = BaseModule.extend(module, {
 	},
 
 	getMethods: function () {
-		var methods = [];
+		var methods = ContainerModule.__super__.getMethods.call(this) || [];
 		methods.push({name: "getDisplay", desc: "获取<code>display</code>样式", scope: 1});
 		methods.push({name: "setDisplay", desc: "设置<code>display</code>样式", params: "value: String", scope: 1});
 		methods.push({name: "getPosition", desc: "获取<code>position</code>样式", scope: 1});

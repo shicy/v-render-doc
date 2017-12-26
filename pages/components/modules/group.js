@@ -26,16 +26,24 @@ var GroupModule = BaseModule.extend(module, {
 	},
 
 	getProperties: function () {
+		var description;
 		var properties = GroupModule.__super__.getProperties.call(this) || [];
-		properties.push({name: "align", datatype: "enum", 
-			desc: "子组件对齐方式，可选值：<code>left</code>（左对齐），<code>center</code>（水平居中），<code>right</code>（右对齐）" +
-				"，<code>top</code>（上对齐），<code>middle</code>（竖直居中），<code>bottom</code>（下对齐）。"});
+
+		description = "子组件对齐方式，可选值：<code>left</code>（左对齐），<code>center</code>（水平居中），<code>right</code>（右对齐）" +
+			"，<code>top</code>（上对齐），<code>middle</code>（竖直居中），<code>bottom</code>（下对齐）。";
+		properties.push({name: "align", datatype: "enum", desc: description});
+
 		properties.push({name: "children", datatype: "array", desc: "子组件（集）"});
+
 		properties.push({name: "gap", datatype: "number", desc: "子组件间隔，默认“px”，REM配置为true时默认为“rem”。"});
-		properties.push({name: "orientation", datatype: "enum", 
-			desc: "子组件布局方向，可选值：<code>vertical</code>（竖直方向），<code>horizontial</code>（水平方向）。"});
-		properties.push({name: "subViews", datatype: "array", desc: "同<code>children</code>属性，优先级低于<code>children</code>。"});
-		properties.push({name: "views", datatype: "array", desc: "同<code>subViews</code>属性，优先级低于<code>subViews</code>。"});
+
+		description = "子组件布局方向，可选值：<code>vertical</code>（竖直方向），<code>horizontial</code>（水平方向）。";
+		properties.push({name: "orientation", datatype: "enum", desc: description});
+
+		description = "同<code>children</code>属性，优先级 children > subViews > views。";
+		properties.push({name: "subViews", datatype: "array", desc: description});
+		properties.push({name: "views", datatype: "array", desc: description});
+
 		return properties;
 	},
 
