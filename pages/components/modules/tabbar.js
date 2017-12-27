@@ -38,13 +38,25 @@ var TabbarModule = ListModule.extend(module, {
 		return items;
 	},
 
-	// getMethods: function () {
+	getMethods: function () {
+		var methods = TabbarModule.__super__.getMethods.call(this);
+		methods.push({name: "close", params: "value:Number|String", scope: 2,
+			desc: "根据索引或项名称关闭选项卡，即移除选项卡。其中项名称即为属性<code>data</code>中的<code>name</code>字段。"});
+		return methods;
+	},
 
-	// },
+	getEvents: function () {
+		var events = TabbarModule.__super__.getEvents.call(this);
+		events.push({name: "show", desc: "标签选项卡未选中变为选中状态时触发该事件"});
+		events.push({name: "hide", desc: "标签选项卡选中变为不选中状态时触发该事件"});
+		events.push({name: "close", desc: "标签选项卡关闭，即被移除时触发该事件"});
+		events.push({name: "itemclick", desc: "标签选项卡点击事件"});
+		return events;
+	},
 
-	// getEvents: function () {
-
-	// },
+	isMultipleSupport: function () {
+		return false;
+	},
 
 	renderExamples: function () {
 		this.showExample1();
