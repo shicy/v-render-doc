@@ -377,7 +377,7 @@ var BaseModule = VRender.UIView.extend(module, {
 	getEvents: function () {
 		var events = [];
 		if (this.isApiSupport()) {
-			events.push({name: "loaded", desc: "异步数据加载成功事件", extend: 1});
+			events.push({name: "loaded", desc: "异步数据加载事件，当数据加载完成时触发", extend: 1, result: "error:Object, data:*"});
 		}
 		return events;
 	},

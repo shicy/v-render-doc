@@ -177,7 +177,7 @@ var ListModule = BaseModule.extend(module, {
 
 	getEvents: function () {
 		var events = ListModule.__super__.getEvents.call(this) || [];
-		events.push({name: "change", desc: "组件项选择变更时触发该事件", result: "datas:Array", extend: 2});
+		events.push({name: "change", desc: "组件项选择变更时触发该事件", result: "newData:*, oldData:*", extend: 2});
 		return events;
 	},
 

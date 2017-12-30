@@ -47,10 +47,10 @@ var TabbarModule = ListModule.extend(module, {
 
 	getEvents: function () {
 		var events = TabbarModule.__super__.getEvents.call(this);
-		events.push({name: "show", desc: "标签选项卡未选中变为选中状态时触发该事件"});
-		events.push({name: "hide", desc: "标签选项卡选中变为不选中状态时触发该事件"});
-		events.push({name: "close", desc: "标签选项卡关闭，即被移除时触发该事件"});
-		events.push({name: "itemclick", desc: "标签选项卡点击事件"});
+		events.push({name: "show", desc: "选中事件，当选项卡被选中时触发", result: "data:*"});
+		events.push({name: "hide", desc: "取消选中事件，当选项卡取消选中时触发", result: "data:*"});
+		events.push({name: "close", desc: "关闭事件，当选项卡被移除时触发", result: "data:*"});
+		events.push({name: "itemclick", desc: "点击事件，当选项卡被点击时触发", result: "data:*"});
 		return events;
 	},
 
