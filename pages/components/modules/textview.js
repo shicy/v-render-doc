@@ -28,6 +28,14 @@ var TextViewModule = BaseModule.extend(module, {
 		return "基本表单组件，支持<code>input</code>和<code>textarea</code>，是原生输入框控件的扩展。";
 	},
 
+	getProperties: function () {
+		var props = TextViewModule.__super__.getProperties.call(this);
+		props.push({name: "value", datatype: "string", desc: "文本输入框内容"});
+		props.push({name: "prompt", datatype: "string", desc: "文本输入框内提示文字"});
+		// props.push({name: "dataType", datatype: "enum", desc: "文本输入框数据类型，"});
+		return props;
+	},
+
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
@@ -49,7 +57,7 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("UITextView.create({target: [elem], prompt: '请输入'});");
 		source.push("UITextView.create({target: [elem], prompt: '多行文本输入框', multi: true});");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {

@@ -28,22 +28,62 @@ var ButtonModule = BaseModule.extend(module, {
 	},
 
 	getProperties: function () {
-		var properties = [];
-		properties.push({name: "type", datatype: "String", desc: "按钮类型，包括：" +
+		var properties = ButtonModule.__super__.getProperties.call(this);
+		for (var i = properties.length - 1; i >= 0; i--) {
+			if (properties.name == "style")
+				properties.splice(i, 1);
+		}
+
+		properties.push({name: "label", datatype: "string", desc: "按钮显示文本内容"});
+
+		properties.push({name: "type", datatype: "string", desc: "按钮类型，包括：" +
 			"主按钮（<code>primary</code>、<code>ok</code>、<code>save</code>、<code>submit</code>、<code>major</code>），" +
 			"成功按钮（<code>success</code>、<code>complete</code>、<code>finish</code>），警告按钮（<code>warn</code>、" +
 			"<code>warning</code>），错误按钮（<code>danger</code>、<code>error</code>），信息按钮（<code>info</code>、" +
 			"<code>highlight</code>），文本按钮（<code>text</code>），链接按钮（<code>link</code>），默认不设置。"});
-		properties.push({name: "size", datatype: "String", desc: "按钮尺寸，可选值有：<code>tiny</code>、" +
+
+		properties.push({name: "size", datatype: "string", desc: "按钮尺寸，可选值有：<code>tiny</code>、" +
 			"<code>small</code>、<code>big</code>、<code>bigger</code>，默认不设置。"});
+
+		properties.push({name: "icon", datatype: "url", desc: "按钮小图标"});
+
+		properties.push({name: "style", datatype: "string", desc: "按钮样式，将作为HTML标签类(class)添加，内置样式有：" +
+			"<code>ui-btn-default</code>, <code>ui-btn-primary</code>, <code>ui-btn-success</code>, " +
+			"<code>ui-btn-warn</code>, <code>ui-btn-danger</code>, <code>ui-btn-info</code>, <code>ui-btn-text</code>, " +
+			"<code>ui-btn-link</code>，建议使用<code>type</code>属性。"});
+
 		return properties;
 	},
 
 	getMethods: function () {
-		var methods = [];
-		methods.push({name: "getLabel", scope: 1, desc: "获取按钮文字内容"});
-		methods.push({name: "setLabel", params: "label: String", scope: 1, desc: "设置按钮文字内容"});
+		var methods = ButtonModule.__super__.getMethods.call(this);
+		var description;
+
+		description = "按钮显示文本内容，参见属性<code>label</code>。";
+		methods.push({name: "getLabel", desc: "获取" + description, scope: 1});
+		methods.push({name: "setLabel", desc: "设置" + description, params: "value:String", scope: 1});
+
+		description = "按钮类型，参见属性<code>type</code>。";
+		methods.push({name: "getType", desc: "获取" + description, scope: 1});
+		methods.push({name: "setType", desc: "设置" + description, params: "value:Enum", scope: 1})
+
+		description = "按钮图标，参见属性<code>icons</code>。"
+		methods.push({name: "getIcon", desc: "获取" + description, scope: 1});
+		methods.push({name: "setIcon", desc: "设置" + description, params: "value:String", scope: 1});
+
+		description = "按钮大小，参见属性<code>size</code>。"
+		methods.push({name: "getSize", desc: "获取" + description, scope: 1});
+		methods.push({name: "setSize", desc: "设置" + description, params: "value:Enum", scope: 1});
+
 		return methods;
+	},
+
+	isApiSupport: function () {
+		return false;
+	},
+
+	isDataSupport: function () {
+		return false;
 	},
 
 	renderExamples: function () {
@@ -66,7 +106,7 @@ var ButtonModule = BaseModule.extend(module, {
 		source.push("// 浏览器端创建");
 		source.push("UIButton.create({target: [elem], label: '按钮'});");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {
