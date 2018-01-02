@@ -27,10 +27,11 @@ var DropdownListModule = BaseModule.extend(module, {
 	},
 
 	renderExamples: function () {
-		this.showExample();
+		this.showExample1();
+		this.showExample2();
 	},
 
-	showExample: function () {
+	showExample1: function () {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this);
@@ -43,6 +44,19 @@ var DropdownListModule = BaseModule.extend(module, {
 		source.push("new UIDropdownList(context, {data: items}).render(target);");
 		source.push("// 浏览器端创建");
 		source.push("UIDropdownList.create({target: [elem], data: items});");
+
+		this.showDemo(example, demo, source, true);
+	},
+
+	showExample2: function () {
+		var example = this.addExample("设置默认选择项");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDropdownList(this, {data: exampleData, selectedIndex: 3}));
+
+		var source = [];
+		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
+		source.push("new UIDropdownList(context, {data: items, selectedIndex: 3}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}
