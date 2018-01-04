@@ -60,7 +60,7 @@ var RadioboxModule = BaseModule.extend(module, {
 		demo.append(new UIRadiobox(this, {label: "Radiobox1", name: 'radbox2', value: 1}));
 		demo.append(new UIRadiobox(this, {label: "Radiobox2", name: 'radbox2', value: 2, checked: true, disabled: true}));
 		demo.append(new UIRadiobox(this, {label: "Radiobox3", name: 'radbox2', value: 3, disabled: true}));
-		demo.append(new UIRadiobox(this, {label: "Radiobox5", name: 'radbox2', value: 5}));
+		demo.append(new UIRadiobox(this, {label: "Radiobox4", name: 'radbox2', value: 5}));
 		demo.append(new UIRadiobox(this, {label: "Radiobox5", name: 'radbox2', value: 6}));
 
 		var source = [];
