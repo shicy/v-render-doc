@@ -31,6 +31,8 @@ var DaterangeModule = BaseModule.extend(module, {
 		this.showExample2();
 		this.showExample3();
 		this.showExample4();
+		this.showExample5();
+		this.showExample6();
 	},
 
 	showExample1: function () {
@@ -80,6 +82,39 @@ var DaterangeModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("new UIDateRange(context, {start: new Date(), native: true}).render(target);");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5: function () {
+		var example = this.addExample("快捷选择按钮");
+
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", shortcuts: [1, 7, 15]}));
+		demo.add(new UIGroup(this))
+			.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", shortcuts: [{label: "最近一天", value: 1}, 
+				{label: "最近一周", value: 7}, {label: "最近半个月", value: 15}]}));
+
+		var source = [];
+		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: [1, 7, 15]}).render(target);");
+		source.push("// 自定义快捷按钮");
+		source.push("var items = [{label: '最近一天', value: 1}, {label: '最近一周', value: 7}, {label: '最近半个月', value: 15}]");
+		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: items}).render(target);");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample6: function () {
+		var example = this.addExample("快捷按钮下拉显示");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", shortcuts: [1, 3, 7, 15, 30], dropdown: true}));
+
+		var source = [];
+		source.push("new UIDateRange(this, {start: '2018-01-01', end: '2018-01-31', " +
+			"shortcuts: [1, 3, 7, 15, 30], dropdown: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}
