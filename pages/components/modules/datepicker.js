@@ -19,7 +19,7 @@ var DatepickerModule = BaseModule.extend(module, {
 	},
 
 	getSubName: function () {
-		return "日历";
+		return "日期选择器";
 	},
 
 	getDescription: function () {
@@ -28,6 +28,7 @@ var DatepickerModule = BaseModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
 	},
 
 	showExample1: function () {
@@ -41,6 +42,18 @@ var DatepickerModule = BaseModule.extend(module, {
 		source.push("new UIDatePicker(context).render(target)");
 		source.push("// 浏览器端创建");
 		source.push("UIDatePicker.create({target: [elem]});");
+
+		this.showDemo(example, demo, source, true);
+	},
+
+	showExample2: function () {
+		var example = this.addExample("选择日期范围");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDatePicker(this, {range: true}));
+
+		var source = [];
+		source.push("new UIDatePicker(context, {range: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}
