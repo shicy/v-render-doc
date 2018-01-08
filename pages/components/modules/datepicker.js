@@ -29,6 +29,8 @@ var DatepickerModule = BaseModule.extend(module, {
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
+		this.showExample3();
+		this.showExample4();
 	},
 
 	showExample1: function () {
@@ -39,7 +41,7 @@ var DatepickerModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("// 服务端创建");
-		source.push("new UIDatePicker(context).render(target)");
+		source.push("new UIDatePicker(context).render(target);");
 		source.push("// 浏览器端创建");
 		source.push("UIDatePicker.create({target: [elem]});");
 
@@ -53,7 +55,36 @@ var DatepickerModule = BaseModule.extend(module, {
 		demo.append(new UIDatePicker(this, {range: true}));
 
 		var source = [];
-		source.push("new UIDatePicker(context, {range: true}).render(target);");
+		source.push("new UIDatePicker(context, {range: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample3: function () {
+		var example = this.addExample("设置默认日期");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {date: new Date()}));
+		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {range: true, start: "2018-01-05", end: "2018-01-28"}));
+
+		var source = [];
+		source.push("new UIDatePicker(context, {date: new Date()});");
+		source.push("new UIDatePicker(context, {range: true, start: '2018-01-05', end: '2018-01-28'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("设置日期选择范围");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {min: "2018-01-10", max: "2018-02-25", date: "2018-01-16"}));
+		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {range: true, min: "2018-01-10", max: "2018-02-25", 
+			start: "2018-01-20"}));
+
+		var source = [];
+		source.push("new UIDatePicker(context, {min: '2018-01-10', max: '2018-02-25', date: '2018-01-16'});");
+		source.push("new UIDatePicker(context, {range: true, min: '2018-01-10', max: '2018-02-25', start: '2018-01-20'});");
 
 		this.showDemo(example, demo, source);
 	}
