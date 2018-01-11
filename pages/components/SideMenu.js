@@ -21,8 +21,8 @@ var menus = [{
 		{name: "checkbox", label: "Checkbox 多选框"},
 		{name: "radiobox", label: "Radiobox 单选框"},
 		{name: "combobox", label: "Combobox 下拉选择框"},
-		{name: "dateinput", label: "DateInput 日期输入框"},
 		{name: "datepicker", label: "DatePicker 日期选择器"},
+		{name: "dateinput", label: "DateInput 日期输入框"},
 		{name: "daterange", label: "DateRange 日期范围输入框"}
 	]
 }, {
