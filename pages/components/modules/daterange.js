@@ -39,7 +39,7 @@ var DaterangeModule = BaseModule.extend(module, {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UIDateRange(this, {start: "2017-08-01", end: "2017-08-25"}));
+		demo.append(new UIDateRange(this, {start: "2017-08-01", end: "2017-08-25", prompt: "请选择日期"}));
 
 		var source = [];
 		source.push("// 服务端创建");
@@ -57,7 +57,7 @@ var DaterangeModule = BaseModule.extend(module, {
 		demo.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", disabled: true}));
 
 		var source = [];
-		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-02-01', disabled: true}).render(target);");
+		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-02-01', disabled: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -69,7 +69,7 @@ var DaterangeModule = BaseModule.extend(module, {
 		demo.append(new UIDateRange(this, {start: "2018-01-01", min: "2018-01-01", max: "2018-12-31"}));
 
 		var source = [];
-		source.push("new UIDateRange(context, {start: '2018-01-01', min: '2018-01-01', max: '2018-12-31'}).render(target);");
+		source.push("new UIDateRange(context, {start: '2018-01-01', min: '2018-01-01', max: '2018-12-31'});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -78,10 +78,10 @@ var DaterangeModule = BaseModule.extend(module, {
 		var example = this.addExample("原生日期组件");
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDateRange(this, {start: new Date(), native: true}));
+		demo.append(new UIDateRange(this, {start: "2018-01-03", min: "2018-01-01", max: "2018-01-31", native: true}));
 
 		var source = [];
-		source.push("new UIDateRange(context, {start: new Date(), native: true}).render(target);");
+		source.push("new UIDateRange(context, {start: '2018-01-03', min: '2018-01-01', max: '2018-01-31', native: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -98,10 +98,10 @@ var DaterangeModule = BaseModule.extend(module, {
 				{label: "最近一周", value: 7}, {label: "最近半个月", value: 15}]}));
 
 		var source = [];
-		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: [1, 7, 15]}).render(target);");
+		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: [1, 7, 15]});");
 		source.push("// 自定义快捷按钮");
 		source.push("var items = [{label: '最近一天', value: 1}, {label: '最近一周', value: 7}, {label: '最近半个月', value: 15}]");
-		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: items}).render(target);");
+		source.push("new UIDateRange(context, {start: '2018-01-01', end: '2018-01-31', shortcuts: items});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -114,7 +114,7 @@ var DaterangeModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("new UIDateRange(this, {start: '2018-01-01', end: '2018-01-31', " +
-			"shortcuts: [1, 3, 7, 15, 30], dropdown: true}).render(target);");
+			"shortcuts: [1, 3, 7, 15, 30], dropdown: true});");
 
 		this.showDemo(example, demo, source);
 	}
