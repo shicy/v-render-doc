@@ -52,10 +52,10 @@ var DateinputModule = BaseModule.extend(module, {
 		var example = this.addExample("禁用组件");
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDateInput(this, {disabled: true}));
+		demo.append(new UIDateInput(this, {date: new Date(), disabled: true}));
 
 		var source = [];
-		source.push("new UIDateInput(context, {disabled: true}).render(target);");
+		source.push("new UIDateInput(context, {date: new Date(), disabled: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	},
@@ -69,14 +69,14 @@ var DateinputModule = BaseModule.extend(module, {
 		maxDate.setDate(maxDate.getDate() + 10);
 		demo.add(new UIGroup(this))
 			.append("<div>选择前后各10天内的日期</div>")
-			.append(new UIDateInput(this, {min: minDate, max: maxDate}));
+			.append(new UIDateInput(this, {date: new Date(), min: minDate, max: maxDate}));
 
 		var source = [];
 		source.push("// 选择前后各10天内的日期");
 		source.push("var minDate = new Date(), maxDate = new Date();");
 		source.push("minDate.setDate(minDate.getDate() - 10);");
 		source.push("maxDate.setDate(maxDate.getDate() + 10);");
-		source.push("new UIDateInput(context, {min: minDate, max: maxDate}).render(target);");
+		source.push("new UIDateInput(context, {date: new Date(), min: minDate, max: maxDate}).render(target);");
 
 		this.showDemo(example, demo, source);
 	},
@@ -85,10 +85,10 @@ var DateinputModule = BaseModule.extend(module, {
 		var example = this.addExample("使用原生日期组件");
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDateInput(this, {native: true}));
+		demo.append(new UIDateInput(this, {date: "2018-01-02", native: true}));
 
 		var source = [];
-		source.push("new UIDateInput(context, {native: true}).render(target);");
+		source.push("new UIDateInput(context, {date: '2018-01-02', native: true}).render(target);");
 
 		this.showDemo(example, demo, source);
 	}

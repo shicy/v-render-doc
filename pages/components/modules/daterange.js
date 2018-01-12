@@ -39,13 +39,13 @@ var DaterangeModule = BaseModule.extend(module, {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UIDateRange(this, {start: "2017-08-01", end: "2017-08-25", prompt: "请选择日期"}));
+		demo.append(new UIDateRange(this, {prompt: "请选择日期"}));
 
 		var source = [];
 		source.push("// 服务端创建");
-		source.push("new UIDateRange(context, {start: '2017-08-01', end: '2017-08-25'}).render(target)");
+		source.push("new UIDateRange(context, {prompt: '请选择日期'}).render(target)");
 		source.push("// 浏览器端创建");
-		source.push("UIDateRange.create({target: [elem], start: '2017-08-01', end: '2017-08-25'});");
+		source.push("UIDateRange.create({target: [elem], prompt: '请选择日期'});");
 
 		this.showDemo(example, demo, source, true);
 	},
