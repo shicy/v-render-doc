@@ -89,8 +89,8 @@ var DialogModule = BaseModule.extend(module, {
 		source.push("var buttons = [];");
 		source.push("buttons.push({name: 'cancel', label: '取消', type: 'cancel'});");
 		source.push("buttons.push({name: 'reset', label: '重置', type: 'save'});");
-		source.push("buttons.push({name: 'ok', label: '保存', type: 'primary', waitting: true});");
-		source.push("buttons.push({name: 'wait', label: '等待5秒关闭', waitting: 5000});");
+		source.push("buttons.push({name: 'ok', label: '保存', type: 'primary', waitclose: true});");
+		source.push("buttons.push({name: 'close', label: '等待5秒关闭', waitclose: 5000});");
 
 		source.push("var contentView = new UIGroup(context);")
 		source.push("var dialog = new UIDialog(context, {buttons: buttons, content: contentView});");
@@ -110,14 +110,12 @@ var DialogModule = BaseModule.extend(module, {
 		source.push("    contentView.append('<div>点击了“重置”按钮..</div>');");
 		source.push("});");
 
-		source.push("dialog.on('btnWait', function () {");
+		source.push("dialog.on('btnClose', function () {");
 		source.push("    contentView.append('<div>5秒后关闭对话框</div>');");
 		source.push("    var seconds = 5;");
 		source.push("    var timerId = setInterval(function () {");
-		source.push("        if (--seconds <= 0) {");
+		source.push("        if (--seconds <= 0)");
 		source.push("            clearInterval(timerId);");
-		source.push("            dialog.close();");
-		source.push("        }");
 		source.push("        contentView.append('<div>' + seconds + '秒后关闭对话框</div>');");
 		source.push("    }, 1000};");
 		source.push("});");
