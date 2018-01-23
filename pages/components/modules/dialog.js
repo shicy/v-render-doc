@@ -48,14 +48,9 @@ var DialogModule = BaseModule.extend(module, {
 		source.push("// 服务端创建");
 		source.push("new UIDialog(context, {title: '标题', content: '内容'}).render(target)");
 		source.push("// 浏览器端创建");
-		source.push("var dialog = UIDialog.create({");
-		source.push("    title: '对话框标题',");
-		source.push("    content: '对话框内容<br/><a>支持HTML格式</a>'");
-		source.push("});");
-		// source.push("dialog.on('btnclk', function (e, name) {");
-		// source.push("    alert('你选择了“' + (name == 'submit' ? '确定' : '取消') + '”');");
-		// source.push("    dialog.close();");
-		// source.push("});");
+		source.push("var dialog = UIDialog.create({target: [elem], title: '标题', content: '内容'});");
+		source.push("// 打开对话框")
+		source.push("dialog.open();");
 
 		this.showDemo(example, demo, source, true);
 	},
@@ -65,16 +60,16 @@ var DialogModule = BaseModule.extend(module, {
 
 		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UIButton(this, {name: "example2-small", label: "小对话框"}));
-		demo.append(new UIButton(this, {name: "example2-normal", label: "中等对话框"}));
+		demo.append(new UIButton(this, {name: "example2-normal", label: "普通对话框"}));
 		demo.append(new UIButton(this, {name: "example2-big", label: "大对话框"}));
 		demo.append(new UIButton(this, {name: "example2-auto", label: "自适应大小"}));
 
 		var source = [];
-		source.push("new UIDialog(context, {size: 'small'});");
-		source.push("new UIDialog(context, {size: 'normal'});");
-		source.push("new UIDialog(context, {size: 'big'});");
-		source.push("var contentView = \"<div style='width: 450px; height: 320px;'>宽450, 高320</div>\";");
-		source.push("new UIDialog(context, {size: 'auto', content: contentView});");
+		source.push("UIDialog.create({size: 'small'}).open();");
+		source.push("UIDialog.create({size: 'normal'}).open();");
+		source.push("UIDialog.create({size: 'big'}).open();");
+		source.push("var autoDialogView = \"<div style='width:530px;height:360px;background:#d1ebf3;'></div>\"");
+		source.push("UIDialog.create({size: 'auto', content: autoDialogView}).open();");
 
 		this.showDemo(example, demo, source);
 	},
@@ -88,35 +83,35 @@ var DialogModule = BaseModule.extend(module, {
 		var source = [];
 		source.push("var buttons = [];");
 		source.push("buttons.push({name: 'cancel', label: '取消', type: 'cancel'});");
-		source.push("buttons.push({name: 'reset', label: '重置', type: 'save'});");
+		source.push("buttons.push({name: 'reset', label: '重置', type: 'info'});");
 		source.push("buttons.push({name: 'ok', label: '保存', type: 'primary', waitclose: true});");
-		source.push("buttons.push({name: 'close', label: '等待5秒关闭', waitclose: 5000});");
+		source.push("buttons.push({name: 'close', label: '等待5秒关闭', type: 'danger', waitclose: 5000});");
 
-		source.push("var contentView = new UIGroup(context);")
-		source.push("var dialog = new UIDialog(context, {buttons: buttons, content: contentView});");
+		source.push("var contentView = UIGroup.create();");
+		source.push("var dialog = UIDialog.create({buttons: buttons, content: contentView}).open();");
 
-		source.push("dialog.on('btnOk', function () {");
+		source.push("dialog.on('btn_ok', function () {");
 		source.push("    contentView.append('<div>点击了“保存”按钮..</div>');");
 		source.push("    setTimeout(function () {");
-		source.push("        dialog.setButtonWaitting('ok', false);");
+		source.push("        dialog.waitting(false, 'ok');");
 		source.push("    }, 2000);");
 		source.push("});");
 
-		source.push("dialog.on('btnCancel', function () {");
-		source.push("    contentView.append('<div>点击了“取消”按钮..</div>');");
+		source.push("dialog.on('btn_cancel', function () {");
+		source.push("    contentView.append('<div>点击了“取消”按钮..（因为有事件绑定所以不自动关闭了）</div>');");
 		source.push("});");
 
-		source.push("dialog.on('btnReset', function () {");
+		source.push("dialog.on('btn_reset', function () {");
 		source.push("    contentView.append('<div>点击了“重置”按钮..</div>');");
 		source.push("});");
 
-		source.push("dialog.on('btnClose', function () {");
+		source.push("dialog.on('btn_close', function () {");
 		source.push("    contentView.append('<div>5秒后关闭对话框</div>');");
 		source.push("    var seconds = 5;");
 		source.push("    var timerId = setInterval(function () {");
 		source.push("        if (--seconds <= 0)");
 		source.push("            clearInterval(timerId);");
-		source.push("        contentView.append('<div>' + seconds + '秒后关闭对话框</div>');");
+		source.push("        dialog.setButtonValue('close', seconds + '秒后关闭对话框');");
 		source.push("    }, 1000};");
 		source.push("});");
 
