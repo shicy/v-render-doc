@@ -41,8 +41,11 @@ var DialogModule = BaseModule.extend(module, {
 	showExample1: function () {
 		var example = this.addExample("基本用法");
 
-		var demo = new UIHGroup(this, {gap: 10});
-		demo.append(new UIButton(this, {name: "example1-btn", label: "点击打开对话框"}));
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
+		demo.add(new UIGroup(this))
+			.append(new UIButton(this, {name: "example1-btn", label: "点击打开对话框"}));
 
 		var source = [];
 		source.push("// 服务端创建");
@@ -56,13 +59,18 @@ var DialogModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
+		if (this.isApp)
+			return ;
+
 		var example = this.addExample("对话框大小");
 
-		var demo = new UIHGroup(this, {gap: 10});
-		demo.append(new UIButton(this, {name: "example2-small", label: "小对话框"}));
-		demo.append(new UIButton(this, {name: "example2-normal", label: "普通对话框"}));
-		demo.append(new UIButton(this, {name: "example2-big", label: "大对话框"}));
-		demo.append(new UIButton(this, {name: "example2-auto", label: "自适应大小"}));
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example2-small", label: "小对话框"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example2-normal", label: "普通对话框"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example2-big", label: "大对话框"}));
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example2-auto", label: "自适应大小"}));
 
 		var source = [];
 		source.push("UIDialog.create({size: 'small'}).open();");
@@ -77,19 +85,21 @@ var DialogModule = BaseModule.extend(module, {
 	showExample3: function () {
 		var example = this.addExample("自定义按钮");
 
-		var demo = new UIHGroup(this, {gap: 10});
-		demo.append(new UIButton(this, {name: "example3-btn", label: "点击打开对话框"}));
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example3-btn", label: "点击打开对话框"}));
 
 		var source = [];
 		source.push("var buttons = [];");
 		source.push("buttons.push({name: 'cancel', label: '取消', type: 'cancel'});");
 		source.push("buttons.push({name: 'reset', label: '重置', type: 'info'});");
 		source.push("buttons.push({name: 'ok', label: '保存', type: 'primary', waitclose: true});");
-		source.push("buttons.push({name: 'close', label: '等待5秒关闭', type: 'danger', waitclose: 5000});");
-
+		source.push("");
 		source.push("var contentView = UIGroup.create();");
+		source.push("var closeBtn = contentView.add(UIButton.create({name: 'close', label: '点击5秒后关闭对话框', type: 'danger'}));");
 		source.push("var dialog = UIDialog.create({buttons: buttons, content: contentView}).open();");
-
+		source.push("");
 		source.push("dialog.on('btn_ok', function () {");
 		source.push("    contentView.append('<div>点击了“保存”按钮..</div>');");
 		source.push("    setTimeout(function () {");
@@ -105,13 +115,15 @@ var DialogModule = BaseModule.extend(module, {
 		source.push("    contentView.append('<div>点击了“重置”按钮..</div>');");
 		source.push("});");
 
-		source.push("dialog.on('btn_close', function () {");
+		source.push("closeBtn.on('tap', function () {");
 		source.push("    contentView.append('<div>5秒后关闭对话框</div>');");
 		source.push("    var seconds = 5;");
 		source.push("    var timerId = setInterval(function () {");
-		source.push("        if (--seconds <= 0)");
+		source.push("        if (--seconds <= 0) {");
 		source.push("            clearInterval(timerId);");
-		source.push("        dialog.setButtonValue('close', seconds + '秒后关闭对话框');");
+		source.push("            dialog.close()");
+		source.push("        }");
+		source.push("        closeBtn.val(seconds + '秒后关闭对话框');");
 		source.push("    }, 1000};");
 		source.push("});");
 
@@ -125,11 +137,14 @@ var DialogModule = BaseModule.extend(module, {
 	showExample4: function () {
 		var example = this.addExample("自定义内边距");
 
-		var demo = new UIHGroup(this, {gap: 10});
-		demo.append(new UIButton(this, {name: "example4-btn", label: "无内边距对话框"}));
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
+		demo.add(new UIGroup(this)).append(new UIButton(this, {name: "example4-btn", label: "无内边距对话框"}));
 
 		var source = [];
-		source.push("new UIDialog(context, {padding: 0});");
+		source.push("var contentView = \"<div style='background:bisque;'>内容填充，无边距</div>\"");
+		source.push("UIDialog.create(context, {fill: true, content: contentView}).open();");
 
 		this.showDemo(example, demo, source);
 	},
@@ -137,16 +152,18 @@ var DialogModule = BaseModule.extend(module, {
 	showExample5: function () {
 		var example = this.addExample("设置组件内容");
 
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
 		var demo = new UIGroup(this);
-		demo.add(new UIHGroup(this, {gap: 10}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {name: "example5-btn", label: "点击打开对话框"}));
 
-		var contentView = new UIGroup(this);
+		var contentView = new UIGroup(this, {gap: 10});
 		contentView.append("<div>添加一个组件作为对话框内容</div>");
 		contentView.add(new UIGroup(this)).append(new UITextView(this, {prompt: "输入框"}));
 		contentView.add(new UIGroup(this)).append(new UIButton(this, {label: "按钮"}));
 		demo.add(new UIGroup(this))
-			.append(new UIDialog(this, {content: contentView, showbtn: "[name='example5-btn']"}));
+			.append(new UIDialog(this, {content: contentView, openbtn: "[name='example5-btn']"}));
 
 		var source = [];
 		source.push("var contentView = new UIGroup(context);");

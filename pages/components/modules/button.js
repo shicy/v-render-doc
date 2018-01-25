@@ -292,8 +292,9 @@ var ButtonModule = BaseModule.extend(module, {
 	showExample7: function () {
 		var example = this.addExample("等待状态按钮");
 
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
 		var demo = new UIGroup(this, {gap: 10});
-		demo.add(new UIHGroup(this, {gap: 10}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "默认", waitting: true}))
 			.append(new UIButton(this, {label: "主按钮", type: "primary", waitting: true}))
 			.append(new UIButton(this, {label: "成功", type: "success", icon: true, waitting: true}))
@@ -302,7 +303,7 @@ var ButtonModule = BaseModule.extend(module, {
 			.append(new UIButton(this, {label: "信息", type: "info", icon: true, waitting: true}))
 			.append(new UIButton(this, {label: "文本按钮", type: "text", icon: true, waitting: true}))
 			.append(new UIButton(this, {label: "超链接按钮", type: "link", icon: true, waitting: true}));
-		demo.add(new UIHGroup(this, {gap: 10}))
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "点击进入等待状态", type: "primary", wait: true}))
 			.append(new UIButton(this, {label: "点击等待5秒后恢复", type: "primary", wait: 5000}));
 

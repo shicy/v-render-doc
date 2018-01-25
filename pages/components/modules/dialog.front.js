@@ -30,12 +30,13 @@ view.on("click", "[name='example2-auto']", function (e) {
 
 view.on("click", "[name='example3-btn']", function (e) {
 	var contentView = UIGroup.create();
+	var closeBtn = contentView.add(UIButton.create({name: "close", label: "点击5秒后关闭对话框", type: "danger"}));
 
 	var buttons = [];
 	buttons.push({name: "cancel", label: "取消", type: "cancel"});
 	buttons.push({name: "reset", label: "重置", type: "info"});
 	buttons.push({name: "ok", label: "保存", type: "primary", waitclose: true});
-	buttons.push({name: "close", label: "5秒后关闭对话框", type: "danger", waitclose: 5000});
+	// buttons.push({name: "close", label: "5秒后关闭对话框", type: "danger", waitclose: 5000});
 
 	var dialog = UIDialog.create({buttons: buttons, content: contentView}).open();
 
@@ -54,16 +55,22 @@ view.on("click", "[name='example3-btn']", function (e) {
 		contentView.append('<div>点击了“取消”按钮..（因为有事件绑定所以不自动关闭了）</div>');
 	});
 
-	dialog.on("btn_close", function (e) {
+	closeBtn.on("tap", function (e) {
 		contentView.append('<div>5秒后关闭对话框</div>');
 		var seconds = 5;
 		var timerId = setInterval(function () {
-			if (--seconds <= 0)
+			if (--seconds <= 0) {
 				clearInterval(timerId);
+				dialog.close();
+			}
 			else {
-				contentView.append('<div>' + seconds + '秒后关闭对话框</div>');
-				dialog.setButtonValue("close", seconds + "秒后关闭对话框");
+				closeBtn.val(seconds + "秒后关闭对话框");
 			}
 		}, 1000);
 	});
+});
+
+view.on("click", "[name='example4-btn']", function (e) {
+	var contentView = "<div style='background:bisque;'>内容填充，无边距</div>";
+	UIDialog.create({content: contentView, fill: true}).open();
 });
