@@ -38,7 +38,7 @@ view.on("click", "[name='example3-btn']", function (e) {
 	buttons.push({name: "ok", label: "保存", type: "primary", waitclose: true});
 	// buttons.push({name: "close", label: "5秒后关闭对话框", type: "danger", waitclose: 5000});
 
-	var dialog = UIDialog.create({buttons: buttons, content: contentView}).open();
+	var dialog = UIDialog.create({buttons: buttons, content: contentView, touchCloseEnabled: false}).open();
 
 	dialog.on("btnclk", function (e, name) {
 		contentView.append('<div>统一事件“btnclk”，按钮名称：' + name + '</div>');
