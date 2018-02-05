@@ -121,47 +121,13 @@ var PaginatorModule = BaseModule.extend(module, {
 	showExample7: function () {
 		var example = this.addExample("自定义按钮名称");
 
-		var buttonLabelHandler = function (page) {
-			switch (page) {
-				case "first":
-					return "首页";
-				case "last":
-					return "末页";
-				case "prev":
-					return "上一页";
-				case "next":
-					return "下一页";
-				case "skip":
-					return "跳转";
-				default:
-					return "第" + page + "页";
-			}
-		};
-
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, buttons: ["首页", "上一页", "下一页", "末页", "跳转"]}));
-		demo.append(new UIPaginator(this, {total: 12345, mode: "spread", buttons: buttonLabelHandler}));
+		demo.append(new UIPaginator(this, {total: 12345, mode: "spread", buttons: [false, "上一页", "下一页", false, "跳转"]}));
 
 		var source = [];
 		source.push("new UIPaginator(context, {total: 12345, buttons: ['首页', '上一页', '下一页', '末页', '跳转']});");
-		source.push("// 自定义分页回调方法");
-		source.push("var buttonLabelHandler = function (page) {");
-		source.push("    switch (page) {");
-		source.push("        case 'first':");
-		source.push("            return '首页';");
-		source.push("        case 'last':");
-		source.push("            return '末页';");
-		source.push("        case 'prev':");
-		source.push("            return '上一页';");
-		source.push("        case 'next':");
-		source.push("            return '下一页';");
-		source.push("        case 'skip':");
-		source.push("            return '跳转';");
-		source.push("        default:");
-		source.push("            return ('第' + page + '页');");
-		source.push("    }");
-		source.push("};");
-		source.push("new UIPaginator(context, {total: 12345, mode: 'spread', buttons: buttonLabelHandler});");
+		source.push("new UIPaginator(context, {total: 12345, mode: 'spread', buttons: [false, '上一页', '下一页', false, '跳转']});");
 
 		this.showDemo(example, demo, source);
 	},
