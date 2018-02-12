@@ -9,6 +9,17 @@ var menus = body.find(".sidemenu");
 var container = body.find(".main-container");
 var typeNames = {"properties": "属性", "methods": "方法", "events": "事件"};
 
+VRender.Component.dataAdapter = function (data) {
+	if (Utils.isNotNull(data)) {
+		if (Utils.isArray(data))
+			return {total: data.length, data: data};
+		var total = parseInt(data.total) || 0;
+		data = data.rows || data.data || data;
+		return {total: total, data: data};
+	}
+	return data;
+};
+
 VRender.on(VRender.event_routerchange, function (e, state) {
 	menus.find(".active").removeClass("active");
 	if (state && state.name) {
