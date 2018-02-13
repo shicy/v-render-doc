@@ -73,6 +73,7 @@ var ListViewModule = BaseModule.extend(module, {
 		this.showExample10();
 		this.showExample11();
 		this.showExample12();
+		this.showExample13();
 		this.showExampleData();
 	},
 
@@ -270,6 +271,18 @@ var ListViewModule = BaseModule.extend(module, {
 		var source = [];
 		source.push("var pager = new UIPaginator(context, {size: 10});");
 		source.push("new UIListView(context, {apiName: 'data.component.items', pager: pager});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample13: function () {
+		var example = this.addExample("空列表显示");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIListView(this, {empty: "你还没有相关信息"}));
+
+		var source = [];
+		source.push("new UIListView(context, {emptyText: '你还没有相关信息'});");
 
 		this.showDemo(example, demo, source);
 	},

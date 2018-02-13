@@ -45,7 +45,7 @@ RouterAdapter.prototype.action = function (name, params, callback) {
 	if (name === "data.component.items") {
 		setTimeout(function () {
 			callback({code: 0, data: {total: 123, rows: getListItems(params.data)}});
-		}, 400);
+		}, 2000);
 		return true;
 	}
 	return false;
@@ -54,8 +54,8 @@ RouterAdapter.prototype.action = function (name, params, callback) {
 ///////////////////////////////////////////////////////////
 var getListItems = function (params) {
 	var total = 123;
-	var size = Math.max(0, parseInt(params.size)) || 20;
-	var page = Math.max(0, parseInt(params.page)) || 1;
+	var size = Math.max(0, parseInt(params.p_size)) || 20;
+	var page = Math.max(0, parseInt(params.p_no)) || 1;
 	var items = [];
 	var start = ((page - 1) * size) + 1;
 	for (var i = 0; i < size && start <= total; i++) {
