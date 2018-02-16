@@ -11,7 +11,11 @@ var RouterAdapter = module.exports = function (context) {
 	this.context = context;
 };
 
-RouterAdapter.prototype.router = function (name, params, path, callback) {
+// RouterAdapter.prototype.before = function (path, params, callback) {
+// 	console.log(path, params);
+// };
+
+RouterAdapter.prototype.view = function (name, params, callback) {
 	var names = name.substr(1).split("/");
 	var viewpath = null;
 
@@ -35,16 +39,16 @@ RouterAdapter.prototype.router = function (name, params, path, callback) {
 	}
 
 	if (viewpath) {
-		callback(VRender.RouterStatus.OK, viewpath);
+		callback(false, VRender.RouterStatus.OK, viewpath);
 		return true;
 	}
 	return false;
 };
 
-RouterAdapter.prototype.action = function (name, params, callback) {
+RouterAdapter.prototype.api = function (name, params, callback) {
 	if (name === "data.component.items") {
 		setTimeout(function () {
-			callback({code: 0, data: {total: 123, rows: getListItems(params.data)}});
+			callback(false, {code: 0, data: {total: 123, rows: getListItems(params.data)}});
 		}, 2000);
 		return true;
 	}
