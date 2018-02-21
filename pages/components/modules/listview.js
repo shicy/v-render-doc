@@ -39,7 +39,7 @@ exampleData.push({name: "滴滴出行", title: "滴滴出行", type: "生活",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_288717_1517552367/96", apk: "com.sdu.didi.psnger",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=com.sdu.didi.psnger",
 	desc: "【近3亿用户的选择】2012年诞生的滴滴现已成为广受用户欢迎的城市出行应用！覆盖全国超过400个城市，乘客叫车成功率94%以上！",
-	version: "5.1.32", date: 2018-2-2, score: 4.6, size: 34.37});
+	version: "5.1.32", date: "2018-2-2", score: 4.6, size: 34.37});
 exampleData.push({name: "饿了么", title: "饿了么", type: "生活",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_1029694_1518002951/96", apk: "me.ele",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=me.ele",
@@ -159,6 +159,7 @@ var ListViewModule = BaseModule.extend(module, {
 	showExample7: function () {
 		var example = this.addExample("使用项渲染器");
 
+		var isApp = this.isRenderAsApp();
 		var myItemRenderer = function ($, item, data) {
 			var item = $("<div style='padding:10px 0px 10px 55px;'></div>");
 			var icon = $("<img style='position:absolute; width:48px; height:48px; left:0px; top:10px'>").appendTo(item);
@@ -170,6 +171,14 @@ var ListViewModule = BaseModule.extend(module, {
 			title.html("<a href='" + data.url + "' style='color:#333; font-size:18px;'>" + data.title + "</a>");
 			infos.text(data.size.toFixed(2) + "M，版本号：V" + data.version + "，更新时间：" + data.date);
 			desc.text(data.desc);
+
+			if (isApp) {
+				item.css({padding: "0.1rem 0px 0.1rem 0.55rem"});
+				icon.css({width: "0.48rem", height: "0.48rem", top: "0.1rem"});
+				title.children().css({"font-size": "0.16rem"});
+				infos.css({"font-size": "0.09rem"});
+				desc.css({"font-size": "0.14rem", "margin-top": "0.05rem"});
+			}
 
 			return item;
 		};
@@ -270,7 +279,7 @@ var ListViewModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var pager = new UIPaginator(context, {size: 10});");
-		source.push("new UIListView(context, {apiName: 'data.component.items', pager: pager});");
+		source.push("new UIListView(context, {apiName: 'data.component.items', paginator: pager});");
 
 		this.showDemo(example, demo, source);
 	},
