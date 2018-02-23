@@ -90,7 +90,7 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "score", title: "评分"});
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true}));
 
 		var source = [];
 		source.push("var columns = [];");
@@ -112,10 +112,10 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "desc", title: "应用信息"});
 
 		var demo = new UIGroup(this, {gap: 10});
-		// demo.append("<div>单选</div>");
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: 2}));
-		// demo.append("<div>多选</div>");
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: [2,3]}));
+		demo.append("<div>单选</div>");
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: 2}));
+		demo.append("<div>多选</div>");
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, multi: true, selectedIndex: [2,3]}));
 
 		var source = [];
 		source.push("var columns = [];");
@@ -124,7 +124,7 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("// 单选");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 2});");
 		source.push("// 多选");
-		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: [2,3]});");
+		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, multi: true, selectedIndex: [2,3]});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -133,23 +133,23 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("排序");
 
 		var columns = [];
-		columns.push({name: "name", title: "名称", sortable: true, sort: "asc"});
+		columns.push({name: "name", title: "名称", sortable: true, sortType: "asc"});
 		columns.push({name: "type", title: "类型", sortable: true});
+		columns.push({name: "version", title: "版本", sortable: true});
+		columns.push({name: "date", title: "发布日期", sortable: true, dataType: "date"});
 		columns.push({name: "score", title: "评分", sortable: true});
-		columns.push({name: "size", title: "大小", sortable: true});
-		columns.push({name: "date", title: "发布日期", sortable: "date"});
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
 		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, sortFunction: sortFun}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', sortable: true, sort: 'asc'});");
+		source.push("columns.push({name: 'name', title: '名称', sortable: true, sortType: 'asc'});");
 		source.push("columns.push({name: 'type', title: '类型', sortable: true});");
+		source.push("columns.push({name: 'version', title: '版本', sortable: true});");
+		source.push("columns.push({name: 'date', title: '发布日期', sortable: true, dataType: 'date'});");
 		source.push("columns.push({name: 'score', title: '评分', sortable: true});");
-		source.push("columns.push({name: 'size', title: '大小', sortable: true});");
-		source.push("columns.push({name: 'date', title: '发布日期', sortable: 'date'});");
 		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource});");
 		source.push("// 前端排序事件");
 		source.push("grid.on('sortchange', function (e, column, sortType) {});");
