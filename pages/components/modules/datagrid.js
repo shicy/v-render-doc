@@ -132,27 +132,71 @@ var DatagridModule = BaseModule.extend(module, {
 	showExample3: function () {
 		var example = this.addExample("排序");
 
+		var nameSortTypes = [];
+		nameSortTypes.push({name: "asc", label: "升序"});
+		nameSortTypes.push({name: "desc", label: "降序"});
+		nameSortTypes.push({name: "hot", label: "热门", icon: "/image/icons/c01.png"});
+
+		var versionSortFunction = function (a, b, sortType) {
+			a = a.version.split(".");
+			b = b.version.split(".");
+			var sortFlag = sortType == "asc" ? 1 : -1;
+			for (var i = 0; i < a.length; i++) {
+				if (i < b.length) {
+					var t = parseInt(a[i]) - parseInt(b[i]);
+					if (t)
+						return t * sortFlag;
+				}
+				else {
+					return sortFlag;
+				}
+			}
+			return (a.length < b.length) ? sortFlag : 0;
+		};
+
 		var columns = [];
-		columns.push({name: "name", title: "名称", sortable: true, sortType: "asc"});
+		columns.push({name: "name", title: "名称", sortable: nameSortTypes, sortType: "asc"});
 		columns.push({name: "type", title: "类型", sortable: true});
-		columns.push({name: "version", title: "版本", sortable: true});
+		columns.push({name: "version", title: "版本", sortable: versionSortFunction});
 		columns.push({name: "date", title: "发布日期", sortable: true, dataType: "date"});
 		columns.push({name: "score", title: "评分", sortable: true});
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, sortFunction: sortFun}));
 
 		var source = [];
+		source.push("var nameSortTypes = [];");
+		source.push("nameSortTypes.push({type: 'asc', label: '升序'});");
+		source.push("nameSortTypes.push({type: 'desc', label: '降序'});");
+		source.push("nameSortTypes.push({type: 'hot', label: '热门', icon: '/image/icons/c01.png'});");
+		source.push("");
+		source.push("var versionSortFunction = function (a, b, sortType) {");
+		source.push("    a = a.version.split('.');");
+		source.push("    b = b.version.split('.');");
+		source.push("    var sortFlag = sortType == 'asc' ? 1 : -1;");
+		source.push("    for (var i = 0; i < a.length; i++) {");
+		source.push("        if (i < b.length) {");
+		source.push("            var t = parseInt(a[i]) - parseInt(b[i]);");
+		source.push("            if (t)");
+		source.push("                return t * sortFlag;");
+		source.push("        }");
+		source.push("        else {");
+		source.push("            return sortFlag;");
+		source.push("        }");
+		source.push("    }");
+		source.push("    return (a.length < b.length) ? sortFlag : 0;");
+		source.push("}");
+		source.push("");
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', sortable: true, sortType: 'asc'});");
+		source.push("columns.push({name: 'name', title: '名称', sortable: nameSortTypes, sortType: 'asc'});");
 		source.push("columns.push({name: 'type', title: '类型', sortable: true});");
-		source.push("columns.push({name: 'version', title: '版本', sortable: true});");
+		source.push("columns.push({name: 'version', title: '版本', sortable: versionSortFunction});");
 		source.push("columns.push({name: 'date', title: '发布日期', sortable: true, dataType: 'date'});");
 		source.push("columns.push({name: 'score', title: '评分', sortable: true});");
 		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource});");
+		source.push("");
 		source.push("// 前端排序事件");
-		source.push("grid.on('sortchange', function (e, column, sortType) {});");
+		source.push("grid.on('sortchange', function (e, columnName, sortType) {});");
 
 		this.showDemo(example, demo, source);
 	},
