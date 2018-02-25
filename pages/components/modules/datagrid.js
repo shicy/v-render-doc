@@ -133,9 +133,9 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("排序");
 
 		var nameSortTypes = [];
-		nameSortTypes.push({name: "asc", label: "升序"});
-		nameSortTypes.push({name: "desc", label: "降序"});
-		nameSortTypes.push({name: "hot", label: "热门", icon: "/image/icons/c01.png"});
+		nameSortTypes.push({type: "asc", label: "升序"});
+		nameSortTypes.push({type: "desc", label: "降序"});
+		nameSortTypes.push({type: "hot", label: "热门", icon: "/image/icons/c01.png"});
 
 		var versionSortFunction = function (a, b, sortType) {
 			a = a.version.split(".");
@@ -218,12 +218,12 @@ var DatagridModule = BaseModule.extend(module, {
 		var columns = [];
 		columns.push({name: "name", title: "名称", filter: "input"});
 		columns.push({name: "type", title: "类型", filter: "enum"});
-		columns.push({name: "score", title: "评分", filter: scoreFilter});
+		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true});
 		columns.push({name: "size", title: "大小", filter: sizeFilter, filterFunction: sizeFilterFunction});
 		columns.push({name: "date", title: "发布日期"});
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
 
 
 		var source = [];
