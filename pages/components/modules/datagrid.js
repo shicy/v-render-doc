@@ -196,7 +196,7 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource});");
 		source.push("");
 		source.push("// 前端排序事件");
-		source.push("grid.on('sortchange', function (e, columnName, sortType) {});");
+		source.push("grid.on('sort', function (e, columnName, sortType) {});");
 
 		this.showDemo(example, demo, source);
 	},
