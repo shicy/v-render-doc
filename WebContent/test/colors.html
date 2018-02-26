@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>NodeJS组件式WEB开发框架-VRender</title>
+	<meta name="viewport" content="initial-scale=1">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<script type="text/javascript" src="/VRender.core.js"></script>
+
+	<style type="text/css">
+		.palette {
+			line-height: 0px;
+		}
+		.palette span {
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="main-body">
+		<div class="palette"></div>
+	</div>
+	<script type="text/javascript">
+		var colors = [];
+
+		var ColorHex = ["00", "33", "66", "99", "CC", "FF"];
+		for (var m = 0; m < 2; m++) {
+			for (var i = 0; i < 6; i++) {
+				var row = [];
+				colors.push(row);
+				for (var j = 0; j < 3; j++) {
+					for (var k = 0; k < 6; k++) {
+						row.push("#" + ColorHex[i] + ColorHex[j+m*3] + ColorHex[k]);
+					}
+				}
+			}
+		}
+
+		// var ColorHex = ["00", "55", "aa", "ff"];
+		// for (var m = 0; m < 2; m++) {
+		// 	for (var i = 0; i < 4; i++) {
+		// 		var row = [];
+		// 		colors.push(row);
+		// 		for (var j = 0; j < 2; j++) {
+		// 			for (var k = 0; k < 4; k++) {
+		// 				row.push("#" + ColorHex[i] + ColorHex[j+m*2] + ColorHex[k]);
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+		var target = $(".palette");
+		for (var i = 0; i < colors.length; i++) {
+			var row = $("<div></div>").appendTo(target);
+			for (var j = 0; j < colors[i].length; j++) {
+				var item = $("<span style='background-color: " + colors[i][j] + "'></span>").appendTo(row);
+				item.attr("data-v", colors[i][j]);
+				// item.css("background-color", colors[i][j]);
+			}
+		}
+	</script>
+</body>
+</html>
