@@ -135,7 +135,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var nameSortTypes = [];
 		nameSortTypes.push({type: "asc", label: "升序"});
 		nameSortTypes.push({type: "desc", label: "降序"});
-		nameSortTypes.push({type: "hot", label: "热门", icon: "/image/icons/c01.png"});
+		nameSortTypes.push({type: "hot", label: "热门", icon: "/image/icons/c01.png", custom: true});
 
 		var versionSortFunction = function (a, b, sortType) {
 			a = a.version.split(".");
@@ -168,7 +168,7 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("var nameSortTypes = [];");
 		source.push("nameSortTypes.push({type: 'asc', label: '升序'});");
 		source.push("nameSortTypes.push({type: 'desc', label: '降序'});");
-		source.push("nameSortTypes.push({type: 'hot', label: '热门', icon: '/image/icons/c01.png'});");
+		source.push("nameSortTypes.push({type: 'hot', label: '热门', icon: '/image/icons/c01.png', custom: true});");
 		source.push("");
 		source.push("var versionSortFunction = function (a, b, sortType) {");
 		source.push("    a = a.version.split('.');");
@@ -228,7 +228,7 @@ var DatagridModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', filter: 'input'});");
+		source.push("columns.push({name: 'name', title: '名称', filter: true});");
 		source.push("columns.push({name: 'type', title: '类型', filter: 'enum'});");
 		source.push("columns.push({name: 'score', title: '评分', filter: scoreFilter});");
 		source.push("columns.push({name: 'size', title: '大小', filter: sizeFilter, filterFunction: sizeFilterFun});");
