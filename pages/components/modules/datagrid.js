@@ -218,7 +218,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var columns = [];
 		columns.push({name: "name", title: "名称", filter: true});
 		columns.push({name: "type", title: "类型", filter: "enum"});
-		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true});
+		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true, filterValue: 2});
 		columns.push({name: "size", title: "大小", filter: sizeFilter, filterFunction: sizeFilterFunction});
 		columns.push({name: "date", title: "发布日期"});
 
