@@ -69,6 +69,7 @@ var DatagridModule = BaseModule.extend(module, {
 		this.showExample4();
 		this.showExample5();
 		this.showExample6();
+		this.showExample6_1();
 		this.showExample7();
 		this.showExample8();
 		this.showExample9();
@@ -108,7 +109,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("显示行选择框");
 
 		var columns = [];
-		columns.push({name: "name", title: "名称"});
+		columns.push({name: "name", title: "名称", width: 120});
 		columns.push({name: "desc", title: "应用信息"});
 
 		var demo = new UIGroup(this, {gap: 10});
@@ -119,7 +120,7 @@ var DatagridModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称'});");
+		source.push("columns.push({name: 'name', title: '名称', width: 120});");
 		source.push("columns.push({name: 'desc', title: '应用信息'});");
 		source.push("// 单选");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 2});");
@@ -223,7 +224,7 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "date", title: "发布日期"});
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true}));
 
 
 		var source = [];
@@ -256,16 +257,16 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("添加列表标题图标");
 
 		var columns = [];
-		columns.push({name: "name", title: "名称", icon: "/image/icons/c01.png"});
-		columns.push({name: "desc", title: "应用信息", icon: "/image/icons/c02.png"});
+		columns.push({name: "name", title: "名称", icon: "/image/icons/d01.png", width: 120});
+		columns.push({name: "desc", title: "应用信息", icon: "/image/icons/a07.png"});
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', icon: '/image/icons/c01.png'});");
-		source.push("columns.push({name: 'desc', title: '应用信息', icon: '/image/icons/c02.png'});");
+		source.push("columns.push({name: 'name', title: '名称', icon: '/image/icons/d01.png', width: 120});");
+		source.push("columns.push({name: 'desc', title: '应用信息', icon: '/image/icons/d02.png'});");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource});");
 
 		this.showDemo(example, demo, source);
@@ -275,37 +276,56 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("自定义列表标题");
 
 		var columns = [];
-		columns.push({name: "name", title: "标题", view: "<div style='color:#fff;background-color:#333;'>标题</div>"});
-		columns.push({name: "desc", title: "应用信息", view: "<div style='color:#red;'>应用信息</div>"});
+		columns.push({name: "name", title: "标题", width: 120,
+			focusHtmlTitle: "<div style='color:#fff;background-color:#333;'>标题</div>"});
+		columns.push({name: "desc", title: "应用信息", 
+			focusHtmlTitle: "<div style='color:red;'>应用信息</div>"});
 
+		var demo = new UIGroup(this, {gap: 10});
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+
+		var source = [];
+		source.push("var columns = [];");
+		source.push("columns.push({\n\tname: 'name', title: '标题', width: 120, \n\tfocusHtmlTitle: '<div " +
+			"style=\"color:#fff;background-color:#333;\">标题</div>'\n});");
+		source.push("columns.push({\n\tname: 'desc', title: '应用信息', \n\tfocusHtmlTitle: '<div " +
+			"style=\"color:red;\">应用信息</div>'\n});");
+		source.push("new UIDatagrid(context, {columns: columns, data: dataSource});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample6_1: function () {
+		var example = this.addExample("自定义列表标题（headRenderer）");
+		var columns = [];
+		columns.push({name: "name", title: "标题", width: 120});
+		columns.push({name: "desc", title: "应用信息"});
+
+		var $ = VRender.$;
 		var myHeadRenderer = function (column, index) {
 			var view = $("<div></div>").text(column.title);
-			view.css({color: "#fff", backgroundColor: "#333"});
+			view.css({lineHeight: "35px", color: "#fff", backgroundColor: "#08bcf3", paddingLeft: "10px"});
 			if (index > 0)
 				view.css({borderLeft: "1px solid #fff"});
 			return view;
 		};
 
 		var demo = new UIGroup(this, {gap: 10});
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
-		// demo.append("// 使用 headRenderer");
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, headRenderer: myHeadRenderer}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, headRenderer: myHeadRenderer}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '标题', view: '<div style=\"color:#fff;background-color:#333;\">标题</div>'});");
-		source.push("columns.push({name: 'desc', title: '应用信息', view: '<div style=\"color:#red;\">应用信息</div>'});");
-		source.push("new UIDatagrid(context, {columns: columns, data: dataSource});");
+		source.push("columns.push({name: 'name', title: '标题', width: 120});");
+		source.push("columns.push({name: 'desc', title: '应用信息'});");
+		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, headRenderer: myHeadRenderer});");
 		source.push("");
-		source.push("// 使用 headRenderer");
-		source.push("var myHeadRenderer = function (column, index) {");
+		source.push("function myHeadRenderer (column, index) {");
 		source.push("    var view = $('<div></div>').text(column.title);");
 		source.push("    view.css({color:'#fff', backgroundColor:'#333'});");
 		source.push("    if (index > 0)");
 		source.push("        view.css({borderLeft: '1px solid #fff'});");
 		source.push("    return view;");
-		source.push("};");
-		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, headRenderer: myHeadRenderer});");
+		source.push("}");
 
 		this.showDemo(example, demo, source);
 	},
@@ -321,7 +341,7 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "score", title: "评分"});
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, showHeader: false}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, showHeader: false}));
 
 		var source = [];
 		source.push("var columns = [];");
@@ -346,25 +366,25 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "date", title: "发布日期"});
 
 		var myColumnRenderer = function (column, data) {
-			if (column == "name")
-				return getNameView(data);
+			var $ = $ || VRender.$;
+			if (column == "name") {
+				var nameView = $("<div></div>");
+				var icon = $("<img style='display:inline-block;width:20px;height:20px;vertical-align:top;'/>");
+				var title = $("<span style='margin-left:5px;'></span>");
+				icon.appendTo(nameView).attr("src", data.icon);
+				title.appendTo(nameView).text(data.title);
+				return nameView;
+			}
 			else if (column == "version")
 				return "V" + data.version;
 			else if (column == "date")
 				return Utils.toDateString(Utils.toDate(data.date), "yyyy年MM月dd日");
-		};
-
-		var getNameView = function (data) {
-			var view = $("<div></div>");
-			var icon = $("<img/>");
-			var title = $("<span></span>");
-			icon.appendTo(view).attr("src", data.icon);
-			title.appendTo(view).text(data.title);
-			return view;
+			else if (column == "score")
+				return data.score.toFixed(2) + "分";
 		};
 
 		var demo = new UIGroup(this);
-		// demo.append(new UIDatagrid(this, {columns: columns, data: dataSource, columnRenderer: myColumnRenderer}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, columnRenderer: myColumnRenderer}));
 
 		var source = [];
 		source.push("var columns = [];");
@@ -376,21 +396,22 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, columnRenderer: myColumnRenderer});");
 		source.push("");
 		source.push("function myColumnRenderer (columnName, data) {");
-		source.push("    if (columnName == 'name')");
-		source.push("        return getNameView(data);");
+		source.push("    var $ = $ || VRender.$;");
+		source.push("    if (columnName == 'name') {");
+		source.push("        var nameView = $('<div></div>');");
+		source.push("        var icon = $('<img style=\"display:inline-block;width:20px;height:20px;vertical-align:top;\"/>');");
+		source.push("        var title = $('<span style=\"margin-left:5px;\"></span>');");
+		source.push("        icon.appendTo(nameView).attr('src', data.icon);");
+		source.push("        title.appendTo(nameView).text(data.title);");
+		source.push("        return nameView;");
+		source.push("    }");
 		source.push("    else if (columnName == 'version')");
 		source.push("        return 'V' + data.version;");
 		source.push("    else if (columnName == 'date')");
 		source.push("        return Utils.toDateString(Utils.toDate(data.date), 'yyyy年MM月dd日');");
-		source.push("}");
-		source.push("");
-		source.push("function getNameView (data) {");
-		source.push("    var view = $('<div></div>');");
-		source.push("    var icon = $('<img style=\"\"/>');");
-		source.push("    var title = $('<span style=\"\"></span>');");
-		source.push("    icon.appendTo(view).attr('src', data.icon);");
-		source.push("    title.appendTo(view).text(data.title);");
-		source.push("    return view;");
+		source.push("    else if (columnName == 'score')");
+		source.push("    	 return data.score.toFixed(2) + '分';");
+		source.push("    // else 返回默认渲染方法");
 		source.push("}");
 
 		this.showDemo(example, demo, source);
@@ -421,7 +442,7 @@ var DatagridModule = BaseModule.extend(module, {
 		};
 
 		var demo = new UIGroup(this, {gap: 10});
-		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, expendcols: 4}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, expendcols: 4}));
 		// demo.append("<div>使用 expandRenderer</div>");
 		// demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, expandRenderer: myExpandRenderer}));
 
