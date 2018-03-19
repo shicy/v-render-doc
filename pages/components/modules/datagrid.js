@@ -578,9 +578,9 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: 'c4', title: 'Column 4'});
 		columns.push({name: 'c5', title: 'Column 5'});
 
-		// var grid = demo.add(new UIDatagrid(this, {columns: columns, apiName: "data.component.items2"}));
-		// var pager = demo.add(new UIPaginator(this, {size: 10}));
-		// grid.setPaginator(pager);
+		var grid = demo.add(new UIDatagrid(this, {columns: columns, apiName: "data.component.items2"}));
+		var pager = demo.add(new UIPaginator(this, {size: 10}));
+		grid.setPaginator(pager);
 
 		var source = [];
 		source.push("var columns = [];");

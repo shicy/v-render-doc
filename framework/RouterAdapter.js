@@ -50,9 +50,16 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 		setTimeout(function () {
 			callback(false, {code: 0, data: {total: 123, rows: getListItems(params.data)}});
 		}, 2000);
-		return true;
 	}
-	return false;
+	else if (name === "data.component.items2") {
+		setTimeout(function () {
+			callback(false, {code: 0, data: {total: 123, rows: getGridItems(params.data)}});
+		}, 2000);
+	}
+	else {
+		return false;
+	}
+	return true;
 };
 
 ///////////////////////////////////////////////////////////
@@ -64,6 +71,19 @@ var getListItems = function (params) {
 	var start = ((page - 1) * size) + 1;
 	for (var i = 0; i < size && start <= total; i++) {
 		items.push("Item " + start++);
+	}
+	return items;
+};
+
+var getGridItems = function (params) {
+	var total = 123;
+	var size = Math.max(0, parseInt(params.p_size)) || 20;
+	var page = Math.max(0, parseInt(params.p_no)) || 1;
+	var items = [];
+	var start = ((page - 1) * size) + 1;
+	for (var i = 0; i < size && start <= total; i++) {
+		items.push({c1: "a" + start, c2: "b" + start, c3: "c" + start, c4: "c" + start, c5: "c" + start});
+		start += 1;
 	}
 	return items;
 };
