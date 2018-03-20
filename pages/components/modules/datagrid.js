@@ -14,34 +14,34 @@ var UIDatagrid = VRender.UIDatagrid;
 var UIPaginator = VRender.UIPaginator;
 
 var exampleData = [];
-exampleData.push({name: "携程旅行", title: "携程旅行迪士尼酒店机票火车票旅游门票攻略团购官方", type: "旅游",
+exampleData.push({id: 1, name: "携程旅行", title: "携程旅行迪士尼酒店机票火车票旅游门票攻略团购官方", type: "旅游",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_6240_1517882296/96", apk: "ctrip.android.view",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=ctrip.android.view",
 	desc: "豌豆荚小编评语：出游订酒店，订机票，火车票用携程都挺方便的，而且和去哪儿合并之后基本坐稳国内第一大的旅游出行APP了...", 
 	version: "7.10.2", date: "2018-2-6", score: 4.6, size: 54.97});
-exampleData.push({name: "微信", title: "微信", type: "社交", 
+exampleData.push({id: 2, name: "微信", title: "微信", type: "社交", 
 	icon: "http://pp.myapp.com/ma_icon/0/icon_10910_1517479239/96", apk: "com.tencent.mm",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=com.tencent.mm",
 	desc: "可以发语音、文字消息、表情、图片、视频30M流量可以收发上千条语音，省电省流量...",
 	version: "6.6.2", date: "2018-2-1", score: 3.5, size: 58.4});
-exampleData.push({name: "轩辕传奇", title: "轩辕传奇：新职业-轩辕公测", type: "游戏", subtype: "网络游戏",
+exampleData.push({id: 3, name: "轩辕传奇", title: "轩辕传奇：新职业-轩辕公测", type: "游戏", subtype: "网络游戏",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_52431620_1517795952/96", apk: "com.tencent.tmgp.xymobile",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=com.tencent.tmgp.xymobile",
 	desc: "《轩辕传奇手游》是由腾讯自研的一款以山海经神话为世界背景的手游，延续端游经典PVP玩法，与上古勇士结成血盟，百人同屏，" +
 		"实时对战争夺城主之位，给你畅快的打击快感！更有炫酷的灵宠系统、弑神玩法等你体验。《轩辕传奇手游》，给你一个突破想象的远古神话战场！",
 	version: "1.0.185.7", date: "2018-2-5", score: 4.1, size: 901.11});
-exampleData.push({name: "穿越火线", title: "穿越火线-枪战王者（荒岛特训上线）", type: "游戏", subtype: "飞行射击",
+exampleData.push({id: 4, name: "穿越火线", title: "穿越火线-枪战王者（荒岛特训上线）", type: "游戏", subtype: "飞行射击",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_12165022_1517536428/96", apk: "com.tencent.tmgp.cf",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=com.tencent.tmgp.cf",
-	desc: "穿越火线：枪战王者》是腾讯游戏出品的CF正版第一人称射击手游，作为一款国民级竞技手游，游戏完美传承了PC端的品质和玩法，" +
+	desc: "《穿越火线：枪战王者》是腾讯游戏出品的CF正版第一人称射击手游，作为一款国民级竞技手游，游戏完美传承了PC端的品质和玩法，" +
 		"同时还针对手机端的操作特点，将3亿鼠标的枪战梦想延续到手机上，爽快的手感，让玩家随时随地体验极致射击乐趣和竞技对抗的热血，好玩就要一起玩。",
 	version: "1.0.27.201", date: "2018-2-2", score: 4.8, size: 796.01});
-exampleData.push({name: "滴滴出行", title: "滴滴出行", type: "生活",
+exampleData.push({id: 5, name: "滴滴出行", title: "滴滴出行", type: "生活",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_288717_1517552367/96", apk: "com.sdu.didi.psnger",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=com.sdu.didi.psnger",
 	desc: "【近3亿用户的选择】2012年诞生的滴滴现已成为广受用户欢迎的城市出行应用！覆盖全国超过400个城市，乘客叫车成功率94%以上！",
 	version: "5.1.32", date: "2018-2-2", score: 4.6, size: 34.37});
-exampleData.push({name: "饿了么", title: "饿了么", type: "生活",
+exampleData.push({id: 6, name: "饿了么", title: "饿了么", type: "生活",
 	icon: "http://pp.myapp.com/ma_icon/0/icon_1029694_1518002951/96", apk: "me.ele",
 	url: "http://sj.qq.com/myapp/detail.htm?apkName=me.ele",
 	desc: "饿了么，专业的本地生活服务平台！",
@@ -65,6 +65,7 @@ var DatagridModule = BaseModule.extend(module, {
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
+		this.showExample2_1();
 		this.showExample3();
 		this.showExample4();
 		this.showExample5();
@@ -107,25 +108,38 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("显示行选择框");
+		var example = this.addExample("显示行选择框（单选）");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称", width: 120});
 		columns.push({name: "desc", title: "应用信息"});
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append("<div>单选</div>");
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: 2}));
-		demo.append("<div>多选</div>");
+
+		var source = [];
+		source.push("var columns = [];");
+		source.push("columns.push({name: 'name', title: '名称', width: 120});");
+		source.push("columns.push({name: 'desc', title: '应用信息'});");
+		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 2});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample2_1: function () {
+		var example = this.addExample("显示行选择框（多选）");
+
+		var columns = [];
+		columns.push({name: "name", title: "名称", width: 120});
+		columns.push({name: "desc", title: "应用信息"});
+
+		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, multi: true, selectedIndex: [2,3]}));
 
 		var source = [];
 		source.push("var columns = [];");
 		source.push("columns.push({name: 'name', title: '名称', width: 120});");
 		source.push("columns.push({name: 'desc', title: '应用信息'});");
-		source.push("// 单选");
-		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 2});");
-		source.push("// 多选");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, multi: true, selectedIndex: [2,3]});");
 
 		this.showDemo(example, demo, source);
@@ -164,7 +178,7 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "score", title: "评分", sortable: true});
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
+		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: 0}));
 
 		var source = [];
 		source.push("var nameSortTypes = [];");
@@ -195,7 +209,7 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("columns.push({name: 'version', title: '版本', sortable: versionSortFunction});");
 		source.push("columns.push({name: 'date', title: '发布日期', sortable: true, dataType: 'date'});");
 		source.push("columns.push({name: 'score', title: '评分', sortable: true});");
-		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource});");
+		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 0});");
 		source.push("");
 		source.push("// 前端排序事件");
 		source.push("grid.on('sort', function (e, columnName, sortType) {});");
@@ -425,7 +439,7 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "name", title: "名称"});
 		columns.push({name: "type", title: "类型"});
 		columns.push({name: "version", title: "版本"});
-		columns.push({name: "score", title: "评分"});
+		columns.push({name: "score", title: "评分", sortable: true});
 		columns.push({name: "desc", title: "应用信息", expand: true});
 		columns.push({name: "date", title: "发布日期", expand: true});
 
@@ -518,6 +532,8 @@ var DatagridModule = BaseModule.extend(module, {
 		var myCellStyleFunction = function (columnName, data, index) {
 			if (columnName == "score" && data.score > 4.5)
 				return {color: "#f00"};
+			if (columnName == "name" && index == 3)
+				return {color: "#fff", backgroundColor: "#ffb100"};
 		};
 
 		var demo = new UIGroup(this);
@@ -542,6 +558,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("function myCellStyleFunction (columnName, data, index) {");
 		source.push("    if (columnName == 'score' && data.score > 4.5)");
 		source.push("        return {color: '#f00'};");
+		source.push("    if (columnName == 'name' && index == 3)");
+		source.push("        return {color: '#fff', backgroundColor: '#ffb100'};");
 		source.push("}");
 
 		this.showDemo(example, demo, source);
