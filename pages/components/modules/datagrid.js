@@ -252,7 +252,8 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "type", title: "类型", filter: "enum"});
 		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true, filterValue: 2});
 		columns.push({name: "size", title: "大小", filter: sizeFilter, filterFunction: sizeFilterFunction});
-		columns.push({name: "date", title: "发布日期"});
+		if (!this.isApp)
+			columns.push({name: "date", title: "发布日期"});
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true}));
@@ -264,7 +265,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("columns.push({name: 'type', title: '类型', filter: 'enum'});");
 		source.push("columns.push({name: 'score', title: '评分', filter: scoreFilter});");
 		source.push("columns.push({name: 'size', title: '大小', filter: sizeFilter, filterFunction: sizeFilterFun});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'date', title: '发布日期'});");
 		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource})");
 		source.push("");
 		source.push("var scoreFilter = [];");
@@ -288,16 +290,26 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("添加列表标题图标");
 
 		var columns = [];
-		columns.push({name: "name", title: "名称", icon: "/image/icons/d01.png", width: 120});
-		columns.push({name: "desc", title: "应用信息", icon: "/image/icons/a07.png"});
+		if (this.isApp) {
+			columns.push({name: "name", title: "名称", icon: "/image/icons/d01.png"});
+		}
+		else {
+			columns.push({name: "name", title: "名称", icon: "/image/icons/d01.png", width: 120});
+			columns.push({name: "desc", title: "应用信息", icon: "/image/icons/a07.png"});
+		}
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', icon: '/image/icons/d01.png', width: 120});");
-		source.push("columns.push({name: 'desc', title: '应用信息', icon: '/image/icons/d02.png'});");
+		if (this.isApp) {
+			source.push("columns.push({name: 'name', title: '名称', icon: '/image/icons/d01.png'});");
+		}
+		else {
+			source.push("columns.push({name: 'name', title: '名称', icon: '/image/icons/d01.png', width: 120});");
+			source.push("columns.push({name: 'desc', title: '应用信息', icon: '/image/icons/d02.png'});");
+		}
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource});");
 
 		this.showDemo(example, demo, source);
@@ -307,20 +319,28 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("自定义列表标题");
 
 		var columns = [];
-		columns.push({name: "name", title: "标题", width: 120,
+		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120),
 			focusHtmlTitle: "<div style='color:#fff;background-color:#333;'>标题</div>"});
-		columns.push({name: "desc", title: "应用信息", 
-			focusHtmlTitle: "<div style='color:red;'>应用信息</div>"});
+		if (!this.isApp) {
+			columns.push({name: "desc", title: "应用信息", 
+				focusHtmlTitle: "<div style='color:red;'>应用信息</div>"});
+		}
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({\n\tname: 'name', title: '标题', width: 120, \n\tfocusHtmlTitle: '<div " +
-			"style=\"color:#fff;background-color:#333;\">标题</div>'\n});");
-		source.push("columns.push({\n\tname: 'desc', title: '应用信息', \n\tfocusHtmlTitle: '<div " +
-			"style=\"color:red;\">应用信息</div>'\n});");
+		if (this.isApp) {
+			source.push("columns.push({\n\tname: 'name', title: '标题', \n\tfocusHtmlTitle: '<div " +
+				"style=\"color:#fff;background-color:#333;\">标题</div>'\n});");
+		}
+		else {
+			source.push("columns.push({\n\tname: 'name', title: '标题', width: 120, \n\tfocusHtmlTitle: '<div " +
+				"style=\"color:#fff;background-color:#333;\">标题</div>'\n});");
+			source.push("columns.push({\n\tname: 'desc', title: '应用信息', \n\tfocusHtmlTitle: '<div " +
+				"style=\"color:red;\">应用信息</div>'\n});");
+		}
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource});");
 
 		this.showDemo(example, demo, source);
@@ -329,13 +349,18 @@ var DatagridModule = BaseModule.extend(module, {
 	showExample6_1: function () {
 		var example = this.addExample("自定义列表标题（headRenderer）");
 		var columns = [];
-		columns.push({name: "name", title: "标题", width: 120});
-		columns.push({name: "desc", title: "应用信息"});
+		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120)});
+		if (!this.isApp)
+			columns.push({name: "desc", title: "应用信息"});
 
-		var $ = VRender.$;
+		var _isApp = this.isApp;
 		var myHeadRenderer = function (column, index) {
+			var $ = $ || VRender.$;
+			var isApp = (typeof _isApp != "undefined") ? _isApp : VRender.ENV.isApp;
 			var view = $("<div></div>").text(column.title);
 			view.css({lineHeight: "35px", color: "#fff", backgroundColor: "#08bcf3", paddingLeft: "10px"});
+			if (isApp)
+				view.css("lineHeight", "0.4rem");
 			if (index > 0)
 				view.css({borderLeft: "1px solid #fff"});
 			return view;
@@ -346,15 +371,27 @@ var DatagridModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '标题', width: 120});");
-		source.push("columns.push({name: 'desc', title: '应用信息'});");
+		if (this.isApp) {
+			source.push("columns.push({name: 'name', title: '标题'});");
+		}
+		else {
+			source.push("columns.push({name: 'name', title: '标题', width: 120});");
+			source.push("columns.push({name: 'desc', title: '应用信息'});");
+		}
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, headRenderer: myHeadRenderer});");
 		source.push("");
+		source.push("var _isApp = this.isApp; // 需考虑前端和后端的作用域");
 		source.push("function myHeadRenderer (column, index) {");
+		source.push("    var $ = $ || VRender.$;");
+		source.push("    var isApp = (typeof _isApp != 'undefined') ? _isApp : VRender.ENV.isApp;");
 		source.push("    var view = $('<div></div>').text(column.title);");
 		source.push("    view.css({color:'#fff', backgroundColor:'#333'});");
-		source.push("    if (index > 0)");
-		source.push("        view.css({borderLeft: '1px solid #fff'});");
+		source.push("    if (isApp)");
+		source.push("        view.css('lineHeight', '0.4rem');");
+		if (!this.isApp) {
+			source.push("    if (index > 0)");
+			source.push("        view.css({borderLeft: '1px solid #fff'});");
+		}
 		source.push("    return view;");
 		source.push("}");
 
@@ -368,7 +405,8 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "name", title: "名称"});
 		columns.push({name: "type", title: "类型"});
 		columns.push({name: "version", title: "版本"});
-		columns.push({name: "date", title: "发布日期"});
+		if (!this.isApp)
+			columns.push({name: "date", title: "发布日期"});
 		columns.push({name: "score", title: "评分"});
 
 		var demo = new UIGroup(this);
@@ -379,7 +417,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("columns.push({name: 'name', title: '名称'});");
 		source.push("columns.push({name: 'type', title: '类型'});");
 		source.push("columns.push({name: 'version', title: '版本'});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'date', title: '发布日期'});");
 		source.push("columns.push({name: 'score', title: '评分'});");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, showHeader: false});");
 
@@ -390,17 +429,23 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("自定义单元格渲染");
 
 		var columns = [];
-		columns.push({name: "name", title: "名称"});
-		columns.push({name: "type", title: "类型"});
-		columns.push({name: "version", title: "版本"});
-		columns.push({name: "score", title: "评分"});
-		columns.push({name: "date", title: "发布日期"});
+		columns.push({name: "name", title: "标题"});
+		if (!this.isApp) {
+			columns.push({name: "type", title: "类型"});
+			columns.push({name: "version", title: "版本"});
+			columns.push({name: "score", title: "评分"});
+			columns.push({name: "date", title: "发布日期"});
+		}
 
+		var _isApp = this.isApp;
 		var myColumnRenderer = function (column, data) {
 			var $ = $ || VRender.$;
+			var isApp = (typeof _isApp != "undefined") ? _isApp : VRender.ENV.isApp;
 			if (column == "name") {
 				var nameView = $("<div></div>");
 				var icon = $("<img style='display:inline-block;width:20px;height:20px;vertical-align:top;'/>");
+				if (isApp)
+					icon.css("width", "0.2rem").css("height", "0.2rem");
 				var title = $("<span style='margin-left:5px;'></span>");
 				icon.appendTo(nameView).attr("src", data.icon);
 				title.appendTo(nameView).text(data.title);
@@ -419,18 +464,24 @@ var DatagridModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称'});");
-		source.push("columns.push({name: 'type', title: '类型'});");
-		source.push("columns.push({name: 'version', title: '版本'});");
-		source.push("columns.push({name: 'score', title: '评分'});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		source.push("columns.push({name: 'name', title: '标题'});");
+		if (!this.isApp) {
+			source.push("columns.push({name: 'type', title: '类型'});");
+			source.push("columns.push({name: 'version', title: '版本'});");
+			source.push("columns.push({name: 'score', title: '评分'});");
+			source.push("columns.push({name: 'date', title: '发布日期'});");
+		}
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, columnRenderer: myColumnRenderer});");
 		source.push("");
+		source.push("var _isApp = this.isApp; // 需考虑前端和后端的作用域");
 		source.push("function myColumnRenderer (columnName, data) {");
 		source.push("    var $ = $ || VRender.$;");
+		source.push("    var isApp = (typeof _isApp != 'undefined') ? _isApp : VRender.ENV.isApp;");
 		source.push("    if (columnName == 'name') {");
 		source.push("        var nameView = $('<div></div>');");
 		source.push("        var icon = $('<img style=\"display:inline-block;width:20px;height:20px;vertical-align:top;\"/>');");
+		source.push("        if (isApp)");
+		source.push("            icon.css('width', '0.2rem').css('height', '0.2rem');");
 		source.push("        var title = $('<span style=\"margin-left:5px;\"></span>');");
 		source.push("        icon.appendTo(nameView).attr('src', data.icon);");
 		source.push("        title.appendTo(nameView).text(data.title);");
@@ -454,7 +505,8 @@ var DatagridModule = BaseModule.extend(module, {
 		var columns = [];
 		columns.push({name: "name", title: "名称"});
 		columns.push({name: "type", title: "类型"});
-		columns.push({name: "version", title: "版本"});
+		if (!this.isApp)
+			columns.push({name: "version", title: "版本"});
 		columns.push({name: "score", title: "评分", sortable: true});
 		columns.push({name: "desc", title: "应用信息", expand: true});
 		columns.push({name: "date", title: "发布日期", expand: true});
@@ -467,7 +519,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("var columns = [];");
 		source.push("columns.push({name: 'name', title: '名称'});");
 		source.push("columns.push({name: 'type', title: '类型'});");
-		source.push("columns.push({name: 'version', title: '版本'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'version', title: '版本'});");
 		source.push("columns.push({name: 'score', title: '评分'});");
 		source.push("columns.push({name: 'desc', title: '应用信息', expand: true});");
 		source.push("columns.push({name: 'date', title: '发布日期', expand: true});");
@@ -482,16 +535,25 @@ var DatagridModule = BaseModule.extend(module, {
 		var columns = [];
 		columns.push({name: "name", title: "名称"});
 		columns.push({name: "type", title: "类型"});
-		columns.push({name: "version", title: "版本"});
+		if (!this.isApp)
+			columns.push({name: "version", title: "版本"});
 		columns.push({name: "score", title: "评分"});
-		columns.push({name: "date", title: "发布日期"});
+		if (!this.isApp)
+			columns.push({name: "date", title: "发布日期"});
 		columns.push({name: "desc", title: "应用信息", expand: true});
 
 		var myExpandRenderer = function (data) {
-			var view = $("<div style='padding-left:30px'></div>");
+			var view = $("<div style='padding-left:30px;'></div>");
 			var icon = $("<img style='position:absolute;width:20px;height:20px;left:0px;top:0px;'/>");
-			var title = $("<div style=''></div>");
+			var title = $("<div style='font-size: 16px;'></div>");
 			var desc = $("<div style='margin-top:5px;color:#999;font-size:14px;'></div>");
+
+			if (VRender.ENV.isApp) {
+				view.css("paddingLeft", "0.3rem");
+				icon.css("width", "0.2rem").css("height", "0.2rem");
+				title.css("fontSize", "0.16rem");
+				desc.css("fontSize", "0.14rem");
+			}
 
 			icon.appendTo(view).attr("src", data.icon);
 			title.appendTo(view).text(data.title);
@@ -508,17 +570,28 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("var columns = [];");
 		source.push("columns.push({name: 'name', title: '名称'});");
 		source.push("columns.push({name: 'type', title: '类型'});");
-		source.push("columns.push({name: 'version', title: '版本'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'version', title: '版本'});");
 		source.push("columns.push({name: 'score', title: '评分'});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'date', title: '发布日期'});");
 		source.push("columns.push({name: 'desc', title: '应用信息', expand: true});");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, expandRenderer: myExpandRenderer});");
 		source.push("");
+		source.push("// 扩展对象只会在前端渲染，这里不需要考虑前后端适配");
 		source.push("function myExpandRenderer (data) {");
-		source.push("    var view = $('<div style=\"padding-left:30px\"></div>');");
+		source.push("    var isApp = VRender.ENV.isApp;");
+		source.push("    var view = $('<div style=\"padding-left:30px;\"></div>');");
 		source.push("    var icon = $('<img style=\"position:absolute;width:20px;height:20px;left:0px;top:0px;\"/>');");
-		source.push("    var title = $('<div style=\"\"></div>');");
+		source.push("    var title = $('<div style=\"font-size:16px;\"></div>');");
 		source.push("    var desc = $('<div style=\"margin-top:5px;color:#999;font-size:14px;\"></div>');");
+		source.push("");
+		source.push("    if (VRender.ENV.isApp) {");
+		source.push("        view.css('paddingLeft', '0.3rem');");
+		source.push("        icon.css('width', '0.2rem').css('height', '0.2rem');");
+		source.push("        title.css('fontSize', '0.16rem');");
+		source.push("        desc.css('fontSize', '0.14rem');");
+		source.push("    }");
 		source.push("");
 		source.push("    icon.appendTo(view).attr('src', data.icon);");
 		source.push("    title.appendTo(view).text(data.title);");
@@ -538,7 +611,8 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: "type", title: "类型"});
 		columns.push({name: "version", title: "版本"});
 		columns.push({name: "score", title: "评分"});
-		columns.push({name: "date", title: "发布日期"});
+		if (!this.isApp)
+			columns.push({name: "date", title: "发布日期"});
 
 		var myRowStyleFunction = function (data, index) {
 			if (index == 1)
@@ -562,7 +636,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("columns.push({name: 'type', title: '类型'});");
 		source.push("columns.push({name: 'version', title: '版本'});");
 		source.push("columns.push({name: 'score', title: '评分'});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'date', title: '发布日期'});");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, " +
 			"\n\trowStyleFunction: myRowStyleFunction, cellStyleFunction: myCellStyleFunction});");
 		source.push("");
@@ -587,14 +662,14 @@ var DatagridModule = BaseModule.extend(module, {
 		var demo = new UIGroup(this);
 
 		var columns = [];
-		columns.push({name: 'name', title: '名称', width: 300});
-		columns.push({name: 'date', title: '发布日期'});
+		columns.push({name: 'name', title: '名称'});
+		columns.push({name: 'date', title: '发布日期', width: 100});
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, height: 200}));
 
 		var source = [];
 		source.push("var columns = [];");
-		source.push("columns.push({name: 'name', title: '名称', width: 300});");
-		source.push("columns.push({name: 'date', title: '发布日期'});");
+		source.push("columns.push({name: 'name', title: '名称'});");
+		source.push("columns.push({name: 'date', title: '发布日期', width: 100});");
 		source.push("new UIDatagrid(context, {columns: columns, data: dataSource, height: 200});");
 
 		this.showDemo(example, demo, source);
@@ -610,7 +685,8 @@ var DatagridModule = BaseModule.extend(module, {
 		columns.push({name: 'c2', title: 'Column 2'});
 		columns.push({name: 'c3', title: 'Column 3'});
 		columns.push({name: 'c4', title: 'Column 4'});
-		columns.push({name: 'c5', title: 'Column 5'});
+		if (!this.isApp)
+			columns.push({name: 'c5', title: 'Column 5'});
 
 		var grid = demo.add(new UIDatagrid(this, {columns: columns, apiName: "data.component.items2"}));
 		var pager = demo.add(new UIPaginator(this, {size: 10}));
@@ -622,7 +698,8 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("columns.push({name: 'c2', title: 'Column 2'});");
 		source.push("columns.push({name: 'c3', title: 'Column 3'});");
 		source.push("columns.push({name: 'c4', title: 'Column 4'});");
-		source.push("columns.push({name: 'c5', title: 'Column 5'});");
+		if (!this.isApp)
+			source.push("columns.push({name: 'c5', title: 'Column 5'});");
 		source.push("");
 		source.push("var pager = new UIPaginator(context, {size: 10});");
 		source.push("new UIDatagrid(context, {columns: columns, apiName: 'data.component.items2', paginator: pager});");
