@@ -186,11 +186,16 @@ var DatagridModule = BaseModule.extend(module, {
 
 		var columns = [];
 		columns.push({name: "name", title: "名称", sortable: nameSortTypes, sortType: "asc"});
-		columns.push({name: "type", title: "类型", sortable: true});
-		columns.push({name: "version", title: "版本", sortable: versionSortFunction});
-		if (!this.isApp)
+		if (this.isApp) {
+			columns.push({name: "type", title: "类型", sortable: true, width: "1rem"});
+			columns.push({name: "version", title: "版本", sortable: versionSortFunction});
+		}
+		else {
+			columns.push({name: "type", title: "类型", sortable: true});
+			columns.push({name: "version", title: "版本", sortable: versionSortFunction});
 			columns.push({name: "date", title: "发布日期", sortable: true, dataType: "date"});
-		columns.push({name: "score", title: "评分", sortable: true});
+			columns.push({name: "score", title: "评分", sortable: true});
+		}
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDatagrid(this, {columns: columns, data: exampleData, chkbox: true, selectedIndex: 0}));
@@ -220,11 +225,16 @@ var DatagridModule = BaseModule.extend(module, {
 		source.push("");
 		source.push("var columns = [];");
 		source.push("columns.push({name: 'name', title: '名称', sortable: nameSortTypes, sortType: 'asc'});");
-		source.push("columns.push({name: 'type', title: '类型', sortable: true});");
-		source.push("columns.push({name: 'version', title: '版本', sortable: versionSortFunction});");
-		if (!this.isApp)
+		if (this.isApp) {
+			source.push("columns.push({name: 'type', title: '类型', sortable: true, width: '1rem'});");
+			source.push("columns.push({name: 'version', title: '版本', sortable: versionSortFunction});");
+		}
+		else {
+			source.push("columns.push({name: 'type', title: '类型', sortable: true});");
+			source.push("columns.push({name: 'version', title: '版本', sortable: versionSortFunction});");
 			source.push("columns.push({name: 'date', title: '发布日期', sortable: true, dataType: 'date'});");
-		source.push("columns.push({name: 'score', title: '评分', sortable: true});");
+			source.push("columns.push({name: 'score', title: '评分', sortable: true});");
+		}
 		source.push("var grid = new UIDatagrid(context, {columns: columns, data: dataSource, chkbox: true, selectedIndex: 0});");
 		source.push("");
 		source.push("// 前端排序事件");
@@ -248,7 +258,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var sizeFilterFunction = function (d, v) { return d.size < v; };
 
 		var columns = [];
-		columns.push({name: "name", title: "名称", filter: true});
+		columns.push({name: "name", title: "名称", filter: true, sortable: true});
 		columns.push({name: "type", title: "类型", filter: "enum"});
 		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true, filterValue: 2});
 		columns.push({name: "size", title: "大小", filter: sizeFilter, filterFunction: sizeFilterFunction});
@@ -319,7 +329,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var example = this.addExample("自定义列表标题");
 
 		var columns = [];
-		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120),
+		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120), 
 			focusHtmlTitle: "<div style='color:#fff;background-color:#333;'>标题</div>"});
 		if (!this.isApp) {
 			columns.push({name: "desc", title: "应用信息", 
@@ -349,7 +359,7 @@ var DatagridModule = BaseModule.extend(module, {
 	showExample6_1: function () {
 		var example = this.addExample("自定义列表标题（headRenderer）");
 		var columns = [];
-		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120)});
+		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120), sortable: true, filter: true});
 		if (!this.isApp)
 			columns.push({name: "desc", title: "应用信息"});
 
