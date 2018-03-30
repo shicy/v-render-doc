@@ -56,6 +56,11 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 			callback(false, {code: 0, data: {total: 123, rows: getGridItems(params.data)}});
 		}, 2000);
 	}
+	else if (name === "data.component.tree") {
+		setTimeout(function () {
+			callback(false, {code: 0, data: getTreeItems(params.data)});
+		}, 2000);
+	}
 	else {
 		return false;
 	}
@@ -87,3 +92,30 @@ var getGridItems = function (params) {
 	}
 	return items;
 };
+
+var getTreeItems = function (params) {
+	var parentId = parseInt(params.pid) || 0;
+	if (parentId > 999)
+		return {total: 0, rows: []};
+
+	var label = "一级";
+	if (parentId > 99)
+		label = "三级";
+	else if (parentId > 9)
+		label = "二级";
+
+	var total = Math.min(9, parseInt(params.total)) || 5;
+	var size = Math.max(0, parseInt(params.p_size)) || 5;
+	var page = Math.max(0, parseInt(params.p_no)) || 1;
+
+	var items = [];
+	var start = ((page - 1) * size) + 1;
+	var id = parentId * 10;
+	if (parentId > 0)
+		label = label + " " + ("" + parentId).split("").join("-") + "-";
+	for (var i = 0; i < size && start <= total; i++) {
+		items.push({id: (parentId + start), label: (label + " " + start)});
+		start += 1;
+	}
+	return {total: total, rows: items};
+}

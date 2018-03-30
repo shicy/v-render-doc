@@ -93,13 +93,13 @@ var exampleData = [{
 			code: "130203", value: "路北区"
 		}]
 	}, {
-		code: "130400", value: "秦皇岛市"
+		code: "130400", value: "秦皇岛市", leaf: true
 	}, {
-		code: "130500", value: "邯郸市"
+		code: "130500", value: "邯郸市", leaf: true
 	}, {
-		code: "130500", value: "邢台市"
+		code: "130500", value: "邢台市", leaf: true
 	}, {
-		code: "130600", value: "保定市"
+		code: "130600", value: "保定市", leaf: true
 	}]
 }, {
 	code: "140000", value: "山西省"
@@ -130,11 +130,14 @@ var TreeModule = ListModule.extend(module, {
 	renderExamples: function () {
 		this.showExample1();
 		this.showExample2();
+		this.showExample2_1();
 		this.showExample3();
+		this.showExample3_1();
 		this.showExample4();
+		this.showExample4_1()
 		this.showExample5();
+		this.showExample5_1();
 		this.showExample6();
-		this.showExample7()
 		this.showExampleData();
 	},
 
@@ -142,6 +145,7 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource});");
@@ -153,28 +157,35 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("显示选择框（单选）");
 
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, selectedIndex: 0}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, chkbox: true, selectedIndex: 0});");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	showExample3: function () {
+	showExample2_1: function () {
 		var example = this.addExample("显示选择框（多选）");
 
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, multi: true, selectedIndex: "1,2"}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, chkbox: true, multi: true, selectedIndex: '1,2'});");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	showExample4: function () {
+	showExample3: function () {
 		var example = this.addExample("自定义节点内容");
 
+		var myLabelFunction = function (data) {
+			return [data.code, data.value].join("_");
+		};
+
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, labelFunction: myLabelFunction}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, labelFunction: myLabelFunction});");
@@ -183,13 +194,24 @@ var TreeModule = ListModule.extend(module, {
 		source.push("    return [data.code, data.value].join('_');");
 		source.push("}");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	showExample5: function () {
+	showExample3_1: function () {
 		var example = this.addExample("使用项渲染器");
 
+		var myItemRenderer = function (data) {
+			var $ = $ || VRender.$;
+			var view = $("<div></div>");
+			$("<label></label>").appendTo(view).text(data.value);
+			var code = $("<span></span>").appendTo(view);
+			code.text(data.code);
+			code.css({color: "#fff", backgroundColor: "#000"});
+			return view;
+		};
+
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, itemRenderer: myItemRenderer}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, chkbox: true, itemRenderer: myItemRenderer});");
@@ -197,45 +219,85 @@ var TreeModule = ListModule.extend(module, {
 		source.push("function myItemRenderer (data) {");
 		source.push("    var $ = $ || VRender.$;");
 		source.push("    var view = $('<div></div');");
-		source.push("    view.append('<label>' + data.value + '</label>');");
-		source.push("    view.append('<span style=\"color:#fff;background-color:#000;\">' + data.code + '</span>');");
+		source.push("    $('<label></label>').appendTo(view).text(data.value);");
+		source.push("    var code = $('<span></span>').appendTo(view);");
+		source.push("    code.text(data.code);");
+		source.push("    code.css({color: '#fff', backgroundColor: '#000'});");
 		source.push("    return view;");
 		source.push("}");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	showExample6: function () {
+	showExample4: function () {
 		var example = this.addExample("显示图标");
 
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, icon: 'icon'}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: true});");
+		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: 'icon'});");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	showExample7: function () {
+	showExample4_1: function () {
 		var example = this.addExample("显示图标（使用自定义方法）");
 
+		var myIconFunction = function (data) {
+			return null;
+		};
+
 		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, icon: myIconFunction}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: myIconFunction});");
+		source.push("");
+		source.push("function myIconFunction (data, node) {");
+		source.push("    return null;");
+		source.push("}");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
-	// showExample: function () {
-	// 	var example = this.addExample("");
+	showExample5: function () {
+		var example = this.addExample("设置默认展开和选择（按索引）");
 
-	// 	var demo = new UIGroup(this);
+		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, expandIndex: "0,1", selectedIndex: "3,8", multi: true}));
 
-	// 	var source = [];
+		var source = [];
+		source.push("new UITreeView(context, {data: dataSource, expandIndex: '0,1', selectedIndex: '3,8', multi: true});");
 
-	// 	this.showDemo(example, demo, source, true);
-	// },
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5_1: function () {
+		var example = this.addExample("设置默认展开和选择（按编号）");
+
+		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {data: exampleData, idField: "code", expandId: "120100,130000", 
+			selectedId: "110107,120100,220000", multi: true}));
+
+		var source = [];
+		source.push("new UITreeView(context, {data: dataSource, idField: 'code', " +
+			"expandId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample6: function () {
+		var example = this.addExample("动态加载");
+
+		var demo = new UIGroup(this);
+		demo.append(new UITreeView(this, {apiName: "data.component.tree", expandIndex: 1}));
+
+		var source = [];
+		source.push("new UITreeView(context, {apiName: 'data.component.tree', expandIndex: 1});");
+
+		this.showDemo(example, demo, source);
+	},
 
 	showExampleData: function () {
 		var example = this.addExample("以上数据结构如下");
