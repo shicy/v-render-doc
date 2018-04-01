@@ -200,8 +200,7 @@ var TreeModule = ListModule.extend(module, {
 	showExample3_1: function () {
 		var example = this.addExample("使用项渲染器");
 
-		var myItemRenderer = function (data) {
-			var $ = $ || VRender.$;
+		var myItemRenderer = function ($, item, data) {
 			var view = $("<div></div>");
 			$("<label></label>").appendTo(view).text(data.value);
 			var code = $("<span></span>").appendTo(view);
@@ -265,10 +264,10 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("设置默认展开和选择（按索引）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, expandIndex: "0,1", selectedIndex: "3,8", multi: true}));
+		demo.append(new UITreeView(this, {data: exampleData, openIndex: "0,1", selectedIndex: "3,8", multi: true}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, expandIndex: '0,1', selectedIndex: '3,8', multi: true});");
+		source.push("new UITreeView(context, {data: dataSource, openIndex: '0,1', selectedIndex: '3,8', multi: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -277,12 +276,12 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("设置默认展开和选择（按编号）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, idField: "code", expandId: "120100,130000", 
+		demo.append(new UITreeView(this, {data: exampleData, idField: "code", openId: "120100,130000", 
 			selectedId: "110107,120100,220000", multi: true}));
 
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, idField: 'code', " +
-			"expandId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
+			"openId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -291,10 +290,10 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("动态加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {apiName: "data.component.tree", expandIndex: 1}));
+		demo.append(new UITreeView(this, {apiName: "data.component.tree", openIndex: 1}));
 
 		var source = [];
-		source.push("new UITreeView(context, {apiName: 'data.component.tree', expandIndex: 1});");
+		source.push("new UITreeView(context, {apiName: 'data.component.tree', openIndex: 1});");
 
 		this.showDemo(example, demo, source);
 	},

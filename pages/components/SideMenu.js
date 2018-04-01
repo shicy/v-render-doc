@@ -31,7 +31,7 @@ var menus = [{
 		{name: "dropdownlist", label: "DropdownList 下拉列表"},
 		{name: "datagrid", label: "Datagrid 数据网格"},
 		{name: "listview", label: "ListView 列表视图"},
-		{name: "tree", label: "Tree 树形视图"}
+		{name: "treeview", label: "Tree 树形视图"}
 	]
 }, {
 	group: "容器",
