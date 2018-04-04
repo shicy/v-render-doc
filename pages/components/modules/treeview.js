@@ -205,7 +205,7 @@ var TreeModule = ListModule.extend(module, {
 			$("<label></label>").appendTo(view).text(data.value);
 			var code = $("<span></span>").appendTo(view);
 			code.text(data.code);
-			code.css({color: "#fff", backgroundColor: "#000"});
+			code.css({color: "#fff", backgroundColor: "#000", marginLeft: "5px"});
 			return view;
 		};
 
@@ -221,7 +221,7 @@ var TreeModule = ListModule.extend(module, {
 		source.push("    $('<label></label>').appendTo(view).text(data.value);");
 		source.push("    var code = $('<span></span>').appendTo(view);");
 		source.push("    code.text(data.code);");
-		source.push("    code.css({color: '#fff', backgroundColor: '#000'});");
+		source.push("    code.css({color: '#fff', backgroundColor: '#000', marginLeft: '5px'});");
 		source.push("    return view;");
 		source.push("}");
 
@@ -264,10 +264,12 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("设置默认展开和选择（按索引）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, openIndex: "0,1", selectedIndex: "3,8", multi: true}));
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, openIndex: "0,1", 
+			selectedIndex: "3,8", multi: true}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, openIndex: '0,1', selectedIndex: '3,8', multi: true});");
+		source.push("new UITreeView(context, {data: dataSource, chkbox: true, " +
+			"\n\topenIndex: '0,1', selectedIndex: '3,8', multi: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -276,12 +278,12 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("设置默认展开和选择（按编号）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, idField: "code", openId: "120100,130000", 
+		demo.append(new UITreeView(this, {data: exampleData, idField: "code", chkbox: true, openId: "120100,130000", 
 			selectedId: "110107,120100,220000", multi: true}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, idField: 'code', " +
-			"openId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
+		source.push("new UITreeView(context, {data: dataSource, idField: 'code', chkbox: true, " +
+			"\n\topenId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -290,10 +292,10 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("动态加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {apiName: "data.component.tree", openIndex: 1}));
+		demo.append(new UITreeView(this, {apiName: "data.component.tree", chkbox: true, openIndex: 1}));
 
 		var source = [];
-		source.push("new UITreeView(context, {apiName: 'data.component.tree', openIndex: 1});");
+		source.push("new UITreeView(context, {apiName: 'data.component.tree', chkbox: true, openIndex: 1});");
 
 		this.showDemo(example, demo, source);
 	},
