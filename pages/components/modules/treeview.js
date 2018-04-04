@@ -244,7 +244,7 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("显示图标（使用自定义方法）");
 
 		var myIconFunction = function (data) {
-			return null;
+			return "/image/icons/d02.png";
 		};
 
 		var demo = new UIGroup(this);
@@ -253,7 +253,7 @@ var TreeModule = ListModule.extend(module, {
 		var source = [];
 		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: myIconFunction});");
 		source.push("");
-		source.push("function myIconFunction (data, node) {");
+		source.push("function myIconFunction (data) {");
 		source.push("    return null;");
 		source.push("}");
 
