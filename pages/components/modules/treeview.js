@@ -13,7 +13,7 @@ var UIGroup = VRender.UIGroup;
 var UITreeView = VRender.UITreeView;
 
 var exampleData = [{
-	code: "110000", value: "北京市",  
+	code: "110000", value: "北京市", icon: "/image/icons/c02.png",
 	children: [{
 		code: "110100", value: "市辖区", 
 		children: [{
@@ -51,7 +51,7 @@ var exampleData = [{
 		}]
 	}]
 }, {
-	code: "120000", value: "天津市",
+	code: "120000", value: "天津市", icon: "/image/icons/c03.png",
 	children: [{
 		code: "120100", value: "市辖区",
 		children: [{
@@ -73,9 +73,9 @@ var exampleData = [{
 		}]
 	}]
 }, {
-	code: "130000", value: "河北省",
+	code: "130000", value: "河北省", icon: "/image/icons/c04.png",
 	children: [{
-		code: "130100", value: "石家庄市",
+		code: "130100", value: "石家庄市", icon: "/image/icons/c10.png",
 		children: [{
 			code: "130101", value: "市辖区"
 		}, {
@@ -102,15 +102,15 @@ var exampleData = [{
 		code: "130600", value: "保定市", leaf: true
 	}]
 }, {
-	code: "140000", value: "山西省"
+	code: "140000", value: "山西省", icon: "/image/icons/c05.png"
 }, {
-	code: "150000", value: "内蒙古自治区"
+	code: "150000", value: "内蒙古自治区", icon: "/image/icons/c06.png"
 }, {
-	code: "210000", value: "辽宁省"
+	code: "210000", value: "辽宁省", icon: "/image/icons/c07.png"
 }, {
-	code: "220000", value: "吉林省"
+	code: "220000", value: "吉林省", icon: "/image/icons/c08.png"
 }, {
-	code: "230000", value: "黑龙江省"
+	code: "230000", value: "黑龙江省", icon: "/image/icons/c09.png"
 }];
 
 var TreeModule = ListModule.extend(module, {
@@ -244,7 +244,11 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("显示图标（使用自定义方法）");
 
 		var myIconFunction = function (data) {
-			return "/image/icons/d02.png";
+			if (/0000$/.test(data.code))
+				return "/image/icons/d02.png";
+			if (/00$/.test(data.code))
+				return "/image/icons/d03.png";
+			return "/image/icons/d04.png";
 		};
 
 		var demo = new UIGroup(this);
@@ -292,10 +296,11 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("动态加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {apiName: "data.component.tree", chkbox: true, openIndex: 1}));
+		demo.append(new UITreeView(this, {apiName: "data.component.tree", chkbox: true, openIndex: "1,0,2",
+			apiParams: {total: 10, p_size: 3}}));
 
 		var source = [];
-		source.push("new UITreeView(context, {apiName: 'data.component.tree', chkbox: true, openIndex: 1});");
+		source.push("new UITreeView(context, {apiName: 'data.component.tree', chkbox: true, openIndex: '1,0,2'});");
 
 		this.showDemo(example, demo, source);
 	},

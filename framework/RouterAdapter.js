@@ -95,16 +95,22 @@ var getGridItems = function (params) {
 
 var getTreeItems = function (params) {
 	var parentId = parseInt(params.pid) || 0;
-	if (parentId > 999)
+	if (parentId > 99999)
 		return {total: 0, rows: []};
 
 	var label = "一级";
-	if (parentId > 99)
-		label = "三级";
+	if (parentId > 9999)
+		label = "六级"
+	else if (parentId > 999)
+		label = "五级";
+	else if (parentId > 99)
+		label = "四级";
 	else if (parentId > 9)
+		label = "三级";
+	else if (parentId > 0)
 		label = "二级";
 
-	var total = Math.min(9, parseInt(params.total)) || 5;
+	var total = Math.min(100, parseInt(params.total)) || 5;
 	var size = Math.max(0, parseInt(params.p_size)) || 5;
 	var page = Math.max(0, parseInt(params.p_no)) || 1;
 
@@ -114,7 +120,7 @@ var getTreeItems = function (params) {
 	if (parentId > 0)
 		label = label + " " + ("" + parentId).split("").join("-") + "-";
 	for (var i = 0; i < size && start <= total; i++) {
-		items.push({id: (parentId + start), label: (label + " " + start)});
+		items.push({id: (id + start), label: (label + " " + start)});
 		start += 1;
 	}
 	return {total: total, rows: items};
