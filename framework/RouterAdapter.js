@@ -49,17 +49,17 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 	if (name === "data.component.items") {
 		setTimeout(function () {
 			callback(false, {code: 0, data: {total: 123, rows: getListItems(params.data)}});
-		}, 2000);
+		}, 1000);
 	}
 	else if (name === "data.component.items2") {
 		setTimeout(function () {
 			callback(false, {code: 0, data: {total: 123, rows: getGridItems(params.data)}});
-		}, 2000);
+		}, 1000);
 	}
 	else if (name === "data.component.tree") {
 		setTimeout(function () {
 			callback(false, {code: 0, data: getTreeItems(params.data)});
-		}, 2000);
+		}, 1000);
 	}
 	else {
 		return false;
