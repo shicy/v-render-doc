@@ -8,6 +8,7 @@ var VRender = require(__vrender);
 var BaseModule = require("./_base");
 
 
+var UIGroup = VRender.UIGroup;
 var UIPanel = VRender.UIPanel;
 
 var PanelModule = BaseModule.extend(module, {
@@ -27,6 +28,8 @@ var PanelModule = BaseModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
+		this.showExample3();
 	},
 
 	showExample1: function () {
@@ -35,10 +38,37 @@ var PanelModule = BaseModule.extend(module, {
 		var demo = new UIPanel(this, {title: "标题", content: "内容<br/><a>支持富文本</a>"});
 
 		var source = [];
-		source.push("// 服务端创建");
 		source.push("new UIPanel(context, {title: '标题', context: '内容<br/>a>支持富文本</a>'}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UIPanel.create({target: [elem], title: '标题', context: '内容<br/>a>支持富文本</a>'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample2: function () {
+		var example = this.addExample("添加按钮");
+
+		var buttons = [];
+		buttons.push({name: "btn1", label: "默认按钮"});
+		buttons.push({name: "btn2", label: "下拉按钮", items: [{name: "btn21", label: "下拉按钮1"}, 
+			{name: "btn22", label: "下拉按钮2"}, 
+			{name: "btn23", label: "下拉按钮3"}, 
+			{name: "btn24", label: "下拉按钮4"}]});
+		buttons.push({name: "btn3", icon: "/image/icons/d01.png", tooltip: "图标按钮"});
+
+
+		var demo = new UIPanel(this, {title: "", buttons: buttons});
+
+		var source = [];
+
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample3: function () {
+		var example = this.addExample("多视窗显示");
+
+		var demo = new UIGroup(this);
+
+		var source = [];
 
 		this.showDemo(example, demo, source);
 	}
