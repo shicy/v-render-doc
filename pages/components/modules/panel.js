@@ -51,14 +51,14 @@ var PanelModule = BaseModule.extend(module, {
 
 		var buttons = [];
 		buttons.push({name: "btn1", label: "默认按钮"});
+		buttons.push({name: "btn3", label: "带图标按钮", icon: "/image/icons/b04.png"})
+		buttons.push({name: "btn4", label: "状态按钮", icon: "/image/icons/b05.png", toggle: true});
 		buttons.push({name: "btn2", label: "下拉按钮", toggle: true,
 			items: [{name: "btn21", label: "下拉按钮1"}, {name: "btn22", label: "下拉按钮2"}, 
 				{name: "btn23", label: "下拉按钮3"}, {name: "btn24", label: "下拉按钮4"}]});
-		buttons.push({name: "btn3", label: "带图标按钮", icon: "/image/icons/b04.png"})
-		buttons.push({name: "btn4", icon: "/image/icons/b05.png", tooltip: "图标按钮", toggle: true});
-		buttons.push({name: "btn5", label: false, icon: "/image/icons/d01.png", 
+		buttons.push({name: "btn5", label: false, icon: "/image/icons/d01.png", tooltip: "图标按钮",
 			items: [{name: "btn51", label: "选项1", icon: "/image/icons/b02.png"},
-				{name: "btn52", label: "选项2", icon: "/image/icons/b03.png"},
+				{name: "btn52", label: "选项2"},
 				{name: "btn53", label: "选项3", icon: "/image/icons/b04.png"}]});
 
 		var demo = new UIPanel(this, {title: "自定义按钮", buttons: buttons});
@@ -68,6 +68,10 @@ var PanelModule = BaseModule.extend(module, {
 		source.push("    title: '自定义按钮',");
 		source.push("    buttons: [{");
 		source.push("        name: 'btn1', label: '默认按钮'");
+		source.push("    }, {");
+		source.push("        name: 'btn3', label: '带图标按钮', icon: '/image/icons/b04.png'");
+		source.push("    }, {");
+		source.push("        name: 'btn4', label: '状态按钮', icon: '/image/icons/b05.png', toggle: true");
 		source.push("    }, {");
 		source.push("        name: 'btn2', label: '下拉按钮', toggle: true,");
 		source.push("        items: [{");
@@ -80,11 +84,7 @@ var PanelModule = BaseModule.extend(module, {
 		source.push("            name: 'btn24', label: '下拉按钮4'");
 		source.push("        }]");
 		source.push("    }, {");
-		source.push("        name: 'btn3', label: '带图标按钮', icon: '/image/icons/b04.png'");
-		source.push("    }, {");
-		source.push("        name: 'btn4', icon: '/image/icons/b05.png', tooltip: '图标按钮', toggle: true");
-		source.push("    }, {");
-		source.push("        name: 'btn5', label: false, icon: '/image/icons/d01.png',");
+		source.push("        name: 'btn5', label: false, icon: '/image/icons/d01.png', tooltip: '图标按钮',");
 		source.push("        items: [{");
 		source.push("            name: 'btn51', label: '选项1', icon: '/image/icons/b02.png'");
 		source.push("        }, {");
@@ -107,12 +107,19 @@ var PanelModule = BaseModule.extend(module, {
 		viewports.push({name: "view3", label: "视图 3", content: "视图3内容"});
 		viewports.push({name: "view4", label: "视图 4"});
 
-		var demo = new UIPanel(this, {title: "标题", viewports: viewports, viewIndex: 0, content: "默认视图"});
+		var buttons = [];
+		buttons.push({name: "btn", label: "按钮"});
+
+		var demo = new UIPanel(this, {title: "标题", viewports: viewports, viewIndex: 0, 
+			content: "默认视图", buttons: buttons});
 
 		var source = [];
 		source.push("new UIPanel(context, {");
 		source.push("    title: '标题',");
 		source.push("    content: '默认视图',");
+		source.push("    buttons: [{");
+		source.push("        {name: 'btn', label: '按钮'}");
+		source.push("    }],");
 		source.push("    viewports: [{");
 		source.push("        name: 'view1', label: '视图 1'");
 		source.push("    }, {");
