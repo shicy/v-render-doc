@@ -50,8 +50,9 @@ var menus = [{
 }, {
 	group: "其他",
 	children: [
-		{name: "dialog", label: "Dialog 对话框"}
+		{name: "dialog", label: "Dialog 对话框"},
 		// {name: "btnbar", label: "ButtonGroup 按钮组"},
+		{name: "popupmenu", label: "PopupMenu 弹出菜单"}
 	]
 }];
 
