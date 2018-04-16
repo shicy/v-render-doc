@@ -71,7 +71,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "点击按钮弹出菜单"}));
-		demo.add(new UIPopupMenu(this, {data: menus, actionTarget: button}));
+		demo.append(new UIGroup(this).append(new UIPopupMenu(this, {data: menus, actionTarget: button})));
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '点击按钮弹出菜单'});");
@@ -111,18 +111,26 @@ var PopupMenuModule = BaseModule.extend(module, {
 	showExample2: function () {
 		var example = this.addExample("禁用菜单");
 
+		var menus = [
+			{name: "menu1", label: "菜单1", icon: "/image/icons/b02.png"},
+			{name: "menu2", label: "菜单2", icon: "/image/icons/b03.png", disabled: true},
+			{name: "menu3", label: "菜单3", icon: "/image/icons/b04.png"}
+		];
+
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "点击按钮弹出菜单"}));
+		demo.append(new UIGroup(this).append(new UIPopupMenu(this, {data: menus, actionTarget: button})));
 
 		var source = [];
-		source.push("var button = new UIButton(context, {label: '点击按钮弹出菜单'}).render([target]);");
+		source.push("var button = new UIButton(context, {label: '点击按钮弹出菜单'});");
 		source.push("new UIPopupMenu(context, {");
+		source.push("  actionTarget: button,");
 		source.push("  data: [");
 		source.push("    {name: 'menu1', label: '菜单1'},");
 		source.push("    {name: 'menu2', label: '菜单2', disabled: true},");
 		source.push("    {name: 'menu3', label: '菜单3'}");
 		source.push("  ]");
-		source.push("}).render(button);");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
