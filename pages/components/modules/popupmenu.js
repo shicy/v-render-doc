@@ -172,8 +172,32 @@ var PopupMenuModule = BaseModule.extend(module, {
 	showExample4: function () {
 		var example = this.addExample("分组显示");
 
+		var menus = [[
+			{name: "menu1", label: "菜单1", icon: "/image/icons/b02.png"},
+			{name: "menu2", label: "菜单2", icon: "/image/icons/b03.png", disabled: true},
+			{name: "menu3", label: "菜单3"}
+		], [
+			{name: "menu4", label: "菜单4", icon: "/image/icons/b04.png"},
+			{name: "menu5", label: "菜单5", children: [[
+				{name: "menu51", label: "菜单5-1"}
+			], [
+				{name: "menu52", label: "菜单5-2"},
+				{name: "menu53", label: "菜单5-3"},
+				{name: "menu54", label: "菜单5-4"}
+			], [
+				{name: "menu55", label: "菜单5-5"},
+				{name: "menu56", label: "菜单5-6"}
+			]]}
+		], [
+			{name: "menu6", label: "菜单6", icon: "/image/icons/b05.png"},
+			{name: "menu7", label: "菜单7"},
+			{name: "menu8", label: "菜单8"},
+			{name: "menu9", label: "菜单9"}
+		]];
+
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "点击按钮弹出菜单"}));
+		demo.append(new UIGroup(this).append(new UIPopupMenu(this, {data: menus, actionTarget: button})));
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '点击按钮弹出菜单'}).render([target]);");
