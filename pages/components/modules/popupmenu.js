@@ -419,14 +419,18 @@ var PopupMenuModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "点击按钮弹出菜单"}));
-		demo.add(new UIGroup(this))
-			.append(new UIPopupMenu(this, {apiName: "data.component.tree", actionTarget: button}));
+		demo.add(new UIGroup(this)).append(new UIPopupMenu(this, {apiName: "data.component.tree", 
+			apiParams: {total: 10, p_size: 3}, actionTarget: button}));
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '点击按钮弹出菜单'});");
 		source.push("new UIPopupMenu(context, {");
 		source.push("  actionTarget: button,");
-		source.push("  apiName: 'data.component.tree'");
+		source.push("  apiName: 'data.component.tree',");
+		source.push("  apiParams: {");
+		source.push("    total: 10,");
+		source.push("    p_size: 3");
+		source.push("  }");
 		source.push("});");
 
 		this.showDemo(example, demo, source);
