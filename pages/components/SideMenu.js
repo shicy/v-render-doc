@@ -39,7 +39,8 @@ var menus = [{
 		{name: "container", label: "Container 边框容器"},
 		{name: "group", label: "Group 组视图"},
 		{name: "panel", label: "Panel 面板"},
-		{name: "radgrp", label: "RadioGroup 单选框组"}
+		{name: "radgrp", label: "RadioGroup 单选框组"},
+		{name: "scrollbox", label: "ScrollBox 滚动框"}
 	]
 }, {
 	group: "导航",
