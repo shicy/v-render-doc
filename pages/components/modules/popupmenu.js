@@ -34,7 +34,8 @@ var PopupMenuModule = BaseModule.extend(module, {
 		this.showExample4();
 		this.showExample5();
 		// this.showExample6();
-		this.showExample7();
+		if (!this.isApp)
+			this.showExample7();
 		this.showExample8();
 		this.showExample9();
 	},
