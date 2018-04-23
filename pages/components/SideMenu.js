@@ -40,7 +40,7 @@ var menus = [{
 		{name: "group", label: "Group 组视图"},
 		{name: "panel", label: "Panel 面板"},
 		{name: "radgrp", label: "RadioGroup 单选框组"},
-		{name: "scrollbox", label: "ScrollBox 滚动框"}
+		{name: "scrollbox", label: "ScrollBox 滚动加载"}
 	]
 }, {
 	group: "导航",

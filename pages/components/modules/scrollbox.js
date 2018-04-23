@@ -9,6 +9,8 @@ var BaseModule = require("./_base");
 
 
 var UIGroup = VRender.UIGroup;
+var UIListView = VRender.UIListView;
+var UIScrollBox = VRender.UIScrollBox;
 
 var ScrollBoxModule = BaseModule.extend(module, {
 	className: "comp-scrollbox",
@@ -18,7 +20,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	getSubName: function () {
-		return "滚动框";
+		return "滚动加载";
 	},
 
 	getDescription: function () {
@@ -26,16 +28,23 @@ var ScrollBoxModule = BaseModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
 	},
 
 	showExample1: function () {
 		var example = this.addExample("基本用法");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIGroup(this);
 
 		var source = [];
+		source.push("var listView = new UIListView(context, {apiName: 'data.component.items'});");
+		source.push("new UIScrollBox(context, {height: 200, content: listView});");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
+	},
+
+	showExample2: function () {
+
 	}
-	
+
 });
