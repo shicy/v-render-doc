@@ -42,6 +42,8 @@ var ScrollBoxModule = BaseModule.extend(module, {
 		var example = this.addExample("基本用法");
 
 		var demo = new UIGroup(this);
+		demo.append(new UIScrollBox(this, {height: 400, 
+			content: new UIListView(this, {apiName: "data.component.items"})}));
 
 		var source = [];
 		source.push("var listView = new UIListView(context, {apiName: 'data.component.items'});");
