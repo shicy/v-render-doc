@@ -48,18 +48,20 @@ RouterAdapter.prototype.view = function (name, params, callback) {
 RouterAdapter.prototype.api = function (name, params, callback) {
 	if (name === "data.component.items") {
 		setTimeout(function () {
-			callback(false, {code: 0, data: {total: 123, rows: getListItems(params.data)}});
-		}, 1000);
+			var total = params.data.total || 123;
+			callback(false, {code: 0, data: {total: total, rows: getListItems(params.data, total)}});
+		}, 400);
 	}
 	else if (name === "data.component.items2") {
 		setTimeout(function () {
-			callback(false, {code: 0, data: {total: 123, rows: getGridItems(params.data)}});
-		}, 1000);
+			var total = params.data.total || 123;
+			callback(false, {code: 0, data: {total: total, rows: getGridItems(params.data, total)}});
+		}, 400);
 	}
 	else if (name === "data.component.tree") {
 		setTimeout(function () {
 			callback(false, {code: 0, data: getTreeItems(params.data)});
-		}, 1000);
+		}, 400);
 	}
 	else {
 		return false;
@@ -68,8 +70,7 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 };
 
 ///////////////////////////////////////////////////////////
-var getListItems = function (params) {
-	var total = 123;
+var getListItems = function (params, total) {
 	var size = Math.max(0, parseInt(params.p_size)) || 20;
 	var page = Math.max(0, parseInt(params.p_no)) || 1;
 	var items = [];
@@ -80,8 +81,7 @@ var getListItems = function (params) {
 	return items;
 };
 
-var getGridItems = function (params) {
-	var total = 123;
+var getGridItems = function (params, total) {
 	var size = Math.max(0, parseInt(params.p_size)) || 20;
 	var page = Math.max(0, parseInt(params.p_no)) || 1;
 	var items = [];
@@ -93,7 +93,7 @@ var getGridItems = function (params) {
 	return items;
 };
 
-var getTreeItems = function (params) {
+var getTreeItems = function (params, total) {
 	var parentId = parseInt(params.pid) || 0;
 	if (parentId > 99999)
 		return {total: 0, rows: []};
