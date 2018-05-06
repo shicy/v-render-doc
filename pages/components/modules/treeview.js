@@ -282,11 +282,11 @@ var TreeModule = ListModule.extend(module, {
 		var example = this.addExample("设置默认展开和选择（按编号）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, idField: "code", chkbox: true, openId: "120100,130000", 
+		demo.append(new UITreeView(this, {data: exampleData, keyField: "code", chkbox: true, openId: "120100,130000", 
 			selectedId: "110107,120100,220000", multi: true}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, idField: 'code', chkbox: true, " +
+		source.push("new UITreeView(context, {data: dataSource, keyField: 'code', chkbox: true, " +
 			"\n\topenId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
 
 		this.showDemo(example, demo, source);

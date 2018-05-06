@@ -64,7 +64,7 @@ view.on("click", "[name='example3-btn']", function (e) {
 				dialog.close();
 			}
 			else {
-				closeBtn.val(seconds + "秒后关闭对话框");
+				closeBtn.setLabel(seconds + "秒后关闭对话框");
 			}
 		}, 1000);
 	});
