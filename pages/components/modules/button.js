@@ -95,6 +95,7 @@ var ButtonModule = BaseModule.extend(module, {
 		this.showExample6();
 		this.showExample7();
 		this.showExample8();
+		this.showExample9();
 	},
 
 	showExample1: function () {
@@ -205,6 +206,9 @@ var ButtonModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
+		if (this.isApp)
+			return ;
+
 		var description = "通过设置属性<code>size</code>为：<code>tiny</code>, <code>small</code>, <code>big</code>, <code>bigger</code>";
 		description += "创建不同尺寸的按钮，不设置为默认尺寸。";
 
@@ -261,28 +265,24 @@ var ButtonModule = BaseModule.extend(module, {
 		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
 		var demo = new UIGroup(this, {gap: 10});
 		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
-			.append(new UIButton(this, {label: "默认", icon: true}))
-			.append(new UIButton(this, {label: "主按钮", type: "primary", icon: true}))
-			.append(new UIButton(this, {label: "成功", type: "success", icon: true}))
-			.append(new UIButton(this, {label: "警告", type: "warn", icon: true}))
-			.append(new UIButton(this, {label: "危险", type: "danger", icon: true}))
-			.append(new UIButton(this, {label: "信息", type: "info", icon: true}))
-			.append(new UIButton(this, {label: "文本按钮", type: "text", icon: true}))
-			.append(new UIButton(this, {label: "超链接按钮", type: "link", icon: true}));
+			.append(new UIButton(this, {label: "Default", icon: true}))
+			.append(new UIButton(this, {label: "Primary", type: "primary", icon: true}))
+			.append(new UIButton(this, {label: "Success", type: "success", icon: true}))
+			.append(new UIButton(this, {label: "Warn", type: "warn", icon: true}))
+			.append(new UIButton(this, {label: "Danger", type: "danger", icon: true}))
+			.append(new UIButton(this, {label: "Info", type: "info", icon: true}));
 		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "Windows", type: "primary", icon: "/image/icons/os_windows.png"}))
 			.append(new UIButton(this, {label: "Mac", type: "primary", icon: "/image/icons/os_mac.png"}))
 			.append(new UIButton(this, {label: "Linux", type: "primary", icon: "/image/icons/os_linux.png"}));
 
 		var source = [];
-		source.push("new UIButton(context, {label: '默认', icon: true});");
-		source.push("new UIButton(context, {label: '主按钮', type: 'primary', icon: true});");
-		source.push("new UIButton(context, {label: '成功', type: 'success', icon: true});");
-		source.push("new UIButton(context, {label: '警告', type: 'warn', icon: true});");
-		source.push("new UIButton(context, {label: '危险', type: 'danger', icon: true});");
-		source.push("new UIButton(context, {label: '信息', type: 'info', icon: true});");
-		source.push("new UIButton(context, {label: '文本按钮', type: 'text', icon: true});");
-		source.push("new UIButton(context, {label: '超链接按钮', type: 'link', icon: true});");
+		source.push("new UIButton(context, {label: 'Default', icon: true});");
+		source.push("new UIButton(context, {label: 'Primary', type: 'primary', icon: true});");
+		source.push("new UIButton(context, {label: 'Success', type: 'success', icon: true});");
+		source.push("new UIButton(context, {label: 'Warn', type: 'warn', icon: true});");
+		source.push("new UIButton(context, {label: 'Danger', type: 'danger', icon: true});");
+		source.push("new UIButton(context, {label: 'Info', type: 'info', icon: true});");
 		source.push("// -----------------------------------------------------");
 		source.push("new UIButton(context, {label: 'Windows', type: 'primary', icon: '/image/icons/os_windows.png'});");
 		source.push("new UIButton(context, {label: 'Mac', type: 'primary', icon: '/image/icons/os_mac.png'});");
@@ -297,27 +297,27 @@ var ButtonModule = BaseModule.extend(module, {
 		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
 		var demo = new UIGroup(this, {gap: 10});
 		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
-			.append(new UIButton(this, {label: "默认", waiting: true}))
-			.append(new UIButton(this, {label: "主按钮", type: "primary", waiting: true}))
-			.append(new UIButton(this, {label: "成功", type: "success", icon: true, waiting: true}))
-			.append(new UIButton(this, {label: "警告", type: "warn", icon: true, waiting: true}))
-			.append(new UIButton(this, {label: "危险", type: "danger", icon: true, waiting: true}))
-			.append(new UIButton(this, {label: "信息", type: "info", icon: true, waiting: true}))
-			.append(new UIButton(this, {label: "文本按钮", type: "text", icon: true, waiting: true}))
-			.append(new UIButton(this, {label: "超链接按钮", type: "link", icon: true, waiting: true}));
+			.append(new UIButton(this, {label: "Default", waiting: true}))
+			.append(new UIButton(this, {label: "Primary", type: "primary", waiting: true}))
+			.append(new UIButton(this, {label: "Success", type: "success", icon: true, waiting: true}))
+			.append(new UIButton(this, {label: "Warn", type: "warn", icon: true, waiting: true}))
+			.append(new UIButton(this, {label: "Danger", type: "danger", icon: true, waiting: true}))
+			.append(new UIButton(this, {label: "Info", type: "info", icon: true, waiting: true}))
+			.append(new UIButton(this, {label: "Text", type: "text", icon: true, waiting: true}))
+			.append(new UIButton(this, {label: "Link", type: "link", icon: true, waiting: true}));
 		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
 			.append(new UIButton(this, {label: "点击进入等待状态", type: "primary", wait: true}))
 			.append(new UIButton(this, {label: "点击等待5秒后恢复", type: "primary", wait: 5000}));
 
 		var source = [];
-		source.push("new UIButton(context, {label: '默认', waiting: true})");
-		source.push("new UIButton(context, {label: '主按钮', type: 'primary', waiting: true})");
-		source.push("new UIButton(context, {label: '成功', type: 'source', icon: true, waiting: true})");
-		source.push("new UIButton(context, {label: '警告', type: 'warn', icon: true, waiting: true})");
-		source.push("new UIButton(context, {label: '危险', type: 'danger', icon: true, waiting: true})");
-		source.push("new UIButton(context, {label: '信息', type: 'info', icon: true, waiting: true})");
-		source.push("new UIButton(context, {label: '文本按钮', type: 'text', icon: true, waiting: true})");
-		source.push("new UIButton(context, {label: '超链接按钮', type: 'link', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Default', waiting: true})");
+		source.push("new UIButton(context, {label: 'Primary', type: 'primary', waiting: true})");
+		source.push("new UIButton(context, {label: 'Success', type: 'source', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Warn', type: 'warn', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Danger', type: 'danger', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Info', type: 'info', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Text', type: 'text', icon: true, waiting: true})");
+		source.push("new UIButton(context, {label: 'Link', type: 'link', icon: true, waiting: true})");
 		source.push("new UIButton(context, {label: '点击进入等待状态', type: 'primary', wait: true})");
 		source.push("new UIButton(context, {label: '点击等待5秒后恢复', type: 'primary', wait: 5000})");
 
@@ -325,6 +325,34 @@ var ButtonModule = BaseModule.extend(module, {
 	},
 
 	showExample8: function () {
+		var example = this.addExample("切换");
+
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+		var demo = new UIGroup(this);
+		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
+			.append(new UIButton(this, {label: "Default", toggle: true}))
+			.append(new UIButton(this, {label: "Primary", type: "primary", toggle: true}))
+			.append(new UIButton(this, {label: "Success", type: "success", toggle: true}))
+			.append(new UIButton(this, {label: "Warn", type: "warn", toggle: true}))
+			.append(new UIButton(this, {label: "Danger", type: "danger", toggle: true}))
+			.append(new UIButton(this, {label: "Info", type: "info", toggle: true}))
+			.append(new UIButton(this, {label: "Text", type: "text", toggle: true}))
+			.append(new UIButton(this, {label: "Link", type: "link", toggle: true}));
+
+		var source = [];
+		source.push("new UIButton(context, {label: 'Default', toggle: true});");
+		source.push("new UIButton(context, {label: 'Primary', type: 'primary', toggle: true});");
+		source.push("new UIButton(context, {label: 'Success', type: 'success', toggle: true});");
+		source.push("new UIButton(context, {label: 'Warn', type: 'warn', toggle: true});");
+		source.push("new UIButton(context, {label: 'Danger', type: 'danger', toggle: true});");
+		source.push("new UIButton(context, {label: 'Info', type: 'info', toggle: true});");
+		source.push("new UIButton(context, {label: 'Text', type: 'text', toggle: true});");
+		source.push("new UIButton(context, {label: 'Link', type: 'link', toggle: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample9: function () {
 		var example = this.addExample("组合按钮");
 
 		var items = [{name: "btn1", label: "按钮1"}, {name: "btn2", label: "按钮2"}, {name: "btn3", label: "按钮3"}];
@@ -332,10 +360,14 @@ var ButtonModule = BaseModule.extend(module, {
 		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
 		var demo = new UIGroup(this);
 		demo.add(new UIGroup(this, {gap: 10, orientation: orientation}))
-			.append(new UIButton(this, {label: "默认", items: items}))
-			.append(new UIButton(this, {label: "主按钮", items: items, type: "primary"}))
-			.append(new UIButton(this, {label: "成功", items: items, type: "success", icon: true}))
-			.append(new UIButton(this, {label: "警告", items: items, type: "warn", icon: true, waiting: true}));
+			.append(new UIButton(this, {label: "Default", items: items}))
+			.append(new UIButton(this, {label: "Primary", items: items, type: "primary"}))
+			.append(new UIButton(this, {label: "Success", items: items, type: "success"}))
+			.append(new UIButton(this, {label: "Warn", items: items, type: "warn"}))
+			.append(new UIButton(this, {label: "Danger", items: items, type: "danger"}))
+			.append(new UIButton(this, {label: "Info", items: items, type: "info"}))
+			.append(new UIButton(this, {label: "Text", items: items, type: "text"}))
+			.append(new UIButton(this, {label: "Link", items: items, type: "link"}));
 
 		var source = [];
 		source.push("var items = [");
@@ -343,7 +375,14 @@ var ButtonModule = BaseModule.extend(module, {
 		source.push("  {name: 'btn3', label: '按钮3'},");
 		source.push("  {name: 'btn3', label: '按钮3'}");
 		source.push("];");
-		source.push("new UIButton(context, {label: '默认', items: items});");
+		source.push("new UIButton(context, {label: 'Default', items: items});");
+		source.push("new UIButton(context, {label: 'Primary', items: items, type: 'primary'});");
+		source.push("new UIButton(context, {label: 'Success', items: items, type: 'success'});");
+		source.push("new UIButton(context, {label: 'Warn', items: items, type: 'warn'});");
+		source.push("new UIButton(context, {label: 'Danger', items: items, type: 'danger'});");
+		source.push("new UIButton(context, {label: 'Info', items: items, type: 'info'});");
+		source.push("new UIButton(context, {label: 'Text', items: items, type: 'text'});");
+		source.push("new UIButton(context, {label: 'Link', items: items, type: 'link'});");
 
 		this.showDemo(example, demo, source);
 	}
