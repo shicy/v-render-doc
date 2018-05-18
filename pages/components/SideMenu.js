@@ -17,13 +17,13 @@ var menus = [{
 }, {
 	group: "表单",
 	children: [
-		{name: "textview", label: "TextView 文本输入框"},
 		{name: "checkbox", label: "Checkbox 多选框"},
-		{name: "radiobox", label: "Radiobox 单选框"},
 		{name: "combobox", label: "Combobox 下拉选择框"},
-		{name: "datepicker", label: "DatePicker 日期选择器"},
 		{name: "dateinput", label: "DateInput 日期输入框"},
-		{name: "daterange", label: "DateRange 日期范围输入框"}
+		{name: "datepicker", label: "DatePicker 日期选择器"},
+		{name: "daterange", label: "DateRange 日期范围输入框"},
+		{name: "radiobox", label: "Radiobox 单选框"},
+		{name: "textview", label: "TextView 文本输入框"}
 	]
 }, {
 	group: "数据集",
