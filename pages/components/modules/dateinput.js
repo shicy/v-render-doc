@@ -31,37 +31,62 @@ var DateinputModule = BaseModule.extend(module, {
 		this.showExample2();
 		this.showExample3();
 		this.showExample4();
+		this.showExample5();
+		this.showExample6();
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDateInput(this, {prompt: "请选择日期"}));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UIDateInput(context, {prompt: '请选择日期'}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UIDateInput.create({target: [elem], {prompt: '请选择日期'}});");
+		source.push("new UIDateInput(context, {prompt: '请选择日期'});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample2: function () {
-		var example = this.addExample("禁用组件");
+		var example = this.addExample("默认");
 
 		var demo = new UIGroup(this);
-		demo.append(new UIDateInput(this, {date: new Date(), disabled: true}));
+		demo.append(new UIDateInput(this, {date: "2018-05-20"}));
 
 		var source = [];
-		source.push("new UIDateInput(context, {date: new Date(), disabled: true}).render(target);");
+		source.push("new UIDateInput(context, {date: '2018-05-20'});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample3: function () {
-		var example = this.addExample("设置日期选择范围");
+		var example = this.addExample("禁用");
+
+		var demo = new UIGroup(this);
+		demo.append(new UIDateInput(this, {date: new Date(), disabled: true}));
+
+		var source = [];
+		source.push("new UIDateInput(context, {date: new Date(), disabled: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("格式化");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.append(new UIGroup(this).append(new UIDateInput(this, {date: "2018-01-01", format: "yyyy年MM月dd日"})));
+		demo.append(new UIGroup(this).append(new UIDateInput(this, {date: "2018-01-01", format: "yyyy/MM/dd"})));
+
+		var source = [];
+		source.push("new UIDateInput(context, {date: '2018-01-01', format: 'yyyy年MM月dd日'});");
+		source.push("new UIDateInput(context, {date: '2018-01-01', format: 'yyyy/MM/dd'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5: function () {
+		var example = this.addExample("日期范围");
 
 		var demo = new UIGroup(this);
 		var minDate = new Date(), maxDate = new Date();
@@ -76,19 +101,19 @@ var DateinputModule = BaseModule.extend(module, {
 		source.push("var minDate = new Date(), maxDate = new Date();");
 		source.push("minDate.setDate(minDate.getDate() - 10);");
 		source.push("maxDate.setDate(maxDate.getDate() + 10);");
-		source.push("new UIDateInput(context, {date: new Date(), min: minDate, max: maxDate}).render(target);");
+		source.push("new UIDateInput(context, {date: new Date(), min: minDate, max: maxDate});");
 
 		this.showDemo(example, demo, source);
 	},
 
-	showExample4: function () {
-		var example = this.addExample("使用原生日期组件");
+	showExample6: function () {
+		var example = this.addExample("原生");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDateInput(this, {date: "2018-01-02", native: true}));
 
 		var source = [];
-		source.push("new UIDateInput(context, {date: '2018-01-02', native: true}).render(target);");
+		source.push("new UIDateInput(context, {date: '2018-01-02', native: true});");
 
 		this.showDemo(example, demo, source);
 	}

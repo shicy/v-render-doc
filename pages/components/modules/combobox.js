@@ -46,7 +46,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
 		source.push("new UICombobox(context, {data: items, prompt: '请选择..'});");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {
