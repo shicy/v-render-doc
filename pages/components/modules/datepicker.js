@@ -34,22 +34,19 @@ var DatepickerModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDatePicker(this));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UIDatePicker(context).render(target);");
-		source.push("// 浏览器端创建");
-		source.push("UIDatePicker.create({target: [elem]});");
+		source.push("new UIDatePicker(context);");
 
 		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {
-		var example = this.addExample("选择日期范围");
+		var example = this.addExample("日期范围");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDatePicker(this, {range: true}));
@@ -61,7 +58,7 @@ var DatepickerModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("设置默认日期");
+		var example = this.addExample("默认");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {date: new Date()}));
@@ -75,7 +72,7 @@ var DatepickerModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("设置日期选择范围");
+		var example = this.addExample("最大最小日期");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.add(new UIGroup(this)).append(new UIDatePicker(this, {min: "2018-01-10", max: "2018-02-25", date: "2018-01-16"}));

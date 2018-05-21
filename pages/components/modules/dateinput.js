@@ -44,7 +44,7 @@ var DateinputModule = BaseModule.extend(module, {
 		var source = [];
 		source.push("new UIDateInput(context, {prompt: '请选择日期'});");
 
-		this.showDemo(example, demo, source);
+		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {

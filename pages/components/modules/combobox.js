@@ -53,7 +53,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("可输入");
 
 		var demo = new UIGroup(this);
-		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true, native: true}));
+		demo.append(new UICombobox(this, {data: exampleData, prompt: "请输入选择..", editable: true}));
 
 		var source = [];
 		source.push("var items = [['选项1', '选项2'], '选项3', ['选项4', '选项5'], '选项6', '选项7'];");
@@ -118,7 +118,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("异步加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UICombobox(this, {apiName: "data.component.items", prompt: "请选择..", selectedIndex: 3}));
+		demo.append(new UICombobox(this, {apiName: "data.component.items2", prompt: "请选择..", selectedIndex: 3, labelField: "c1"}));
 
 		var source = [];
 		source.push("new UICombobox(context, {apiName: 'data.component.items', prompt: '请选择..', selectedIndex: 3});");
