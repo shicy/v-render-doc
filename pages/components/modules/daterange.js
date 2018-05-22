@@ -36,22 +36,19 @@ var DaterangeModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIDateRange(this, {prompt: "请选择日期"}));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UIDateRange(context, {prompt: '请选择日期'}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UIDateRange.create({target: [elem], prompt: '请选择日期'});");
+		source.push("new UIDateRange(context, {prompt: '请选择日期'});");
 
 		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {
-		var example = this.addExample("禁用的组件")
+		var example = this.addExample("禁用")
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", disabled: true}));
@@ -63,7 +60,7 @@ var DaterangeModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("日期选择范围");
+		var example = this.addExample("最大最小日期");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDateRange(this, {start: "2018-01-01", min: "2018-01-01", max: "2018-12-31"}));
@@ -75,7 +72,7 @@ var DaterangeModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("原生日期组件");
+		var example = this.addExample("原生");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDateRange(this, {start: "2018-01-03", min: "2018-01-01", max: "2018-01-31", native: true}));
@@ -87,7 +84,7 @@ var DaterangeModule = BaseModule.extend(module, {
 	},
 
 	showExample5: function () {
-		var example = this.addExample("快捷选择按钮");
+		var example = this.addExample("快捷按钮");
 
 
 		var demo = new UIGroup(this, {gap: 10});
@@ -107,7 +104,7 @@ var DaterangeModule = BaseModule.extend(module, {
 	},
 
 	showExample6: function () {
-		var example = this.addExample("快捷按钮下拉显示");
+		var example = this.addExample("快捷按钮（下拉）");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIDateRange(this, {start: "2018-01-01", end: "2018-01-31", shortcuts: [1, 3, 7, 15, 30], dropdown: true}));
