@@ -40,22 +40,25 @@ var TextViewModule = BaseModule.extend(module, {
 		this.showExample1();
 		this.showExample2();
 		this.showExample3();
+		this.showExample4();
+		this.showExample5();
+		this.showExample6();
+		this.showExample7();
+		this.showExample8();
+		this.showExample9();
+		this.showExample10();
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIVGroup(this, {gap: 10});
 		demo.append(new UITextView(this, {prompt: "请输入"}));
 		demo.append(new UITextView(this, {prompt: "多行文本输入框", multi: true}));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UITextView(context, {prompt: '请输入'}).render(target);");
-		source.push("new UITextView(context, {prompt: '多行文本输入框', multi: true}).render(target);");
-		source.push("// 浏览器端创建");
-		source.push("UITextView.create({target: [elem], prompt: '请输入'});");
-		source.push("UITextView.create({target: [elem], prompt: '多行文本输入框', multi: true});");
+		source.push("new UITextView(context, {prompt: '请输入'});");
+		source.push("new UITextView(context, {prompt: '多行文本输入框', multi: true});");
 
 		this.showDemo(example, demo, source, true);
 	},
@@ -63,11 +66,12 @@ var TextViewModule = BaseModule.extend(module, {
 	showExample2: function () {
 		var description = "设置属性<code>type</code>为：<code>number</code>、<code>email</code>、<code>tel</code>、" +
 			"<code>mobile</code>、<code>phone</code>、<code>url</code>、<code>password</code>创建不同类型的输入框。";
-		var example = this.addExample("文本框类型", description);
+
+		var example = this.addExample("类型", description);
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.add(new UIGroup(this))
-			.append(new UITextView(this, {type: "number", min: 1, max: 100, prompt: "请输入1-100之间的数字",
+			.append(new UITextView(this, {type: "number", prompt: "请输入数字",
 				desc: "数字类型输入框，只能输入数字，默认保留2位小数"}));
 		demo.add(new UIGroup(this))
 			.append(new UITextView(this, {type: "email", prompt: "请输入电子邮箱",
@@ -84,7 +88,7 @@ var TextViewModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("// 数字类型输入框");
-		source.push("new UITextView(context, {type: 'number', prompt: '请输入1-100之间的数字'});");
+		source.push("new UITextView(context, {type: 'number', prompt: '请输入数字'});");
 		source.push("// 电子邮箱输入框");
 		source.push("new UITextView(context, {type: 'email', prompt: '请输入电子邮箱'});");
 		source.push("// 密码输入框");
@@ -98,13 +102,147 @@ var TextViewModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("只读文本框");
+		var example = this.addExample("只读");
 
-		var demo = new UIGroup(this);
-		demo.append(new UITextView(this, {value: "该文本框只读，不能输入", readonly: true}));
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {value: "该文本框只读，不能输入", readonly: true}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {value: "该文本框只读，不能输入", readonly: true, multi: true}));
 
 		var source = [];
 		source.push("new UITextView(context, {value: '该文本框只读，不能输入', readonly: true});");
+		source.push("new UITextView(context, {value: '该文本框只读，不能输入', readonly: true, multi: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("提示信息");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "文本框提示信息"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {tips: "提示"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {desc: "文本框备注信息，说明性文本内容。"}));
+
+		var source = [];
+		source.push("new UITextView(context, {prompt: '文本框提示信息'});");
+		source.push("new UITextView(context, {tips: '提示'});");
+		source.push("new UITextView(context, {desc: '文本框备注信息，说明性文本内容。'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5: function () {
+		var example = this.addExample("必填");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "文本框不能为空", required: true}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "文本框不能为空", required: true, empty: "自定义为空的提示信息"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "文本框不能为空", required: true, multi: true}));
+
+		var source = [];
+		source.push("new UITextView(context, {prompt: '文本框不能为空', required: true});");
+		source.push("new UITextView(context, {prompt: '文本框不能为空', required: true, empty: '自定义为空的提示信息'});");
+		source.push("new UITextView(context, {prompt: '文本框不能为空', required: true, multi: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample6: function () {
+		var example = this.addExample("数字类型");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "number", prompt: "请输入数字，默认2为小数"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "number", prompt: "请输入数字，保留3位小数", decimals: 3}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "number", prompt: "请输入10-20之间的数字", min: 10, max: 20, decimals: 0}));
+
+		var source = [];
+		source.push("new UITextView(context, {type: 'number', prompt: '请输入数字，默认2为小数'});");
+		source.push("new UITextView(context, {type: 'number', prompt: '请输入数字，保留3位小数', decimals: 3});");
+		source.push("new UITextView(context, {type: 'number', prompt: '请输入10-20之间的数字', min: 10, max: 20, decimals: 0});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample7: function () {
+		var example = this.addExample("错误信息");
+
+		var doValidate = function (target, value, callback) {
+			callback(/^[0-9a-zA-Z\_]{6,}$/.test(value) ? false : "格式不正确");
+		};
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "email", prompt: "请输入电子邮箱", errmsg: "亲，邮箱地址不是这样滴！"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入名称，必须是字母、数字或_，最少6个字符", multi: true, validate: doValidate}));
+
+		var source = [];
+		source.push("new UITextView(context, {type: 'email', prompt: '请输入电子邮箱', errmsg: '亲，邮箱地址不是这样滴！'});");
+		source.push("new UITextView(context, {");
+		source.push("  prompt: '请输入名称，必须是字母、数字或_，最少6个字符',");
+		source.push("  multi: true,");
+		source.push("  validate: function (target, value, callback) {");
+		source.push("    callback(/^[0-9a-zA-Z\\_]$/.test(value) ? false : '格式不正确');");
+		source.push("  }");
+		source.push("});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample8: function () {
+		var example = this.addExample("隐藏内容");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入密码", displayAsPwd: true}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "number", prompt: "请输入数字密码", displayAsPwd: true}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {type: "email", prompt: "输入邮箱作为密码", displayAsPwd: true}));
+
+		var source = [];
+		source.push("new UITextView(context, {prompt: '请输入密码', displayAsPwd: true});");
+		source.push("new UITextView(context, {type: 'number', prompt: '请输入数字密码', displayAsPwd: true});");
+		source.push("new UITextView(context, {type: 'email', prompt: '输入邮箱作为密码', displayAsPwd: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample9: function () {
+		var example = this.addExample("最大字符数");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入10个字之内的文本", maxSize: 10}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入备注信息", multi: true, maxSize: 120}));
+
+		var source = [];
+		source.push("new UITextView(context, {prompt: '请输入10个字之内的文本', maxSize: 10});");
+		source.push("new UITextView(context, {prompt: '请输入备注信息', multi: true, maxSize: 120});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample10: function () {
+		var example = this.addExample("自适应高度");
+
+		var demo = new UIGroup(this);
+		demo.add(new UITextView(this, {prompt: "请输入内容", multi: true, autoHeight: true, width: "100%"}));
+
+		var source = [];
+		source.push("new UITextView(context, {prompt: '请输入内容', multi: true, autoHeight: true, width: '100%'});");
 
 		this.showDemo(example, demo, source);
 	}
