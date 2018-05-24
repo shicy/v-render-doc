@@ -96,7 +96,7 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("// 电话号码、手机输入框");
 		source.push("new UITextView(context, {type: 'tel', prompt: '请输入电话号码或手机号'});");
 		source.push("// 网址输入框");
-		source.push("new UITextView(context, {type: 'url', prompt: '请输入网址'});");
+		source.push("new UITextView(context, {type: 'url', prompt: '请输入网址', value: 'http://'});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -192,7 +192,7 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("new UITextView(context, {");
 		source.push("  prompt: '请输入名称，必须是字母、数字或_，最少6个字符',");
 		source.push("  multi: true,");
-		source.push("  validate: function (target, value, callback) {");
+		source.push("  errmsg: function (target, value, callback) {");
 		source.push("    callback(/^[0-9a-zA-Z\\_]$/.test(value) ? false : '格式不正确');");
 		source.push("  }");
 		source.push("});");
