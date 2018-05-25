@@ -53,8 +53,8 @@ var TextViewModule = BaseModule.extend(module, {
 		var example = this.addExample("基本使用");
 
 		var demo = new UIVGroup(this, {gap: 10});
-		demo.append(new UITextView(this, {prompt: "请输入"}));
-		demo.append(new UITextView(this, {prompt: "多行文本输入框", multi: true}));
+		demo.add(new UIGroup(this)).append(new UITextView(this, {prompt: "请输入"}));
+		demo.add(new UIGroup(this)).append(new UITextView(this, {prompt: "多行文本输入框", multi: true}));
 
 		var source = [];
 		source.push("new UITextView(context, {prompt: '请输入'});");
@@ -178,7 +178,7 @@ var TextViewModule = BaseModule.extend(module, {
 		var example = this.addExample("错误信息");
 
 		var doValidate = function (target, value, callback) {
-			callback(/^[0-9a-zA-Z\_]{6,}$/.test(value) ? false : "格式不正确");
+			callback(/^[0-9a-zA-Z\_]{6,}$/.test(value) ? false : "格式不正确，请输入数字、字母、_，不少于6个字符");
 		};
 
 		var demo = new UIGroup(this, {gap: 10});
@@ -193,7 +193,7 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("  prompt: '请输入名称，必须是字母、数字或_，最少6个字符',");
 		source.push("  multi: true,");
 		source.push("  errmsg: function (target, value, callback) {");
-		source.push("    callback(/^[0-9a-zA-Z\\_]$/.test(value) ? false : '格式不正确');");
+		source.push("    callback(/^[0-9a-zA-Z\\_]{6,}$/.test(value) ? false : '格式不正确，请输入数字、字母、_，不少于6个字符');");
 		source.push("  }");
 		source.push("});");
 
@@ -238,10 +238,22 @@ var TextViewModule = BaseModule.extend(module, {
 	showExample10: function () {
 		var example = this.addExample("自适应高度");
 
-		var demo = new UIGroup(this);
-		demo.add(new UITextView(this, {prompt: "请输入内容", multi: true, autoHeight: true, width: "100%"}));
+		var autoText = "你可能会有这样的经历，跟人交谈时，有时你从各个角度给他分析一个问题，提出中肯的建议，但是他怎么都听不进去，表现得异常固执。" +
+			"\n\n比如，一个女孩深陷感情骗局，外人一看就知道男孩在骗她，但女孩子却固执地认为男孩是真正爱她。" +
+			"\n\n任凭外人怎么说，她都不会改变主意，甚至认为别人在不怀好意地破坏他们。" +
+			"\n\n再比如，你苦口婆心地跟他人说年轻的时候多学点东西，多增长见识，对自己的事业、人生都有帮助，他却认为什么文化、知识都没有用，遇到事情还得靠钱、靠关系、靠运气。" +
+			"\n\n于是，你所有的建议压根就不会起作用，他总会固执地寻找理由，固执地放弃努力。" +
+			"\n\n每当这个时候，等你们争论一番毫无结果时，你也许会有一种挫败感，甚至捶胸顿足地喊道：从来就没有见过如此固执的人，这么简单的道理，他怎么就是不懂呢?";
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入", autoHeight: true, width: "100%"}));
+		demo.add(new UIGroup(this))
+			.append(new UITextView(this, {prompt: "请输入内容", multi: true, autoHeight: true, 
+				width: "100%", maxHeight: 500, value: autoText}));
 
 		var source = [];
+		source.push("new UITextView(context, {prompt: '请输入', autoHeight: true, width: '100%'});")
 		source.push("new UITextView(context, {prompt: '请输入内容', multi: true, autoHeight: true, width: '100%'});");
 
 		this.showDemo(example, demo, source);
