@@ -37,19 +37,17 @@ var PaginatorModule = BaseModule.extend(module, {
 		this.showExample8();
 		this.showExample9();
 		this.showExample10();
+		this.showExample11();
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIPaginator(this, {total: 16395, size: 20, page: 3}));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UIPaginator(context, {total: 16395, size: 20, page: 3}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UIPaginator.create({target: [elem], total: 16395, size: 20, page: 3});");
+		source.push("new UIPaginator(context, {total: 16395, size: 20, page: 3});");
 
 		this.showDemo(example, demo, source, true);
 	},
@@ -67,7 +65,10 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("隐藏分页跳转功能");
+		if (this.isApp)
+			return ;
+
+		var example = this.addExample("隐藏跳转功能");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIPaginator(this, {total: 12345, skip: false}));
@@ -79,21 +80,23 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("显示分页按钮");
+		var example = this.addExample("页码展开");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, mode: "spread"}));
-		demo.append(new UIPaginator(this, {total: 12345, mode: "spread", showNum: 5}));
+		if (!this.isApp)
+			demo.append(new UIPaginator(this, {total: 12345, mode: "spread", showNum: 5}));
 
 		var source = [];
 		source.push("new UIPaginator(context, {total: 12345, mode: 'spread'});");
-		source.push("new UIPaginator(context, {total: 12345, mode: 'spread', showNum: 5});");
+		if (!this.isApp)
+			source.push("new UIPaginator(context, {total: 12345, mode: 'spread', showNum: 5});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample5: function () {
-		var example = this.addExample("下拉显示分页");
+		var example = this.addExample("页码下拉");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIPaginator(this, {total: 12345, mode: "dropdown"}));
@@ -105,7 +108,7 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample6: function () {
-		var example = this.addExample("只显示分页按钮");
+		var example = this.addExample("只显示页码");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, mode: "spread", buttons: false, skip: false}));
@@ -119,7 +122,7 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample7: function () {
-		var example = this.addExample("自定义按钮名称");
+		var example = this.addExample("自定义文本");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, buttons: ["首页", "上一页", "下一页", "末页", "跳转"]}));
@@ -133,7 +136,10 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample8: function () {
-		var example = this.addExample("显示分页状态");
+		if (this.isApp)
+			return ;
+
+		var example = this.addExample("状态信息");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, status: true}));
@@ -149,7 +155,10 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample9: function () {
-		var example = this.addExample("可选分页大小");
+		if (this.isApp)
+			return ;
+
+		var example = this.addExample("分页大小");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, sizes: [10, 20, 50]}));
@@ -163,7 +172,7 @@ var PaginatorModule = BaseModule.extend(module, {
 	},
 
 	showExample10: function () {
-		var example = this.addExample("显示为超链接样式");
+		var example = this.addExample("超链接样式");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIPaginator(this, {total: 12345, style: "link"}));
@@ -176,6 +185,18 @@ var PaginatorModule = BaseModule.extend(module, {
 		source.push("new UIPaginator(context, {total: 12345, style: 'link', buttons: ['首页', '上一页', '下一页', '末页', '跳转']});");
 		source.push("new UIPaginator(context, {total: 12345, style: 'link', mode: 'spread'});");
 		source.push("new UIPaginator(context, {total: 12345, style: 'link', mode: 'dropdown'});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample11: function () {
+		var example = this.addExample("禁用");
+
+		var demo = new UIGroup(this, {gap: 10});
+		demo.append(new UIPaginator(this, {total: 1234, disabled: true}));
+
+		var source = [];
+		source.push("new UIPaginator(context, {total: 1234, disabled: true});");
 
 		this.showDemo(example, demo, source);
 	}
