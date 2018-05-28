@@ -33,7 +33,7 @@ var PanelModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIPanel(this, {title: "标题", content: "内容<br/><a>支持富文本</a>"});
 
@@ -47,7 +47,7 @@ var PanelModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("添加按钮");
+		var example = this.addExample("按钮");
 
 		var buttons = [];
 		buttons.push({name: "btn1", label: "默认按钮"});
@@ -99,7 +99,7 @@ var PanelModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("多视窗显示");
+		var example = this.addExample("多视窗");
 
 		var viewports = [];
 		viewports.push({name: "view1", label: "视图 1"});

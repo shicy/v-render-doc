@@ -160,7 +160,7 @@ var ContainerModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIContainer(this, {content: "可以包含的内容为一个组件，或任意的网页代码..",
@@ -171,10 +171,7 @@ var ContainerModule = BaseModule.extend(module, {
 		source.push("// 创建一个容器，使用样式：");
 		source.push("var styles = {\n\tminHeight: 80, \n\tcolor: '#8a2a17', \n\tborder: '1px solid red', " +
 			"\n\tborderWidth: 1, \n\tbackground: '#fbeed9', \n\tpadding: 10\n};");
-		source.push("// 服务端创建");
-		source.push("new UIContainer(context, {content: '可以包含的内容为一个组件，或任意的网页代码..', styles: styles}).render(target);");
-		source.push("// 浏览器端创建");
-		source.push("UIContainer.create({target: [elem], content: '可以包含的内容为一个组件，或任意的网页代码..', styles: styles});");
+		source.push("new UIContainer(context, {content: '可以包含的内容为一个组件，或任意的网页代码..', styles: styles});");
 
 		this.showDemo(example, demo, source, true);
 	}
