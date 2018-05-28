@@ -74,13 +74,11 @@ var GroupModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("// 服务端创建");
-		source.push("new UIGroup(context).render(target);");
-		source.push("// 浏览器端创建");
-		source.push("UIGroup.create({target: [elem]});");
+		source.push("new UIGroup(context);");
 		source.push("// 水平方向布局（仅服务端）");
-		source.push("new UIHGroup(context).render(target);");
+		source.push("new UIHGroup(context);");
 		source.push("// 竖直方向布局（仅服务端）");
-		source.push("new UIVGroup(context).render(target);");
+		source.push("new UIVGroup(context);");
 
 		this.showDemo(example, demo, source, true);
 	}
