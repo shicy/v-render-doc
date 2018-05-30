@@ -84,6 +84,9 @@ var TabbarModule = ListModule.extend(module, {
 	},
 
 	showExample2: function () {
+		if (this.isApp)
+			return ;
+		
 		var example = this.addExample("可关闭");
 
 		var tabs = [{label: "标签1", name: "tab1"}, {label: "标签2", name: "tab2", closable: true}, 
