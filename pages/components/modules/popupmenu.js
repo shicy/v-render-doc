@@ -41,7 +41,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var menus = [
 			{name: "menu1", label: "菜单1"},
@@ -110,7 +110,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("禁用菜单");
+		var example = this.addExample("禁用");
 
 		var menus = [
 			{name: "menu1", label: "菜单1"},
@@ -137,7 +137,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("显示图标");
+		var example = this.addExample("图标");
 
 		var menus = [
 			{name: "menu1", label: "菜单1", icon: "/image/icons/b02.png"},
@@ -172,7 +172,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("分组显示");
+		var example = this.addExample("分组");
 
 		var menus = [[
 			{name: "menu1", label: "菜单1", icon: "/image/icons/b02.png"},
@@ -242,7 +242,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	},
 
 	showExample5: function () {
-		var example = this.addExample("菜单状态切换");
+		var example = this.addExample("切换");
 
 		var menus = [[
 			{name: "menu1", label: "菜单1", toggle: true}
@@ -336,7 +336,7 @@ var PopupMenuModule = BaseModule.extend(module, {
 	// },
 
 	showExample7: function () {
-		var example = this.addExample("相对位移");
+		var example = this.addExample("位移");
 
 		var menus = [
 			{name: "menu1", label: "菜单1"},

@@ -62,31 +62,29 @@ var TabbarModule = ListModule.extend(module, {
 		this.showExample1();
 		this.showExample2();
 		this.showExample3();
+		this.showExample4();
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var tabs = [{label: "标签1", name: "tab1"}, {label: "标签2", name: "tab2"}, 
-			{label: "标签3", name: "tab3", disabled: true}, {label: "标签4", name: "tab4"}];
+			{label: "标签3", name: "tab3"}, {label: "标签4", name: "tab4"}];
 		var demo = new UITabbar(this, {data: tabs, selectedIndex: 0});
 
 		var source = [];
 		source.push("var tabs = [];");
 		source.push("tabs.push({label: '标签1', name: 'tab1'});");
 		source.push("tabs.push({label: '标签2', name: 'tab2'});");
-		source.push("tabs.push({label: '标签3', name: 'tab3', disabled: true});");
+		source.push("tabs.push({label: '标签3', name: 'tab3'});");
 		source.push("tabs.push({label: '标签4', name: 'tab4'});");
-		source.push("// 服务端创建");
-		source.push("new UITabbar(context, {data: tabs, selectedIndex: 0}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UITabbar.create({target: [elem], data: tabs, selectedIndex: 0});");
+		source.push("new UITabbar(context, {data: tabs, selectedIndex: 0});");
 
 		this.showDemo(example, demo, source, true);
 	},
 
 	showExample2: function () {
-		var example = this.addExample("可关闭标签");
+		var example = this.addExample("可关闭");
 
 		var tabs = [{label: "标签1", name: "tab1"}, {label: "标签2", name: "tab2", closable: true}, 
 			{label: "标签3", name: "tab3", closable: true}, {label: "标签4", name: "tab4", closable: true}];
@@ -98,13 +96,13 @@ var TabbarModule = ListModule.extend(module, {
 		source.push("tabs.push({label: '标签2', name: 'tab2', closable: true});");
 		source.push("tabs.push({label: '标签3', name: 'tab3', closable: true});");
 		source.push("tabs.push({label: '标签4', name: 'tab4', closable: true});");
-		source.push("new UITabbar(context, {data: tabs, selectedIndex: 1}).render(target)");
+		source.push("new UITabbar(context, {data: tabs, selectedIndex: 1});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample3: function () {
-		var example = this.addExample("更多标签超出显示");
+		var example = this.addExample("更多标签");
 
 		var tabs = [];
 		for (var i = 1; i <= 20; i++) {
@@ -114,9 +112,29 @@ var TabbarModule = ListModule.extend(module, {
 
 		var source = [];
 		source.push("var tabs = [];");
-		source.push("for (var i = 1; i <= 20; i++) {\n\ttabs.push({label, '标签' + i, name: 'tab' + i});\n}");
-		source.push("new UITabbar(context, {data: tabs, selectedIndex: 15}).render(target);");
+		source.push("for (var i = 1; i <= 20; i++) {");
+		source.push("  tabs.push({label, '标签' + i, name: 'tab' + i});");
+		source.push("}");
+		source.push("new UITabbar(context, {data: tabs, selectedIndex: 15});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample4: function () {
+		var example = this.addExample("禁用");
+
+		var tabs = [{label: "标签", name: "tab1"}, {label: "禁用的标签", name: "tab2", disabled: true}, 
+			{label: "可用的标签", name: "tab3"}];
+		var demo = new UITabbar(this, {data: tabs, selectedIndex: 0});
+
+		var source = [];
+		source.push("var tabs = [];");
+		source.push("tabs.push({label: '标签', name: 'tab1'});");
+		source.push("tabs.push({label: '禁用的标签', name: 'tab2', disabled: true});");
+		source.push("tabs.push({label: '可用的标签', name: 'tab3'});");
+		source.push("new UITabbar(context, {data: tabs, selectedIndex: 0});");
 
 		this.showDemo(example, demo, source);
 	}
+
 });

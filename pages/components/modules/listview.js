@@ -78,7 +78,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIListView(this, {data: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]}));
@@ -102,7 +102,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("显示列表选择框");
+		var example = this.addExample("选择框");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIListView(this, {data: exampleData, chkbox: true, selectedIndex: 2}));
@@ -114,7 +114,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("多选列表");
+		var example = this.addExample("多选");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIListView(this, {data: exampleData, chkbox: true, multi: true, selectedIndex: [2, 3]}));
@@ -157,7 +157,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample7: function () {
-		var example = this.addExample("使用项渲染器");
+		var example = this.addExample("项渲染器");
 
 		var isApp = this.isRenderAsApp();
 		var myItemRenderer = function ($, item, data) {
@@ -207,7 +207,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample8: function () {
-		var example = this.addExample("使用内置项渲染器（简单）");
+		var example = this.addExample("内置项渲染器（简单）");
 
 		var demo = new UIGroup(this);
 		var myItemRenderer = UIListView.item_renderer_simple("title");
@@ -221,7 +221,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample9: function () {
-		var example = this.addExample("使用内置项渲染器（图标）");
+		var example = this.addExample("内置项渲染器（图标）");
 
 		var demo = new UIGroup(this);
 		var myItemRenderer = UIListView.item_renderer_icon({title: "name"});
@@ -235,7 +235,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample10: function () {
-		var example = this.addExample("使用内置项渲染器（按钮）");
+		var example = this.addExample("内置项渲染器（按钮）");
 
 		var demo = new UIGroup(this);
 		var buttons = [{name: "download", label: "立即下载", type: "primary"}, {name: "install", label: "安装到手机"}];
@@ -252,7 +252,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample11: function () {
-		var example = this.addExample("使用内置项渲染器（图标+按钮）");
+		var example = this.addExample("内置项渲染器（图标+按钮）");
 
 		var demo = new UIGroup(this);
 		var buttons = [{name: "download", label: "立即下载", type: "primary"}, {name: "install", label: "安装到手机"}];
@@ -285,7 +285,7 @@ var ListViewModule = BaseModule.extend(module, {
 	},
 
 	showExample13: function () {
-		var example = this.addExample("空列表显示");
+		var example = this.addExample("空列表");
 
 		var demo = new UIGroup(this);
 		demo.append(new UIListView(this, {empty: "你还没有相关信息"}));

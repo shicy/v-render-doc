@@ -6,28 +6,6 @@
 
 var view = $(".comp-dialog"); console.log(view);
 
-
-view.on("click", "[name='example1-btn']", function (e) {
-	UIDialog.create({title: "标题", content: "内容"}).open();
-});
-
-view.on("click", "[name='example2-small']", function (e) {
-	UIDialog.create({size: "small"}).open();
-});
-
-view.on("click", "[name='example2-normal']", function (e) {
-	UIDialog.create({size: "normal"}).open();
-});
-
-view.on("click", "[name='example2-big']", function (e) {
-	UIDialog.create({size: "big"}).open();
-});
-
-view.on("click", "[name='example2-auto']", function (e) {
-	var contentView = "<div style='width: 530px; height: 360px; background: #d1ebf3;'>内容宽530高360</div>";
-	UIDialog.create({size: "auto", content: contentView}).open();
-});
-
 view.on("click", "[name='example3-btn']", function (e) {
 	var contentView = UIGroup.create();
 	var closeBtn = contentView.add(UIButton.create({name: "close", label: "点击5秒后关闭对话框", type: "danger"}));
@@ -47,7 +25,7 @@ view.on("click", "[name='example3-btn']", function (e) {
 	dialog.on("btn_ok", function (e) {
 		contentView.append('<div>点击了“保存”按钮..</div>');
 		setTimeout(function () {
-			dialog.waitting(false, 'ok');
+			dialog.waiting(false, 'ok');
 		}, 2000);
 	});
 
@@ -68,9 +46,4 @@ view.on("click", "[name='example3-btn']", function (e) {
 			}
 		}, 1000);
 	});
-});
-
-view.on("click", "[name='example4-btn']", function (e) {
-	var contentView = "<div style='background:bisque;'>内容填充，无边距</div>";
-	UIDialog.create({content: contentView, fill: true}).open();
 });

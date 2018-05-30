@@ -31,19 +31,15 @@ var RadgrpModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this, {gap: 10});
 		demo.append(new UIRadioGroup(this, {data: ["A", "B", "C", "D"], selectedIndex: 1}));
 		demo.append(new UIRadioGroup(this, {data: ["A", "B", "C", "D"], selectedIndex: 0}));
 
 		var source = [];
-		source.push("// 服务端创建");
-		source.push("new UIRadioGroup(context, {data: ['A', 'B', 'C', 'D'], selectedIndex: 1}).render(target)");
-		source.push("new UIRadioGroup(context, {data: ['A', 'B', 'C', 'D'], selectedIndex: 0}).render(target)");
-		source.push("// 浏览器端创建");
-		source.push("UIRadioGroup.create({target: [elem], data: ['A', 'B', 'C', 'D'], selectedIndex: 1});");
-		source.push("UIRadioGroup.create({target: [elem], data: ['A', 'B', 'C', 'D'], selectedIndex: 0});");
+		source.push("new UIRadioGroup(context, {data: ['A', 'B', 'C', 'D'], selectedIndex: 1});");
+		source.push("new UIRadioGroup(context, {data: ['A', 'B', 'C', 'D'], selectedIndex: 0});");
 
 		this.showDemo(example, demo, source);
 	}
