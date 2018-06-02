@@ -83,7 +83,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称"});
@@ -110,7 +110,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("显示行选择框（单选）");
+		var example = this.addExample("选择框（单选）");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称", width: (this.isApp ? null : 120)});
@@ -135,7 +135,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample2_1: function () {
-		var example = this.addExample("显示行选择框（多选）");
+		var example = this.addExample("选择框（多选）");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称", width: (this.isApp ? null : 120)});
@@ -258,7 +258,7 @@ var DatagridModule = BaseModule.extend(module, {
 		var sizeFilterFunction = function (d, v) { return d.size < v; };
 
 		var columns = [];
-		columns.push({name: "name", title: "名称", filter: true});
+		columns.push({name: "name", title: "名称", sortable: true, filter: true});
 		columns.push({name: "type", title: "类型", filter: "enum"});
 		columns.push({name: "score", title: "评分", filter: scoreFilter, sortable: true, filterValue: 2});
 		columns.push({name: "size", title: "大小", filter: sizeFilter, filterFunction: sizeFilterFunction});
@@ -297,7 +297,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample5: function () {
-		var example = this.addExample("添加列表标题图标");
+		var example = this.addExample("列标题图标");
 
 		var columns = [];
 		if (this.isApp) {
@@ -326,7 +326,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample6: function () {
-		var example = this.addExample("自定义列表标题");
+		var example = this.addExample("自定义列标题");
 
 		var columns = [];
 		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120), 
@@ -357,7 +357,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample6_1: function () {
-		var example = this.addExample("自定义列表标题（headRenderer）");
+		var example = this.addExample("自定义列标题（headRenderer）");
 		var columns = [];
 		columns.push({name: "name", title: "标题", width: (this.isApp ? null : 120), sortable: true, filter: true});
 		if (!this.isApp)
@@ -436,7 +436,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample8: function () {
-		var example = this.addExample("自定义单元格渲染");
+		var example = this.addExample("渲染器");
 
 		var columns = [];
 		columns.push({name: "name", title: "标题"});
@@ -614,7 +614,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample10: function () {
-		var example = this.addExample("自定义行和单元格样式");
+		var example = this.addExample("样式");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称"});
@@ -667,7 +667,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample11: function () {
-		var example = this.addExample("固定表格高度和列宽度");
+		var example = this.addExample("高度和宽度");
 
 		var demo = new UIGroup(this);
 
@@ -718,7 +718,7 @@ var DatagridModule = BaseModule.extend(module, {
 	},
 
 	showExample13: function () {
-		var example = this.addExample("空表格显示");
+		var example = this.addExample("空表格");
 
 		var columns = [];
 		columns.push({name: "name", title: "名称"});
