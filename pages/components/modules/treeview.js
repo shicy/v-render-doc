@@ -142,7 +142,7 @@ var TreeModule = ListModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
 		demo.append(new UITreeView(this, {data: exampleData}));
@@ -154,31 +154,40 @@ var TreeModule = ListModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("显示选择框（单选）");
+		var example = this.addExample("选择框（单选）");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, selectedIndex: 0}));
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, selectedId: "110100"}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, selectedIndex: 0});");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  selectedIndex: 0");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample2_1: function () {
-		var example = this.addExample("显示选择框（多选）");
+		var example = this.addExample("选择框（多选）");
 
 		var demo = new UIGroup(this);
 		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, multi: true, selectedIndex: "1,2"}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, multi: true, selectedIndex: '1,2'});");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  multi: true,");
+		source.push("  selectedIndex: '1,2'");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample3: function () {
-		var example = this.addExample("自定义节点内容");
+		var example = this.addExample("自定义节点");
 
 		var myLabelFunction = function (data) {
 			return [data.code, data.value].join("_");
@@ -188,17 +197,18 @@ var TreeModule = ListModule.extend(module, {
 		demo.append(new UITreeView(this, {data: exampleData, labelFunction: myLabelFunction}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, labelFunction: myLabelFunction});");
-		source.push("");
-		source.push("function myLabelFunction (data) {");
-		source.push("    return [data.code, data.value].join('_');");
-		source.push("}");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  labelFunction: function (data) {");
+		source.push("    return data.code + '_' + data.value;");
+		source.push("  }");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample3_1: function () {
-		var example = this.addExample("使用项渲染器");
+		var example = this.addExample("节点渲染器");
 
 		var myItemRenderer = function ($, item, data) {
 			var view = $("<div></div>");
@@ -213,9 +223,10 @@ var TreeModule = ListModule.extend(module, {
 		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, itemRenderer: myItemRenderer}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, itemRenderer: myItemRenderer});");
-		source.push("");
-		source.push("function myItemRenderer (data) {");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  itemRenderer: function (data) {");
 		source.push("    var $ = $ || VRender.$;");
 		source.push("    var view = $('<div></div');");
 		source.push("    $('<label></label>').appendTo(view).text(data.value);");
@@ -223,25 +234,30 @@ var TreeModule = ListModule.extend(module, {
 		source.push("    code.text(data.code);");
 		source.push("    code.css({color: '#fff', backgroundColor: '#000', marginLeft: '5px'});");
 		source.push("    return view;");
-		source.push("}");
+		source.push("  }");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample4: function () {
-		var example = this.addExample("显示图标");
+		var example = this.addExample("图标");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, icon: 'icon'}));
+		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, icon: "icon"}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: 'icon'});");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  icon: 'icon'");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample4_1: function () {
-		var example = this.addExample("显示图标（使用自定义方法）");
+		var example = this.addExample("图标（使用自定义方法）");
 
 		var myIconFunction = function (data) {
 			if (/0000$/.test(data.code))
@@ -255,39 +271,63 @@ var TreeModule = ListModule.extend(module, {
 		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, icon: myIconFunction}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, icon: myIconFunction});");
-		source.push("");
-		source.push("function myIconFunction (data) {");
-		source.push("    return null;");
-		source.push("}");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  icon: function (data) {}");
+		source.push("    if (/0000$/.test(data.code))");
+		source.push("      return '/image/icons/d02.png';");
+		source.push("    if (/00$/.test(data.code))");
+		source.push("      return '/image/icons/d03.png';");
+		source.push("    return '/image/icons/d04.png';");
+		source.push("  }");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample5: function () {
-		var example = this.addExample("设置默认展开和选择（按索引）");
+		var example = this.addExample("默认展开和选择（按索引）");
 
 		var demo = new UIGroup(this);
 		demo.append(new UITreeView(this, {data: exampleData, chkbox: true, openIndex: "0,1", 
 			selectedIndex: "3,8", multi: true}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, chkbox: true, " +
-			"\n\topenIndex: '0,1', selectedIndex: '3,8', multi: true});");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  chkbox: true,");
+		source.push("  openIndex: '0,1',");
+		source.push("  selectedIndex: '3,8',");
+		source.push("  multi: true");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample5_1: function () {
-		var example = this.addExample("设置默认展开和选择（按编号）");
+		var example = this.addExample("默认展开和选择（按编号）");
+
+		var myLabelFunction = function (data) {
+			return data.value + " " + data.code;
+		};
 
 		var demo = new UIGroup(this);
 		demo.append(new UITreeView(this, {data: exampleData, keyField: "code", chkbox: true, openId: "120100,130000", 
-			selectedId: "110107,120100,220000", multi: true}));
+			selectedId: "110107,120100,220000", multi: true, labelFunction: myLabelFunction}));
 
 		var source = [];
-		source.push("new UITreeView(context, {data: dataSource, keyField: 'code', chkbox: true, " +
-			"\n\topenId: '120100,130000', selectedId: '110107,120100,220000', multi: true});");
+		source.push("new UITreeView(context, {");
+		source.push("  data: dataSource,");
+		source.push("  keyField: 'code',");
+		source.push("  chkbox: true,");
+		source.push("  openId: '120100,130000',");
+		source.push("  selectedId: '110107,120100,220000',");
+		source.push("  multi: true,");
+		source.push("  labelFunction: function (data) {");
+		source.push("    return data.value + ' ' + data.code;");
+		source.push("  }");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -300,7 +340,11 @@ var TreeModule = ListModule.extend(module, {
 			apiParams: {total: 10, p_size: 3}}));
 
 		var source = [];
-		source.push("new UITreeView(context, {apiName: 'data.component.tree', chkbox: true, openIndex: '1,0,2'});");
+		source.push("new UITreeView(context, {");
+		source.push("  apiName: 'data.component.tree',");
+		source.push("  chkbox: true,");
+		source.push("  openIndex: '1,0,2'");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	},

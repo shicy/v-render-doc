@@ -39,7 +39,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample1: function () {
-		var example = this.addExample("基本用法");
+		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: "data.component.items"});
@@ -53,21 +53,21 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample2: function () {
-		var example = this.addExample("设置加载文本");
+		var example = this.addExample("加载信息");
 
 		var demo = new UIGroup(this);
-		var listView = new UIListView(this, {apiName: "data.component.items"});
+		var listView = new UIListView(this, {apiName: "data.component.items", apiParams: {p_size: 5}});
 		demo.append(new UIScrollBox(this, {height: 320, content: listView, loadingText: "正在努力加载中，请稍候.."}));
 
 		var source = [];
-		source.push("var listView = new UIListView(context, {apiName: 'data.component.items'});");
+		source.push("var listView = new UIListView(context, {apiName: 'data.component.items', apiParams: {p_size: 5}});");
 		source.push("new UIScrollBox(context, {height: 320, content: listView, loadingText: '正在努力加载中，请稍候..'});");
 
 		this.showDemo(example, demo, source);
 	},
 
 	showExample2_1: function () {
-		var example = this.addExample("自定义加载视图");
+		var example = this.addExample("加载视图");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: "data.component.items"});
@@ -84,7 +84,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample3: function () {
-		var example = this.addExample("设置滚动加载位置");
+		var example = this.addExample("加载位置");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: 'data.component.items'});
@@ -98,7 +98,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample4: function () {
-		var example = this.addExample("设置刷新文本");
+		var example = this.addExample("刷新信息");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: 'data.component.items'});
@@ -113,7 +113,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample4_1: function () {
-		var example = this.addExample("自定义刷新视图");
+		var example = this.addExample("刷新视图");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: 'data.component.items'});
@@ -129,7 +129,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample5: function () {
-		var example = this.addExample("设置滚动刷新位置");
+		var example = this.addExample("刷新位置");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: "data.component.items"});
@@ -143,7 +143,7 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample6: function () {
-		var example = this.addExample("设置底部视图");
+		var example = this.addExample("底部视图");
 
 		var demo = new UIGroup(this);
 		var listView = new UIListView(this, {apiName: "data.component.items"});
@@ -157,13 +157,13 @@ var ScrollBoxModule = BaseModule.extend(module, {
 	},
 
 	showExample7: function () {
-		var example = this.addExample("空视图显示");
+		var example = this.addExample("空视图");
 
 		var demo = new UIGroup(this);
-		demo.append(new UIScrollBox(this, {height: 320}));
+		demo.append(new UIScrollBox(this, {height: 320, content: new UIListView(this)}));
 
 		var source = [];
-		source.push("new UIScrollBox(context, {height: 320});");
+		source.push("new UIScrollBox(context, {height: 320, content: new UIListView(context)});");
 
 		this.showDemo(example, demo, source);
 	}
