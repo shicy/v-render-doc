@@ -10,6 +10,7 @@ var BaseModule = require("./_base");
 
 var UIGroup = VRender.UIGroup;
 var UIButton = VRender.UIButton;
+var UINotification = VRender.UINotification;
 
 var NoticeModule = BaseModule.extend(module, {
 	className: "comp-notice",
@@ -39,7 +40,8 @@ var NoticeModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this);
 		demo.append(new UIButton(this, {ref: "notice_btn1", label: "点击打开通知"}));
-		// demo.append(new UINotification(this, {content: "服务端创建的通知，打开页面会直接显示通知。", duration: 60000}));
+		// 后端构建
+		demo.append(new UINotification(this, {title: "标题", content: "服务端创建的通知，打开页面会直接显示通知。", duration: 60000}));
 
 		var source = [];
 		source.push("new UINotification(context, {title: '标题', content: '这里是内容！！', duration: 60000});");
