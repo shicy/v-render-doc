@@ -22,6 +22,7 @@ var menus = [{
 		{name: "dateinput", label: "DateInput 日期输入框"},
 		{name: "datepicker", label: "DatePicker 日期选择器"},
 		{name: "daterange", label: "DateRange 日期范围输入框"},
+		{name: "formview", label: "FormView 表单视图"},
 		{name: "radiobox", label: "Radiobox 单选框"},
 		{name: "textview", label: "TextView 文本输入框"}
 	]
@@ -30,7 +31,7 @@ var menus = [{
 	children: [
 		{name: "datagrid", label: "Datagrid 数据网格"},
 		{name: "listview", label: "ListView 列表视图"},
-		{name: "treeview", label: "Tree 树形视图"}
+		{name: "treeview", label: "TreeView 树形视图"}
 	]
 }, {
 	group: "容器",

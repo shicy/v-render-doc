@@ -41,7 +41,7 @@ var TooltipModule = BaseModule.extend(module, {
 		var demo = new UIGroup(this);
 		demo.append(new UIButton(this, {ref: "tooltip_btn1", label: "点击打开提示框"}));
 		// 后端构建
-		demo.append(new UITooltip(this, {content: "这是一条消息提示，由服务端创建。", duration: 0}));
+		demo.append(new UITooltip(this, {content: "这是一条消息提示，由服务端创建。"}));
 
 		var source = [];
 		source.push("new UITooltip(context, {content: '这是一条消息提示。默认3秒后关闭'});");
