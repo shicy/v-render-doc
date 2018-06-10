@@ -41,7 +41,7 @@ var NoticeModule = BaseModule.extend(module, {
 		var demo = new UIGroup(this);
 		demo.append(new UIButton(this, {ref: "notice_btn1", label: "点击打开通知"}));
 		// 后端构建
-		demo.append(new UINotice(this, {title: "标题", content: "服务端创建的通知，打开页面会直接显示通知。j金佛额外发姐哦饿", duration: 60000}));
+		demo.append(new UINotice(this, {title: "标题", content: "服务端创建的通知，打开页面会直接显示通知。", duration: 60000}));
 
 		var source = [];
 		source.push("new UINotice(context, {title: '标题', content: '这里是内容！！', duration: 60000});");
