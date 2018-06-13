@@ -35,6 +35,7 @@ var FormviewModule = BaseModule.extend(module, {
 		this.showExample2();
 		this.showExample3();
 		this.showExample4();
+		this.showExample5();
 	},
 
 	showExample1: function () {
@@ -136,7 +137,7 @@ var FormviewModule = BaseModule.extend(module, {
 		source.push("    {name: 'c', label: '下拉选择框', required: true, ");
 		source.push("      content: new UICombobox(context, {data: ['选项1', '选项2']})}");
 		source.push("  ],");
-		source.push("  buttons: [label: '确定', type: 'submit']");
+		source.push("  buttons: [{label: '确定', type: 'submit'}]");
 		source.push("});");
 
 		this.showDemo(example, demo, source);
@@ -154,6 +155,7 @@ var FormviewModule = BaseModule.extend(module, {
 				callback(/^1\d{10}$/.test(value) ? false : "手机号必须是1开始的11位数字");
 			});
 		form.add("d", "日期").content(new UIDateInput(this)).required();
+		form.setButtons([{label: "确定", type: "submit"}, {label: "取消", type: "cancel"}]);
 
 		var source = [];
 		source.push("var form = new UIFormView(context);");
@@ -164,6 +166,33 @@ var FormviewModule = BaseModule.extend(module, {
 		source.push("    callback(/^1\\d{10}$/.test(value) ? false : '手机号必须是1开始的11位数字');");
 		source.push("  });");
 		source.push("form.add('d', '日期').content(new UIDateInput(context)).required();");
+		source.push("form.setButtons([{label: '确定', type: 'submit'}, {label: '取消', type: 'cancel'}]);");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample5: function () {
+		var example = this.addExample("标签对齐");
+
+		var demo = new UIGroup(this);
+		demo.add(new UIFormView(this, {
+			labelWidth: 150,
+			labelAlign: "right",
+			data: [
+				{name: "a", label: "输入框", content: new UITextView(this), required: true},
+				{name: "b", label: "下拉选择框", content: new UICombobox(this, {data: ["选项1", "选项2"]})}
+			]
+		}));
+
+		var source = [];
+		source.push("new UIFormView(context, {");
+		source.push("  labelWidth: 150,");
+		source.push("  labelAlign: 'right',");
+		source.push("  data: [");
+		source.push("    {name: 'a', label: '输入框', content new UITextView(context), required: true},");
+		source.push("    {name: 'b', label: '下拉选择框', content new UICombobox(context, {data: ['选项1', '选项2']})}");
+		source.push("  ]");
+		source.push("});");
 
 		this.showDemo(example, demo, source);
 	}
