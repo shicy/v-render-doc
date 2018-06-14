@@ -116,7 +116,7 @@ var FormviewModule = BaseModule.extend(module, {
 		demo.add(new UIFormView(this, {
 			data: [
 				{name: "a", label: "电子邮箱", content: new UITextView(this, {type: "email"}), required: true},
-				{name: "b", label: "手机号码", content: new UITextView(this, {type: "number"}),
+				{name: "b", label: "手机号码", content: new UITextView(this, {type: "int"}),
 					validate: function (value, callback) {
 						callback(/^1\d{10}$/.test(value) ? false : "手机号必须是1开始的11位数字");
 					}},
