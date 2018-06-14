@@ -120,7 +120,9 @@ var FormviewModule = BaseModule.extend(module, {
 					validate: function (value, callback) {
 						callback(/^1\d{10}$/.test(value) ? false : "手机号必须是1开始的11位数字");
 					}},
-				{name: "c", label: "下拉选择框", content: new UICombobox(this, {data: ["选项1", "选项2"]}), required: true}
+				{name: "c", label: "下拉选择框", content: new UICombobox(this, {data: ["选项1", "选项2"]}), required: true},
+				{name: "d", label: "原生输入框", content: "<input/>", required: true},
+				{name: "e", label: "原生文本框", content: "<textarea></textarea>", required: true}
 			],
 			buttons: [{label: "确定", type: "submit"}]
 		}));

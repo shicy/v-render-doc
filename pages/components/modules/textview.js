@@ -192,7 +192,7 @@ var TextViewModule = BaseModule.extend(module, {
 		source.push("new UITextView(context, {");
 		source.push("  prompt: '请输入名称，必须是字母、数字或_，最少6个字符',");
 		source.push("  multi: true,");
-		source.push("  errmsg: function (target, value, callback) {");
+		source.push("  validate: function (target, value, callback) {");
 		source.push("    callback(/^[0-9a-zA-Z\\_]{6,}$/.test(value) ? false : '格式不正确，请输入数字、字母、_，不少于6个字符');");
 		source.push("  }");
 		source.push("});");
