@@ -63,6 +63,12 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 			callback(false, {code: 0, data: getTreeItems(params.data)});
 		}, 400);
 	}
+	else if (name === "data.component.save") {
+		console.log(params.data);
+		setTimeout(function () {
+			callback(false, {code: 0, data: {id: 1, name: "name"}});
+		}, 400);
+	}
 	else {
 		return false;
 	}
