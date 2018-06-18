@@ -59,7 +59,7 @@ var FormviewModule = BaseModule.extend(module, {
 		}));
 
 		var source = [];
-		source.push("new FormView(context, {");
+		source.push("new UIFormView(context, {");
 		source.push("  action: 'data.component.save',");
 		source.push("  params: {id: 1, state: 1},");
 		source.push("  data: [{");
