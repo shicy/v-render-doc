@@ -255,10 +255,12 @@ var FormviewModule = BaseModule.extend(module, {
 		demo.add(new UIFormView(this, {
 			labelWidth: 150,
 			labelAlign: "right",
+			orientation: this.isApp ? UIFormView.HORIZONTIAL : null,
 			data: [
 				{name: "a", label: "输入框", content: new UITextView(this), required: true},
 				{name: "b", label: "下拉选择框", content: new UICombobox(this, {data: ["选项1", "选项2"]})}
-			]
+			],
+			buttons: [{label: "确定", type: "submit"}]
 		}));
 
 		var source = [];
@@ -276,7 +278,8 @@ var FormviewModule = BaseModule.extend(module, {
 		source.push("    content: new UICombobox(context, {");
 		source.push("      data: ['选项1', '选项2']");
 		source.push("    })");
-		source.push("  }]");
+		source.push("  }],");
+		source.push("  buttons: [{label: '确定', type: 'submit'}]");
 		source.push("});");
 
 		this.showDemo(example, demo, source);
