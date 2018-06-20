@@ -36,10 +36,11 @@ var menus = [{
 }, {
 	group: "容器",
 	children: [
+		{name: "chkgrp", label: "CheckGroup 多选组"},
 		{name: "container", label: "Container 边框容器"},
 		{name: "group", label: "Group 组视图"},
 		{name: "panel", label: "Panel 面板"},
-		{name: "radgrp", label: "RadioGroup 单选框组"},
+		{name: "radgrp", label: "RadioGroup 单选组"},
 		{name: "scrollbox", label: "ScrollBox 滚动加载"}
 	]
 }, {

@@ -13,10 +13,11 @@ var UITextView = VRender.UITextView;
 var UICombobox = VRender.UICombobox;
 var UIDateInput = VRender.UIDateInput;
 var UIDateRange = VRender.UIDateRange;
-var UIRadioGroup = VRender.UIRadioGroup;
-var UIFormView = VRender.UIFormView;
 var UICheckbox = VRender.UICheckbox;
 var UIRadiobox = VRender.UIRadiobox;
+var UICheckGroup = VRender.UICheckGroup;
+var UIRadioGroup = VRender.UIRadioGroup;
+var UIFormView = VRender.UIFormView;
 
 var FormviewModule = BaseModule.extend(module, {
 	className: "comp-formview",
@@ -56,10 +57,11 @@ var FormviewModule = BaseModule.extend(module, {
 					content: new UICombobox(this, {data: ["选项1", "选项2", "选项3"]})},
 				{name: "d", label: "日期", content: new UIDateInput(this)},
 				{name: "e", label: "日期范围", content: new UIDateRange(this)},
-				{name: "f", label: "单选", content: new UIRadiobox(this, {label: "单选1"})},
-				{name: "f", label: "多选", content: new UICheckbox(this, {label: "多选1"})},
-				{name: "g", label: "单选组", content: new UIRadioGroup(this, {data: ["A", "B", "C", "D"]})},
-				{name: "h", label: "多行文本", content: new UITextView(this, {multi: true})}
+				{name: "f", label: "单选", content: new UIRadiobox(this, {label: "单选"})},
+				{name: "g", label: "多选", content: new UICheckbox(this, {label: "多选"})},
+				{name: "h", label: "单选组", content: new UIRadioGroup(this, {data: ["A", "B", "C", "D"]})},
+				{name: "i", label: "多选组", content: new UICheckGroup(this, {data: ["A", "B", "C", "D"]})},
+				{name: "j", label: "多行文本", content: new UITextView(this, {multi: true})}
 			],
 			buttons: [{label: "确定", type: "submit"}, {label: "取消", type: "cancel"}]
 		}));
@@ -91,16 +93,28 @@ var FormviewModule = BaseModule.extend(module, {
 		source.push("  }, {");
 		source.push("    name: 'f',");
 		source.push("    label: '单选',");
-		source.push("    content: new UIRadioGroup(context, {data: 'ABCD'.split('')})");
+		source.push("    content: new UIRadiobox(context, {label: '单选'})");
 		source.push("  }, {");
 		source.push("    name: 'g',");
+		source.push("    label: '多选',");
+		source.push("    content: new UICheckbox(context, {label: '多选'})");
+		source.push("  }, {");
+		source.push("    name: 'h',");
+		source.push("    label: '单选组',");
+		source.push("    content: new UIRadioGroup(context, {data: 'ABCD'.split('')})");
+		source.push("  }, {");
+		source.push("    name: 'i',");
+		source.push("    label: '多选组',");
+		source.push("    content: new UICheckGroup(context, {data: 'ABCD'.split('')})");
+		source.push("  }, {");
+		source.push("    name: 'j',");
 		source.push("    label: '多行文本',");
 		source.push("    content: new UITextView(context, {multi: true})");
-		source.push("  }, {}],");
+		source.push("  }],");
 		source.push("  buttons: [{label: '确定', type: 'submit'},{label: '取消', type: 'cancel'}]");
 		source.push("});");
 
-		this.showDemo(example, demo, source, true);
+		this.showDemo(example, demo, source);
 	},
 
 	showExample2: function () {
