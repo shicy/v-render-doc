@@ -15,6 +15,8 @@ var UIDateInput = VRender.UIDateInput;
 var UIDateRange = VRender.UIDateRange;
 var UIRadioGroup = VRender.UIRadioGroup;
 var UIFormView = VRender.UIFormView;
+var UICheckbox = VRender.UICheckbox;
+var UIRadiobox = VRender.UIRadiobox;
 
 var FormviewModule = BaseModule.extend(module, {
 	className: "comp-formview",
@@ -45,6 +47,8 @@ var FormviewModule = BaseModule.extend(module, {
 		demo.add(new UIFormView(this, {
 			action: "data.component.save",
 			params: {id: 1, state: 1},
+			// orientation: UIFormView.VERTICAL,
+			// orientation: UIFormView.HORIZONTIAL,
 			data: [
 				{name: "a", label: "文本", content: "文本内容"},
 				{name: "b", label: "输入框", content: new UITextView(this)},
@@ -52,8 +56,10 @@ var FormviewModule = BaseModule.extend(module, {
 					content: new UICombobox(this, {data: ["选项1", "选项2", "选项3"]})},
 				{name: "d", label: "日期", content: new UIDateInput(this)},
 				{name: "e", label: "日期范围", content: new UIDateRange(this)},
-				{name: "f", label: "单选", content: new UIRadioGroup(this, {data: ["A", "B", "C", "D"]})},
-				{name: "g", label: "多行文本", content: new UITextView(this, {multi: true})}
+				{name: "f", label: "单选", content: new UIRadiobox(this, {label: "单选1"})},
+				{name: "f", label: "多选", content: new UICheckbox(this, {label: "多选1"})},
+				{name: "g", label: "单选组", content: new UIRadioGroup(this, {data: ["A", "B", "C", "D"]})},
+				{name: "h", label: "多行文本", content: new UITextView(this, {multi: true})}
 			],
 			buttons: [{label: "确定", type: "submit"}, {label: "取消", type: "cancel"}]
 		}));

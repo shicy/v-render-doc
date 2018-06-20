@@ -33,7 +33,7 @@ var RadgrpModule = BaseModule.extend(module, {
 	showExample1: function () {
 		var example = this.addExample("基本使用");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIGroup(this, {gap: 10, orientation: UIGroup.VERTICAL});
 		demo.append(new UIRadioGroup(this, {data: ["A", "B", "C", "D"], selectedIndex: 1}));
 		demo.append(new UIRadioGroup(this, {data: ["A", "B", "C", "D"], selectedIndex: 0}));
 
