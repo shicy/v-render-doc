@@ -37,7 +37,7 @@ var FileUploadModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "点击上传文件"}));
-		demo.append(new UIFileUpload(this, {browser: button}));
+		demo.append(new UIFileUpload(this, {browser: button, action: "demo.upload"}));
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '点击上传文件'});");
