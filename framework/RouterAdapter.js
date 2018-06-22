@@ -137,15 +137,15 @@ var getTreeItems = function (params, total) {
 };
 
 var doUpload = function (params, callback) {
-	var fileName = "aa.txt";
-	var filepath = __basedir + "/upload/" + fileName;
-	var file = FileSys.createWriteStream(filepath);
-	params.data.stream.pipe(file);
-	callback(false, {code: 0, data: {id: 123}});
+	// var fileName = "aa.txt";
+	// var filepath = __basedir + "/upload/" + fileName;
+	// var file = FileSys.createWriteStream(filepath);
+	// params.data.stream.pipe(file);
 
 	// params.session.upload("/test/upload", params.data, function (err, ret) {
 	// 	// callback(false, {code: 0, data: {id: 111}});
 	// 	callback(err, ret);
 	// });
 
+	callback(false, {code: 0, data: {id: 123}});
 };

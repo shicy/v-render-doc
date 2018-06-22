@@ -41,7 +41,7 @@ var FileUploadModule = BaseModule.extend(module, {
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '点击上传文件'});");
-		source.push("new UIFileUpload(context, {browser: button});");
+		source.push("new UIFileUpload(context, {browser: button, action: 'demo.upload'});");
 
 		this.showDemo(example, demo, source, true);
 	},
@@ -75,11 +75,11 @@ var FileUploadModule = BaseModule.extend(module, {
 
 		var demo = new UIGroup(this);
 		var button = demo.add(new UIButton(this, {label: "批量选择文件"}));
-		demo.append(new UIFileUpload(this, {browser: button, multi: true}));
+		demo.append(new UIFileUpload(this, {browser: button, multi: true, action: 'demo.upload'}));
 
 		var source = [];
 		source.push("var button = new UIButton(context, {label: '批量选择文件'});");
-		source.push("new UIFileUpload(context, {browser: button, multi: true});");
+		source.push("new UIFileUpload(context, {browser: button, multi: true, action: 'demo.upload'});");
 
 		this.showDemo(example, demo, source);
 	}
