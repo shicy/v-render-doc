@@ -53,6 +53,7 @@ var menus = [{
 }, {
 	group: "其他",
 	children: [
+		{name: "confirm", label: "Confirm 确认对话框"},
 		{name: "dialog", label: "Dialog 对话框"},
 		{name: "notice", label: "Notice 通知"},
 		{name: "popupmenu", label: "PopupMenu 弹出菜单"},
