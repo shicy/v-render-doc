@@ -129,17 +129,43 @@ var TreeComboboxModule = ListModule.extend(module, {
 
 	renderExamples: function () {
 		this.showExample1();
+		this.showExample2();
+		this.showExample3();
 	},
 
 	showExample1: function () {
 		var example = this.addExample("基本使用");
 
 		var demo = new UIGroup(this);
-		// demo.append(new UITreeView(this, {data: exampleData}));
+		demo.append(new UITreeCombobox(this, {data: exampleData, prompt: "请选择"}));
 
 		var source = [];
-		// source.push("new UITreeView(context, {data: dataSource});");
+		source.push("new UITreeCombobox(context, {data: dataSource, prompt: '请选择'});");
 
 		this.showDemo(example, demo, source, true);
 	},
+
+	showExample2: function () {
+		var example = this.addExample("多选");
+
+		var demo = new UIGroup(this);
+		demo.append(new UITreeCombobox(this, {data: exampleData, multi: true}));
+
+		var source = [];
+		source.push("new UITreeCombobox(context, {data: dataSource, multi: true});");
+
+		this.showDemo(example, demo, source);
+	},
+
+	showExample3: function () {
+		var example = this.addExample("动态加载");
+
+		var demo = new UIGroup(this);
+		demo.append(new UITreeCombobox(this, {apiName: "data.component.tree", openIndex: "1,0,2"}));
+
+		var source = [];
+		source.push("new UITreeCombobox(context, {apiName: 'data.component.tree', openIndex: '1,0,2'});");
+
+		this.showDemo(example, demo, source);
+	}
 });

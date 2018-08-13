@@ -163,7 +163,7 @@ var TreeModule = ListModule.extend(module, {
 		source.push("new UITreeView(context, {");
 		source.push("  data: dataSource,");
 		source.push("  chkbox: true,");
-		source.push("  selectedIndex: 0");
+		source.push("  selectedId: '110100'");
 		source.push("});");
 
 		this.showDemo(example, demo, source);
