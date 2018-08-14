@@ -161,7 +161,8 @@ var TreeComboboxModule = ListModule.extend(module, {
 		var example = this.addExample("动态加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UITreeCombobox(this, {apiName: "data.component.tree", openIndex: "1,0,2"}));
+		demo.append(new UITreeCombobox(this, {apiName: "data.component.tree", openIndex: "1,0,2",
+			apiParams: {total: 10, p_size: 3}}));
 
 		var source = [];
 		source.push("new UITreeCombobox(context, {apiName: 'data.component.tree', openIndex: '1,0,2'});");
