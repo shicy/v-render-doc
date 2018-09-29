@@ -25,7 +25,8 @@ var menus = [{
 		{name: "fileupload", label: "FileUpload 文件上传"},
 		{name: "formview", label: "FormView 表单视图"},
 		{name: "radiobox", label: "Radiobox 单选框"},
-		{name: "textview", label: "TextView 文本输入框"}
+		{name: "textview", label: "TextView 文本输入框"},
+		{name: "timeinput", label: "TimeInput 时间输入框"}
 	]
 }, {
 	group: "数据集",
