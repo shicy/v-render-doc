@@ -9,6 +9,7 @@ var BaseModule = require("./_base");
 
 
 var UIGroup = VRender.UIGroup;
+var UIHGroup = VRender.UIHGroup;
 var UITimeInput = VRender.UITimeInput;
 
 var TimeinputModule = BaseModule.extend(module, {
@@ -38,7 +39,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample1: function () {
 		var example = this.addExample("基本使用");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {prompt: "请选择时间"}));
 
 		var source = [];
@@ -50,7 +51,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample2: function () {
 		var example = this.addExample("默认");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {time: "10:25"}));
 		demo.append(new UITimeInput(this, {time: "9:6"}));
 		demo.append(new UITimeInput(this, {time: "12:68"}));
@@ -66,7 +67,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample3: function () {
 		var example = this.addExample("禁止");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {time: "12:00", disabled: true}));
 
 		var source = [];
@@ -78,7 +79,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample4: function () {
 		var example = this.addExample("显示秒");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {time: "13:26:39", showSecond: true}));
 
 		var source = [];
@@ -90,7 +91,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample5: function () {
 		var example = this.addExample("12小时制");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {time: "15:45", use12Hour: true}));
 		demo.append(new UITimeInput(this, {time: "23:29:55", use12Hour: true, showSecond: true}));
 
@@ -104,7 +105,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample6: function () {
 		var example = this.addExample("范围");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {min: "8:30", max: "18:00"}));
 
 		var source = [];
@@ -116,7 +117,7 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample7: function () {
 		var example = this.addExample("可选时间");
 
-		var demo = new UIGroup(this, {gap: 10});
+		var demo = new UIHGroup(this, {gap: 10});
 		demo.append(new UITimeInput(this, {hours: [8, 10, 12, 14]}));
 		demo.append(new UITimeInput(this, {time: "6:33", minutes: [0, 15, 30, 45]}));
 		demo.append(new UITimeInput(this, {seconds: [0, 30], showSecond: true}));
