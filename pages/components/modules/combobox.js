@@ -118,7 +118,7 @@ var ComboboxModule = BaseModule.extend(module, {
 		var example = this.addExample("异步加载");
 
 		var demo = new UIGroup(this);
-		demo.append(new UICombobox(this, {apiName: "data.component.items2", prompt: "请选择..", selectedIndex: 3, labelField: "c1"}));
+		demo.append(new UICombobox(this, {apiName: "data.component.items", prompt: "请选择..", selectedIndex: 3, labelField: "c1"}));
 
 		var source = [];
 		source.push("new UICombobox(context, {apiName: 'data.component.items', prompt: '请选择..', selectedIndex: 3});");

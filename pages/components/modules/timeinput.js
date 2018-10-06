@@ -39,7 +39,9 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample1: function () {
 		var example = this.addExample("基本使用");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {prompt: "请选择时间"}));
 
 		var source = [];
@@ -51,7 +53,9 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample2: function () {
 		var example = this.addExample("默认");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {time: "10:25"}));
 		demo.append(new UITimeInput(this, {time: "9:6"}));
 		demo.append(new UITimeInput(this, {time: "12:68"}));
@@ -67,7 +71,9 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample3: function () {
 		var example = this.addExample("禁止");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {time: "12:00", disabled: true}));
 
 		var source = [];
@@ -79,7 +85,9 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample4: function () {
 		var example = this.addExample("显示秒");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {time: "13:26:39", showSecond: true}));
 
 		var source = [];
@@ -91,7 +99,9 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample5: function () {
 		var example = this.addExample("12小时制");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {time: "15:45", use12Hour: true}));
 		demo.append(new UITimeInput(this, {time: "23:29:55", use12Hour: true, showSecond: true}));
 
@@ -105,11 +115,17 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample6: function () {
 		var example = this.addExample("范围");
 
-		var demo = new UIHGroup(this, {gap: 10});
-		demo.append(new UITimeInput(this, {min: "8:30", max: "18:00"}));
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
+		demo.append(new UITimeInput(this, {min: "8:30", max: "18:00", time: "6:45"}));
+		demo.append(new UITimeInput(this, {min: "8:45:20", max: "18:20:40", showSecond: true}));
+		demo.append(new UITimeInput(this, {min: "13:00", max: "14:00", use12Hour: true}));
 
 		var source = [];
 		source.push("new UITimeInput(context, {min: '8:30', max: '18:00'});");
+		source.push("new UITimeInput(context, {min: '8:45:20', max: '18:20:40', showSecond: true});");
+		source.push("new UITimeInput(context, {min: '13:00', max: '14:00', use12Hour: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -117,14 +133,16 @@ var TimeinputModule = BaseModule.extend(module, {
 	showExample7: function () {
 		var example = this.addExample("可选时间");
 
-		var demo = new UIHGroup(this, {gap: 10});
+		var orientation = this.isApp ? null : UIGroup.HORIZONTIAL;
+
+		var demo = new UIGroup(this, {gap: 10, orientation: orientation});
 		demo.append(new UITimeInput(this, {hours: [8, 10, 12, 14]}));
-		demo.append(new UITimeInput(this, {time: "6:33", minutes: [0, 15, 30, 45]}));
+		demo.append(new UITimeInput(this, {time: "6:33", minutes: [0, 15, 30, 45], showSecond: true}));
 		demo.append(new UITimeInput(this, {seconds: [0, 30], showSecond: true}));
 
 		var source = [];
 		source.push("new UITimeInput(context, {hours: [8, 10, 12, 14]});");
-		source.push("new UITimeInput(context, {time: '6:33', minutes: [0, 15, 30, 45]});");
+		source.push("new UITimeInput(context, {time: '6:33', minutes: [0, 15, 30, 45], showSecond: true});");
 		source.push("new UITimeInput(context, {seconds: [0, 30], showSecond: true})");
 
 		this.showDemo(example, demo, source);

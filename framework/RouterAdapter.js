@@ -50,24 +50,24 @@ RouterAdapter.prototype.api = function (name, params, callback) {
 	if (name === "data.component.items") {
 		setTimeout(function () {
 			var total = params.data.total || 123;
-			callback(false, {code: 0, data: {total: total, rows: getListItems(params.data, total)}});
+			callback(false, {total: total, rows: getListItems(params.data, total)});
 		}, 400);
 	}
 	else if (name === "data.component.items2") {
 		setTimeout(function () {
 			var total = params.data.total || 123;
-			callback(false, {code: 0, data: {total: total, rows: getGridItems(params.data, total)}});
+			callback(false, {total: total, rows: getGridItems(params.data, total)});
 		}, 400);
 	}
 	else if (name === "data.component.tree") {
 		setTimeout(function () {
-			callback(false, {code: 0, data: getTreeItems(params.data)});
+			callback(false, getTreeItems(params.data));
 		}, 400);
 	}
 	else if (name === "data.component.save") {
 		console.log(params.data);
 		setTimeout(function () {
-			callback(false, {code: 0, data: {id: 1, name: "name"}});
+			callback(false, {id: 1, name: "name"});
 		}, 400);
 	}
 	else if (name === "demo.upload") {
