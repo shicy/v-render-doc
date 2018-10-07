@@ -22,6 +22,7 @@ var menus = [{
 		{name: "dateinput", label: "DateInput 日期输入框"},
 		{name: "datepicker", label: "DatePicker 日期选择器"},
 		{name: "daterange", label: "DateRange 日期范围输入框"},
+		{name: "datetime", label: "DateTime 日期时间输入框"},
 		{name: "fileupload", label: "FileUpload 文件上传"},
 		{name: "formview", label: "FormView 表单视图"},
 		{name: "radiobox", label: "Radiobox 单选框"},
