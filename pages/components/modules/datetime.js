@@ -67,10 +67,10 @@ var DatetimeModule = BaseModule.extend(module, {
 		var example = this.addExample("禁用");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UIDateTime(this, {date: Date.now()}));
+		demo.append(new UIDateTime(this, {date: Date.now(), disabled: true}));
 
 		var source = [];
-		source.push("new UIDateTime(context, {date: Date.now()});");
+		source.push("new UIDateTime(context, {date: Date.now(), disabled: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -82,11 +82,11 @@ var DatetimeModule = BaseModule.extend(module, {
 		demo.add(new UIGroup(this))
 			.append(new UIDateTime(this, {date: "2018-10-10 13:25:30", format: "yyyy年MM月dd日HH时mm分ss秒"}));
 		demo.add(new UIGroup(this))
-			.append(new UIDateTime(this, {date: "2018-10-10 13:25:30", format: "yyyy/MM/dd HH:mm:ss"}));
+			.append(new UIDateTime(this, {date: "2018-10-10 13:25:30", format: "yyyy/MM/dd HH:mm:ss", showSecond: true}));
 
 		var source = [];
 		source.push("new UIDateTime(context, {date: '2018-10-10 13:25:30', format: 'yyyy年MM月dd日HH时mm分ss秒'});");
-		source.push("new UIDateTime(context, {date: '2018-10-10 13:25:30', format: 'yyyy/MM/dd HH:mm:ss'});");
+		source.push("new UIDateTime(context, {date: '2018-10-10 13:25:30', format: 'yyyy/MM/dd HH:mm:ss', showSecond: true});");
 
 		this.showDemo(example, demo, source);
 	},
@@ -95,11 +95,11 @@ var DatetimeModule = BaseModule.extend(module, {
 		var example = this.addExample("范围");
 
 		var demo = new UIGroup(this, {gap: 10});
-		demo.append(new UIDateTime(this, {date: "2018-10-05 08:00:00", min: "2018-01-01 12:15:30", 
+		demo.append(new UIDateTime(this, {date: "2018-10-15 08:00:00", min: "2018-01-01 12:15:30", 
 			max: Date.now(), showSecond: true}));
 
 		var source = [];
-		source.push("new UIDateTime(context, {date: '2018-10-10 08:00:00', min: '2018-01-01 12:15:30', " +
+		source.push("new UIDateTime(context, {date: '2018-10-15 08:00:00', min: '2018-01-01 12:15:30', " +
 			"max: Date.now(), showSecond: true});");
 
 		this.showDemo(example, demo, source);
