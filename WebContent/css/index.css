@@ -203,6 +203,7 @@
 	width: 33.333333%;
 	padding: 0px 0px 50px 15px;
 	vertical-align: top;
+	box-sizing: border-box;
 }
 
 #main-body > .features .box {
