@@ -16,5 +16,8 @@
   "dependencies": {
     "prismjs": "^1.15.0",
     "v-render": "^2.0.22"
+  },
+  "devDependencies": {
+    "node-dev": "^4.0.0"
   }
 }

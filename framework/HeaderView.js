@@ -24,7 +24,7 @@ var HeaderView = VRender.UIView.extend(module, {
 		menus.append("<li class='menu documents'><a href='/documents'>说明文档</a></li>");
 		menus.append("<li class='menu components'><a href='/components'>组件</a></li>");
 		menus.append("<li class='menu styles'><a href='/styles'>全局样式</a></li>");
-		menus.append("<li class='menu apis'><a href='apis'>API</a></li>");
+		menus.append("<li class='menu apis'><a href='/apis'>API</a></li>");
 
 		var active = this.options.active;
 		if (active) {
